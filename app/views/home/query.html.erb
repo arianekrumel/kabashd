@@ -1,1 +1,8 @@
-<p><%=@response%></p>
+
+<% for answer in @response %>
+    <p><%= answer[0]%></p>
+    <p><%=answer[1]%></p>
+    <br>
+    <br>
+
+<% end %>

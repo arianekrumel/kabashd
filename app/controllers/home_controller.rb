@@ -25,7 +25,12 @@ class HomeController < ApplicationController
     puts response.as_json
     puts response.body.as_json
 
-    @response = response.body.as_json
+    @response = []
+
+    listAnswers = JSON.parse(response.body.as_json)["question"]["evidencelist"]
+    for answer in listAnswers
+      @response.push([answer["text"], answer["value"]])
+    end
 
     render 'home/query'
   end
