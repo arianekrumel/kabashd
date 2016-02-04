@@ -1,2 +1,7 @@
-<h1>Home#index</h1>
-
+<h1>Home</h1>
+<div>
+	<%= form_for(:query, url: 'home/query', method: "post") do |f| %>
+	    <%= f.text_field(:query) %>
+	    <%= f.submit("Search") %>
+	<% end %>
+<div>

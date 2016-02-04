@@ -1,31 +1,16 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Kabashd</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+	<head>
+	  <title>Kabashd</title>
+	  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	  <%= csrf_meta_tags %>
+	</head>
+	<body>
 
-</head>
-<body>
+		<%= render 'shared/header' %>
+		<%= yield %>
+		<%= render 'shared/footer' %>
 
-
-
-<script>
-</script>
-
-
-<%= yield %>
-
-
-<%= render 'shared/header' %>
-<br>
-<%= form_for(:query, url: 'home/query', method: "post") do |f| %>
-    <%= f.text_field(:query) %>
-    <%= f.submit("Search") %>
-<% end %>
-<br>
-<%= render 'shared/footer' %>
-
-</body>
+	</body>
 </html>
