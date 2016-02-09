@@ -18,8 +18,17 @@ html{
 
 }
 
-.queryField{
+#query{
   width:100%;
   color:white;
   background-color: black;
+}
+
+.response{
+  color:lightgreen;
+}
+
+#game_name{
+  text-align:center;
+  font-size:xx-large;
 }

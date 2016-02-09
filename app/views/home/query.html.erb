@@ -1,10 +1,12 @@
 
-
+<div class="conv_entry" style="font-size: large">
+  <p><b>Welcome to Kabash'd. Enter a command to get started: </b></p>
+</div>
 
 <% @conversations.each do |conversation| %>
     <div class="conv_entry">
         <p><%= conversation.query %></p>
-        <p><%= conversation.response %> (<%= conversation.confidence %>)</p>
+        <p class="response"><%= conversation.response %> (<%= conversation.confidence %>)</p>
     </div>
 <% end %>
 
