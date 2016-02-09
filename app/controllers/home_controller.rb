@@ -32,6 +32,5 @@ class HomeController < ApplicationController
       @response.push([answer["text"], answer["value"]])
     end
 
-    render 'home/query'
   end
 end

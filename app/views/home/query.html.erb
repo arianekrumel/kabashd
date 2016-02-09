@@ -1,4 +1,9 @@
 
+
+<%= form_tag({controller: "home", action: "query"}, method: "post") do  %>
+    <%= text_field_tag(:query) %>
+    <%= submit_tag("Search") %>
+<% end %>
 <% for answer in @response %>
  	<div>
     	<p><%= answer[0]%></p>
