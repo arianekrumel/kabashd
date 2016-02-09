@@ -1,13 +1,11 @@
 
 
-<%= form_tag({controller: "home", action: "query"}, method: "post") do  %>
-    <%= text_field_tag(:query) %>
-    <%= submit_tag("Search") %>
-<% end %>
-<% for answer in @response %>
- 	<div>
-    	<p><%= answer[0]%></p>
-    	<p><%=answer[1]%></p>
-    	<hr>
+
+<% @conversations.each do |conversation| %>
+    <div class="conv_entry">
+        <p><%= conversation.query %></p>
+        <p><%= conversation.response %> (<%= conversation.confidence %>)</p>
     </div>
 <% end %>
+
+

@@ -3,7 +3,7 @@ require 'uri'
 require 'json'
 class HomeController < ApplicationController
   def index
-
+    Conversation.delete_all
   end
 
   def query
@@ -22,15 +22,16 @@ class HomeController < ApplicationController
     http.use_ssl = true
 
     response = http.request(request)
-    puts response.as_json
     puts response.body.as_json
 
-    @response = []
-
     listAnswers = JSON.parse(response.body.as_json)["question"]["evidencelist"]
-    for answer in listAnswers
-      @response.push([answer["text"], answer["value"]])
+    if listAnswers.size > 0
+      answer = listAnswers[0]
+      Conversation.create(query: params[:query], response: answer["text"], confidence: answer["value"])
     end
 
+    @conversations = Conversation.all
+
   end
+
 end
