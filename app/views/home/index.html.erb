@@ -2,9 +2,9 @@
 
 <div>
   <iframe src="home/query" onload="resizeIframe()" frameborder="0" id="conv_iframe" height="0px" width="100%" name="conv_iframe">
-
   </iframe>
-  <%= form_tag({controller: "home", action: "query"}, method: "post", style:"width:100%", target:"conv_iframe", id:"queryForm") do  %>
+
+  <%= form_tag({controller: "home", action: "query"}, method: "post", target:"conv_iframe", id:"queryForm") do  %>
       <%= submit_tag("Search", class: "submitQuery") %>
       <span class='fieldSpan'>
         <%= text_field_tag(:query, '',id:"query") %>

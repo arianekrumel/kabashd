@@ -26,14 +26,13 @@ class HomeController < ApplicationController
 
     jsonResponse = JSON.parse(response.body.as_json)["question"]
     if jsonResponse != nil
-    listAnswers = jsonResponse["evidencelist"]
+      listAnswers = jsonResponse["evidencelist"]
       if listAnswers.size > 0
         answer = listAnswers[0]
         Conversation.create(query: params[:query], response: answer["text"], confidence: answer["value"])
       end
     end
     @conversations = Conversation.all
-
   end
 
 end
