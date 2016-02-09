@@ -6,7 +6,11 @@
 <% @conversations.each do |conversation| %>
     <div class="conv_entry">
         <p><%= conversation.query %></p>
-        <p class="response"><%= conversation.response %> (<%= conversation.confidence %>)</p>
+        <% if conversation.response != nil %>
+            <p class="responseSuccess"><%= conversation.response %> (<%= conversation.confidence %>)</p>
+        <% else %>
+            <p class="responseFail">Sorry, there is no valid response for your query.</p>
+        <%end%>
     </div>
 <% end %>
 

@@ -24,8 +24,11 @@ html{
   background-color: black;
 }
 
-.response{
+.responseSuccess{
   color:lightgreen;
+}
+.responseFail{
+  color:red;
 }
 
 #game_name{
