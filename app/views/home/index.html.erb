@@ -1,15 +1,27 @@
-<h1 id="game_name">Kabash'd</h1>
+<div class="container">
+  <div class="col-md-12">
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">
+            <img alt="kabash'd" src="/">
+          </a>
+        </div>
+      </div>
+    </nav>
+  </div >
+</div>
 
 <div class="container">
   <div class="col-md-12">
-  <iframe src="home/query" frameborder="0" id="conv_iframe" height="800px" width="100%" name="conv_iframe">
-  </iframe>
+    <iframe src="home/query" frameborder="0" id="conv_iframe" height="800px" width="100%" name="conv_iframe">
+    </iframe>
 
-  <%= form_tag({controller: "home", action: "query"}, method: "post", target:"conv_iframe", id:"queryForm") do  %>
-      <%= submit_tag("Search", class: "submitQuery") %>
-      <span class='fieldSpan'>
-        <%= text_field_tag(:query, '',id:"query") %>
-      </span>
-  <% end %>
-</div>
+    <%= form_tag({controller: "home", action: "query"}, method: "post", target:"conv_iframe", id:"queryForm") do  %>
+    <%= submit_tag("Search", class: "submitQuery") %>
+    <span class='fieldSpan'>
+      <%= text_field_tag(:query, '',id:"query") %>
+    </span>
+    <% end %>
+  </div>
 </div>
