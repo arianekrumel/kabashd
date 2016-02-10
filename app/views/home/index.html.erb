@@ -2,7 +2,7 @@
 
 <div class="container">
   <div class="col-md-12">
-  <iframe src="home/query" onload="resizeIframe()" frameborder="0" id="conv_iframe" height="0px" width="100%" name="conv_iframe">
+  <iframe src="home/query" frameborder="0" id="conv_iframe" height="800px" width="100%" name="conv_iframe">
   </iframe>
 
   <%= form_tag({controller: "home", action: "query"}, method: "post", target:"conv_iframe", id:"queryForm") do  %>
