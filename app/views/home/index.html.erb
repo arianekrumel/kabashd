@@ -1,27 +1,29 @@
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<div class="container-fluid">
+  <div class="col-md-12">
+    <nav class="navbar navbar-inverse">
       <div class="container-fluid">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Kabashd Game</a>
+          <a class="navbar-brand" href="#">
+            <img alt="kabash'd" src="/assets/kabashd.png" style="width:30px;height:30px;position=relative;transform:translateY(-20%);">
+          </a>
+          <a class="navbar-brand" href="#">Kabash'd</a>
         </div>
       </div>
     </nav>
+  </div >
+</div>
 
-<h1 id="game_name">Kabash'd</h1>
+<div class="container main-content">
+  <div class="col-md-12 content">
+    <iframe src="home/query" frameborder="0" id="conv_iframe" name="conv_iframe"></iframe>
 
-<div class="jumbotron">
-  <iframe src="home/query" onload="resizeIframe()" frameborder="0" id="conv_iframe" height="0px" width="100%" name="conv_iframe">
-  </iframe>
-
-  <%= form_tag({controller: "home", action: "query"}, method: "post", target:"conv_iframe", id:"queryForm") do  %>
+    <%= form_tag({controller: "home", action: "query"}, method: "post", target:"conv_iframe", id:"queryForm") do  %>
+      <div class="user-input">
       <%= submit_tag("Search", class: "submitQuery") %>
-      <span class='fieldSpan'>
-        <%= text_field_tag(:query, '',id:"query") %>
-      </span>
-  <% end %>
+        <span class='fieldSpan'>
+          <%= text_field_tag(:query, '',id:"query") %>
+        </span>
+      </div>
+    <% end %>
+  </div>
 </div>

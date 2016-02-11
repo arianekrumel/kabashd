@@ -13,10 +13,32 @@
 
 }
 
+.main-content, .content {
+  height: 100%;
+
+  iframe {
+    height: 75%;
+    width: 100%;
+    overflow: scroll;
+  }
+
+  .user-input {
+    margin-top: 20px;
+  }
+}
+
 #query{
   width:100%;
   color:white;
   background-color: black;
+}
+
+.searchQuery{
+  color:#fff;
+}
+
+.conv_entry{
+  color:#fff;
 }
 
 .responseSuccess{
@@ -29,4 +51,9 @@
 #game_name{
   text-align:center;
   font-size:xx-large;
+  color:#fff;
+}
+
+body{
+  background-color:#171717;
 }
