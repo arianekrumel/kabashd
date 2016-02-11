@@ -1,0 +1,23 @@
+------------ Demo Scenario -------------
+
+A man walks in. His arm hurts, he thinks it could be broken. You need to fix him and send him on his way (as part of your quest to impress the attending)
+
+"Well doc, I was milking my cows like I do every morning, only I slipped and fell. Bettsy happened to hoof my arm a little, it's swelled up like a grapefruit and 
+hurts something fierce. She does weigh quite a bit you know."
+
+GAMESTATE----
+	state bits:
+		Talked to patient [y/n]
+		X-Rayed patient [y/n]
+		Re-aligned bone [y/n]
+		Gave him a cast [y/n]
+		Patient healthy [y/n]
+		
+		Is Watson up right now (are you asking questions instead of giving commands?) [y/n]
+
+	Ideal Commands - 
+		- Examine the arm
+		- Take him for an X-Ray
+		- straighten out the bone
+		- apply a cast
+
