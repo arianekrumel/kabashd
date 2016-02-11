@@ -13,6 +13,20 @@
 
 }
 
+.main-content, .content {
+  height: 100%;
+
+  iframe {
+    height: 75%;
+    width: 100%;
+    overflow: scroll;
+  }
+
+  .user-input {
+    margin-top: 20px;
+  }
+}
+
 #query{
   width:100%;
   color:white;
