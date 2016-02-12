@@ -13,3 +13,41 @@
  *= require_tree .
  *= require_self
  */
+
+.submitQuery{
+    float:left;
+}
+
+.fieldSpan{
+    display:block;
+    overflow:hidden;
+    padding-right:1em;
+
+}
+
+html{
+    width:100%;
+    color: #ffffff;
+    background-color: black;
+}
+
+.searchQuery{
+    color:#fff;
+}
+
+.conv_entry{
+    color:#fff;
+}
+
+.responseSuccess{
+    color:lightgreen;
+}
+.responseFail{
+    color:red;
+}
+
+#game_name{
+    text-align:center;
+    font-size:xx-large;
+    color:#fff;
+}

@@ -1,8 +1,48 @@
 Rails.application.routes.draw do
-  root 'home#index'
+  get 'games/new'
 
-  post 'home/query'
-  get 'home/query'
+  get 'games/index'
+
+  get 'games/query'
+
+  post 'games/query'
+
+  post 'games/create'
+
+  post 'games/index', to: 'games#index', as:'game_index_path'
+
+
+  get  '/query' , to:'games#query', as:"query"
+
+
+
+  get 'sessions/new'
+
+  get 'sessions/destroy'
+
+  post '/sessions/create', to: 'sessions#create', as:'login_submit_path'
+
+  post '/sessions/new', to: 'sessions#new'
+
+
+  get 'users/new'
+
+  post 'users/create'
+
+  get 'users/home', to:'users#home', as: 'users_home_path'
+
+  root 'users#new'
+
+
+  get 'users/home', to: 'users#home'
+
+  post '/users/login'
+
+  get '/users/login', to: 'users#login', as: 'users_login_path'
+
+
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

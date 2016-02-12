@@ -1,0 +1,18 @@
+<!-- Creates the log in form that is used in some of the pages in this site -->
+<div>
+  <div>
+    <h1>Log in</h1>
+
+    <%= render 'shared/login_form' %>
+
+
+    <!-- If log in information is not valid, this notifies to the user to try again or to sign up for a free account -->
+    <table>
+          <tr>
+            <td> <%= @err %> </td>
+          </tr>
+    </table>
+
+    <p>New user? <%= link_to "Sign up now!", 'users/new', method:"get" %></p>
+  </div>
+</div>

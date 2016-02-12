@@ -1,0 +1,21 @@
+<div class="row">
+  <div>
+    <h1>Sign up</h1>
+
+    <%= render 'shared/signup_form' %>
+
+
+    <!-- If invalid sign-up information is provided, a table of errors is printed -->
+    <table>
+      <% if @err != nil %>
+          <% @err.each do |message| %>
+              <tr>
+                <td><%= "#{message[0].to_s.titleize} #{message[1][0]}" %></td>
+              </tr>
+          <%end%>
+      <% end %>
+    </table>
+
+    <p>Existing User? <%= link_to "Log in", 'sessions/new', method:"get" %></p>
+  </div>
+</div>

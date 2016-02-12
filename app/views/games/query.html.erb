@@ -1,0 +1,23 @@
+
+<div class="conv_entry" style="font-size: large">
+  <p><b>Welcome to Kabash'd. Enter a command to get started: </b></p>
+</div>
+
+<% if @conversations !=nil %>
+    <% @conversations.each do |conversation| %>
+        <% if conversation.game == current_game %>
+
+                <div class="conv_entry">
+              <p><%= conversation.query %></p>
+              <% if conversation.response != nil %>
+                  <p class="responseSuccess"><%= conversation.response %> (<%= conversation.confidence %>)</p>
+              <% else %>
+                  <p class="responseFail">Sorry, there is no valid response for your query.</p>
+              <%end%>
+            </div>
+        <% end %>
+
+    <% end %>
+<% end %>
+
+

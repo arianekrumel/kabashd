@@ -1,0 +1,15 @@
+<!-- Creates the form that allows a user to log in to the site -->
+
+<%= form_for(:session, url: '/sessions/create', method:"post",  html: {id:"new_session"} ) do |f| %>
+    <%= f.label :email %>
+    <%= f.email_field :email%>
+
+    <br>
+
+    <%= f.label :password %>
+    <%= f.password_field :password%>
+    <br>
+
+    <%= f.submit "Sign in"%>
+    <br>
+<% end %>

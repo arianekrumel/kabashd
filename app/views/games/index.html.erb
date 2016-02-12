@@ -1,0 +1,52 @@
+<h1 id="game_name">Kabash'd</h1>
+
+<script>
+
+    function resizeIframe(){
+        $('#conv_iframe').attr("height", $('#conv_iframe').contents().find('html').outerHeight());
+    }
+
+</script>
+
+<div>
+
+  <iframe src="/query" onload="resizeIframe()" frameborder="0" id="conv_iframe" height="0px" width="100%" name="conv_iframe">
+
+  </iframe>
+
+  <%= form_tag({controller: "games", action: "query"}, method: "post", target:"conv_iframe", id:"queryForm") do  %>
+              <%= submit_tag("Search", class: "submitQuery") %>
+        <span>
+          <%= text_field_tag(:query, '',id:"query") %>
+          <%= hidden_field_tag(:game_id, current_game.id) %>
+
+          </span>
+  <% end %>
+
+  <script>
+      $('#queryForm').submit(function(e) {
+          e.preventDefault(); // don't submit multiple times
+
+          var container = $("<div class='conv_entry'></div>");
+          var query = $("<p></p>").text($('#query').val());
+          var waiting = $("<span></span>").text(" (Loading...)");
+          query.attr('style', 'color:yellow');
+          waiting.attr('style', 'color:yellow');
+          query.append(waiting);
+          container.append(query);
+
+
+          $('#conv_iframe').contents().find('body').append(container);
+          resizeIframe();
+          this.submit(); // use the native submit method of the form element
+
+          setTimeout(function(){ // Delay for Chrome
+              $('#query').val(''); // blank the input
+          }, 100);
+
+      });
+
+
+  </script>
+
+</div>
