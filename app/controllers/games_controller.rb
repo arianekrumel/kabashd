@@ -11,7 +11,8 @@ class GamesController < ApplicationController
     @err = nil
 
     if !game_started?
-      @game =  Game.create(params[:game].permit(:name, :time, :user_id))
+      #@game =  Game.create(params[:game].permit(:name, :time, :user_id))
+      @game = Game.create(name: params[:name], time: 0, user_id: params[:user_id], created_at: params[:created_at])
       start_game(@game)
 
         #@err = user.errors.messages
