@@ -1,7 +1,10 @@
 require 'net/http'
 require 'uri'
 require 'json'
+require 'Gamestate.rb'
+
 class HomeController < ApplicationController
+
   def index
     Conversation.delete_all
   end
@@ -30,6 +33,10 @@ class HomeController < ApplicationController
       if listAnswers.size > 0
         answer = listAnswers[0]
         Conversation.create(query: params[:query], response: answer["text"], confidence: answer["value"])
+        if isValidAction(Gamestate.getState("Location"), answer["text"])
+         #give appropriate response to user
+         print "State Approved"
+        end
       end
     end
     @conversations = Conversation.all
