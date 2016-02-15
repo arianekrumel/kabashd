@@ -9,7 +9,7 @@
           <div class="input-group">
                   <span>
                 <%= submit_tag game.name + ' - ' + game.id.to_s, class:'btn btn-lg btn-primary btn-block'%>
-                    <%= hidden_field_tag(:game_id, game.id) %>
+                    <%= hidden_field_tag(:loaded_game_id, game.id) %>
 
                     </span>
           </div>

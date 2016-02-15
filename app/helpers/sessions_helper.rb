@@ -14,7 +14,7 @@ module SessionsHelper
   end
 
   def current_game
-    @current_game ||=Game.find_by(id: session[:game_id])
+    @current_game ||= Game.find_by(id: session[:game_id])
     return @current_game
   end
   # Returns true if the user is logged in, false otherwise.

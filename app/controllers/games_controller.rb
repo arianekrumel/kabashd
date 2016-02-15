@@ -11,16 +11,12 @@ class GamesController < ApplicationController
   end
 
   def new
-    if game_started?
-      end_game
-      end
-    @games = current_user.games
+    end_game
+    @game = Game.new
   end
 
   def load
-    if game_started?
-      end_game
-    end
+    end_game
     @games = current_user.games
   end
 
@@ -28,27 +24,32 @@ class GamesController < ApplicationController
     @err = nil
     #@game =  Game.create(params[:game].permit(:name, :time, :user_id))
 
-    if params[:game_id] == nil
-      @game = Game.create(name: params[:name], time: 0, user_id: params[:user_id], created_at: params[:created_at])
-      start_game(@game)
+    if params[:loaded_game_id] == nil
+      @game = Game.new(name: params[:name], time: 0, user_id: params[:user_id])
+      if !@game.save
+        @err = @game.errors.messages
+        render '/games/new'
+        return
+      end
+
     else
-      @game = Game.find(params[:game_id])
-      start_game (@game)
+
+      @game = Game.find(params[:loaded_game_id])
     end
 
+    start_game (@game)
+
+    @conversations = current_game.conversations
+    render '/games/query'
 
     #@err = user.errors.messages
     #@game = Game.new
 
-    @conversation = Conversation.new
-    @conversations = current_game.conversations
-
-
-    render 'games/query'
 
   end
 
   def query
+
     url = 'https://dal09-gateway.watsonplatform.net/instance/579/deepqa/v1/question'
     uri = URI(url)
 
@@ -72,14 +73,14 @@ class GamesController < ApplicationController
       if listAnswers.size > 0
         answer = listAnswers[0]
         Conversation.create(query: params[:query], response: answer["text"], confidence: answer["value"], game_id: params[:game_id])
-        if isValidAction(Gamestate.getState("Location"), answer["text"])
+        if answer["text"] != nil && isValidAction(Gamestate.getState("Location"), answer["text"])
          #give appropriate response to user
          print "State Approved"
         end
       end
     end
     @conversations = current_game.conversations
-    @current_game.save
+    current_game.save
   end
 
 end

@@ -23,11 +23,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def log_out_user
-    log_out
-    render '/sessions/new'
-  end
-
   def home
     if !logged_in?
       render '/sessions/new'
