@@ -1,29 +1,25 @@
-<div class="container-fluid">
-  <div class="col-md-12">
-    <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">
-            <img alt="kabash'd" src="/assets/kabashd.png" style="width:30px;height:30px;position=relative;transform:translateY(-20%);">
-          </a>
-          <a class="navbar-brand" href="#">Kabash'd</a>
-        </div>
-      </div>
-    </nav>
-  </div >
+<link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+
+
+<div class="jumbotron">
+
+	<img src="/assets/kabashdfull.png" width="100%" />
+
+	<br />
+	<br />
+
+	<a href="home/play" type="button" class="btn btn-lg btn-success btn-block">Play</a>
+
+	<button type="button" class="btn btn-lg btn-primary btn-block">Options</button>
+
+	<button type="button" class="btn btn-lg btn-primary btn-block">Credits</button>
 </div>
 
-<div class="container main-content">
-  <div class="col-md-12 content">
-    <iframe src="home/query" frameborder="0" id="conv_iframe" name="conv_iframe"></iframe>
 
-    <%= form_tag({controller: "home", action: "query"}, method: "post", target:"conv_iframe", id:"queryForm") do  %>
-      <div class="user-input">
-      <%= submit_tag("Search", class: "submitQuery") %>
-        <span class='fieldSpan'>
-          <%= text_field_tag(:query, '',id:"query") %>
-        </span>
-      </div>
-    <% end %>
-  </div>
+
+<div class="row marketing">
+    <div class="col-lg-6">
+        <h4>Subheading</h4>
+        <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+    </div>
 </div>

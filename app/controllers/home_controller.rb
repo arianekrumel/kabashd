@@ -6,6 +6,9 @@ require 'Gamestate.rb'
 class HomeController < ApplicationController
 
   def index
+  end
+
+  def play
     Conversation.delete_all
   end
 
