@@ -43,6 +43,7 @@ class HomeController < ApplicationController
       end
     end
     @conversations = Conversation.all
+    render :layout => 'include'
   end
 
 end

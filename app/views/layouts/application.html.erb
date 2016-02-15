@@ -22,7 +22,11 @@
 				<%= render 'shared/header' %>
 			</header>
 			<main>
-				<%= yield %>
+				<div class="container main-content">
+  					<div class="col-md-12 content">
+						<%= yield %>
+					</div>
+				</div>
 			</main>
 			<footer>
 				<%= render 'shared/footer' %>
