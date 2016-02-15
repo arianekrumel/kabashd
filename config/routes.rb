@@ -41,6 +41,11 @@ Rails.application.routes.draw do
   get 'users/home', to: 'users#home'
 
 
+  get 'demo/index'
+  post 'demo/new_game'
+  post 'demo/index'
+  get 'demo/user_input'
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
