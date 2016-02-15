@@ -1,4 +1,4 @@
-
+<div class="container-fluid" id="queryarea">
 <div class="conv_entry" style="font-size: large">
   <p><b>Welcome to Kabash'd. Enter a command to get started: </b></p>
 </div>
@@ -13,21 +13,22 @@
         <%end%>
     </div>
 <% end %>
+</div>
 
-<%= form_tag({controller: "games", action: "query"}, method: "post", id:"queryForm") do  %>
+<div class="container-fluid">
+  <%= form_tag({controller: "games", action: "query"}, method: "post", id:"queryForm") do  %>
 
-    <div class="input-group">
-
-        <span class="input-group-btn">
-          <%= submit_tag("Go!", class: "btn btn-default") %>
-          <span>
-          <%= text_field_tag(:query, '', class:'form-control') %>
-            </span>
-          <%= hidden_field_tag(:game_id, current_game.id) %>
-
+      <div class="input-group">
+        <span>
+        <%= text_field_tag(:query, '', class:'form-control') %>
           </span>
-    </div>
+          <span class="input-group-btn">
 
-<% end %>
+            <%= submit_tag("Go!", class: "btn btn-default") %>
+            <%= hidden_field_tag(:game_id, current_game.id) %>
 
+            </span>
+      </div>
 
+  <% end %>
+</div>
