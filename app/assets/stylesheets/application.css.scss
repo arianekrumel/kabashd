@@ -2,13 +2,14 @@
  *= require twitter/bootstrap
  */
 
-
+@import "demo";
 @import "games";
+@import "static_pages";
 
 html, body {
 	height: 100%;
 	overflow:hidden;
 	font-family:Helvetica, Arial, sans-serif;
     background-color: black;
-
+    overflow: scroll;
 }
