@@ -1,0 +1,39 @@
+<div class="jumbotron">
+
+
+  <h1>Sign up</h1>
+
+
+  <%= form_for(@user, url: '/users/create', method:"post") do |f| %>
+
+    <%= f.label "First Name" %>
+    <%= f.text_field :first_name%>
+    <br>
+
+    <%= f.label "Last Name" %>
+    <%= f.text_field :last_name%>
+    <br>
+
+    <%= f.label "Email" %>
+    <%= f.email_field :email%>
+    <br>
+
+    <%= f.label "Zip Code" %>
+    <%= f.number_field :zip_code, type:'number'%>
+    <br>
+
+
+    <%= f.label "Password" %>
+    <%= f.password_field :password%>
+    <br>
+
+    <%= f.label "Confirm Password" %>
+    <%= f.password_field :password_confirmation %>
+    <br>
+
+    <%= f.submit "Sign up"%>
+<% end %>
+  <p>Existing User? <%= link_to "Log in", '/sessions/new', method:"get" %></p>
+
+
+</div>

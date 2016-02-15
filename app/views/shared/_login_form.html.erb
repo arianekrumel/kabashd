@@ -1,0 +1,30 @@
+<!-- Creates the form that allows a user to log in to the site -->
+
+<div class="jumbotron">
+
+  <h1>Log in</h1>
+
+
+  <%= form_for(:session, url: '/sessions/create', method:"post",  html: {id:"new_session"} ) do |f| %>
+    <%= f.label :email %>
+    <%= f.email_field :email%>
+
+    <br>
+
+    <%= f.label :password %>
+    <%= f.password_field :password%>
+    <br>
+
+    <%= f.submit "Sign in"%>
+    <br>
+<% end %>
+
+  <!-- If log in information is not valid, this notifies to the user to try again or to sign up for a free account -->
+  <table>
+    <tr>
+      <td> <%= @err %> </td>
+    </tr>
+  </table>
+
+  <p>New user? <%= link_to "Sign up now!", '/users/new', method:"get" %></p>
+    </div>

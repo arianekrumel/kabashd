@@ -1,0 +1,15 @@
+
+<div class="jumbotron">
+  
+
+  <h1>Name your new game:</h1>
+
+  <%= form_tag({controller: "games", action: "create"}, id:"queryForm") do  %>
+    <%= submit_tag("Enter", class: "submitQuery") %>
+      <%= text_field_tag(:name, '') %>
+      <%= hidden_field_tag(:created_at, Date.today.to_datetime) %>
+      <%= hidden_field_tag(:user_id, current_user.id) %>
+      <%= hidden_field_tag(:time, 0) %>
+<% end %>
+
+    </div>

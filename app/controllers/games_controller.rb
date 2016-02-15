@@ -2,14 +2,50 @@ require 'net/http'
 require 'uri'
 require 'json'
 require 'Gamestate.rb'
+include SessionsHelper
 
-class HomeController < ApplicationController
+class GamesController < ApplicationController
 
   def index
+    @games = current_user.games
   end
 
-  def play
-    Conversation.delete_all
+  def new
+    if game_started?
+      end_game
+      end
+    @games = current_user.games
+  end
+
+  def load
+    if game_started?
+      end_game
+    end
+    @games = current_user.games
+  end
+
+  def create
+    @err = nil
+    #@game =  Game.create(params[:game].permit(:name, :time, :user_id))
+
+    if params[:game_id] == nil
+      @game = Game.create(name: params[:name], time: 0, user_id: params[:user_id], created_at: params[:created_at])
+      start_game(@game)
+    else
+      @game = Game.find(params[:game_id])
+      start_game (@game)
+    end
+
+
+    #@err = user.errors.messages
+    #@game = Game.new
+
+    @conversation = Conversation.new
+    @conversations = current_game.conversations
+
+
+    render 'games/query'
+
   end
 
   def query
@@ -35,15 +71,15 @@ class HomeController < ApplicationController
       listAnswers = jsonResponse["evidencelist"]
       if listAnswers.size > 0
         answer = listAnswers[0]
-        Conversation.create(query: params[:query], response: answer["text"], confidence: answer["value"])
+        Conversation.create(query: params[:query], response: answer["text"], confidence: answer["value"], game_id: params[:game_id])
         if isValidAction(Gamestate.getState("Location"), answer["text"])
          #give appropriate response to user
          print "State Approved"
         end
       end
     end
-    @conversations = Conversation.all
-    render :layout => 'include'
+    @conversations = current_game.conversations
+    @current_game.save
   end
 
 end
