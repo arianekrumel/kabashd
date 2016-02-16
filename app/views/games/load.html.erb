@@ -1,20 +1,12 @@
 <div class="jumbotron">
-
   <h2>Which game would you like to load?</h2>
 
   <% @games.each do |game| %>
-
       <%= form_tag({controller: "games", action: "create"}, method: "post", id:"queryForm") do  %>
-
           <div class="input-group">
-                  <span>
-                <%= submit_tag game.name + ' - ' + game.id.to_s, class:'btn btn-lg btn-primary btn-block'%>
-                    <%= hidden_field_tag(:loaded_game_id, game.id) %>
-
-                    </span>
+            <%= submit_tag game.name + ' - ' + game.id.to_s, class:'btn btn-lg btn-primary btn-block load-buttons'%>
+            <%= hidden_field_tag(:loaded_game_id, game.id) %>
           </div>
       <% end %>
-
   <% end %>
-
 </div>

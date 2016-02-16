@@ -1,58 +1,27 @@
-// Place all the styles related to the home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-.submitQuery{
-  float:left;
+.load-buttons {
+  margin: 10px 0;
 }
 
-.fieldSpan{
-  display:block;
-  overflow:hidden;
-  padding-right:1em;
-  width:90%;
-}
-
-.main-content, .content {
-  height: 100%;
-
-  .user-input {
-    margin-top: 20px;
-  }
-}
-
-#query{
-  width:100%;
-  color:white;
+#query {
+  width: 100%;
+  color: white;
   background-color: black;
 }
 
-.searchQuery{
-  color:#fff;
-}
+#queryarea {
+  overflow-y: scroll;
+  height: 50em;
 
-.conv_entry{
-  color:#fff;
-}
+  .conv_entry {
+    color: #fff;
 
-.responseSuccess{
-  color:lightgreen;
-}
-.responseFail{
-  color:red;
-}
+    .responseSuccess {
+      color: lightgreen;
+    }
 
-#game_name{
-  text-align:center;
-  font-size:xx-large;
-  color:#fff;
-}
+    .responseFail {
+      color: red;
+    }
+  }
 
-#queryarea{
-  overflow-y:scroll;
-  height:50em;
-}
-
-main{
-  height:100vh;
 }

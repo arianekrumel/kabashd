@@ -25,7 +25,7 @@
 <%= form_tag({controller: "demo", action: "index"}, method: "post", id:"queryForm") do  %>
     <div class="input-group">
         <span class="input-group-btn">
-          <span><%= text_field_tag(:query, '', class:'form-control') %></span>
+          <span><%= text_field_tag(:query, '', class:'form-control', placeholder: 'Enter a command...') %></span>
           <%= hidden_field_tag(:game_id, current_game.id) %></span>
     </div>
 <% end %>

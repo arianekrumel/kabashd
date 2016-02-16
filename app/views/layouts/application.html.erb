@@ -7,6 +7,7 @@
 		<script src="https://code.jquery.com/jquery-2.2.0.min.js"/>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
+		<link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 
 		<!-- Latest compiled and minified JavaScript -->
@@ -16,11 +17,13 @@
 	  <%= csrf_meta_tags %>
 		<!-- Latest compiled and minified CSS -->
 	</head>
+
 	<body style="background-color: black">
 		<div class="container">
 			<header>
 				<%= render 'shared/header' %>
 			</header>
+
 			<main>
 				<div class="container-fluid main-content">
   					<div class="col-md-12 content">
@@ -28,6 +31,7 @@
 					</div>
 				</div>
 			</main>
+
 			<footer>
 				<%= render 'shared/footer' %>
 			</footer>
