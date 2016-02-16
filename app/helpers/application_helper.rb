@@ -1,6 +1,6 @@
 module ApplicationHelper
 	class GameSkeleton
-		# These class variables are initialized in subclasses (i.e., for a specific game). 
+		# These class variables are assigned values in subclasses (i.e., for a specific game). 
 		@@game_state = Hash.new
 		@@actions = Hash.new
 		@@states_to_actions = Hash.new
