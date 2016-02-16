@@ -1,0 +1,68 @@
+<div class="row">
+  <div class="col-md-8">
+    <div class="container-fluid">
+      <div class="conv_entry" style="font-size: large">
+        <p><b>Welcome to Kabash'd. Enter a command to get started: </b></p>
+      </div>
+      <%= form_tag({controller: "games", action: "query"}, method: "post", id:"queryForm") do  %>
+
+          <div class="input-group">
+            <span>
+            <%= text_field_tag(:query, '', class:'form-control', placeholder: 'Enter a command...') %>
+              </span>
+              <span class="input-group-btn">
+
+                <%= submit_tag("Go!", class: "btn btn-default") %>
+                <%= hidden_field_tag(:game_id, current_game.id) %>
+
+                </span>
+          </div>
+
+      <% end %>
+    </div>
+
+    <div class="container-fluid" id="queryarea">
+      <% @conversations.each do |conversation| %>
+          <div class="conv_entry">
+              <p><%= conversation.query %></p>
+              <% if conversation.response != nil %>
+                  <p class="responseSuccess"><%= conversation.response %> (<%= conversation.confidence %>)</p>
+              <% else %>
+                  <p class="responseFail">Sorry, there is no valid response for your query.</p>
+              <%end%>
+          </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="alert alert-success" role="alert">Congratulations! You win. <a href="/games/new" class="alert-link">Play again</a> or <a href="/sessions/destroy" class="alert-link">Quit</a>?
+    </div>
+    <div class="alert alert-info" role="alert">You have completed a task. <a href="#" class="alert-link">Move to the next task.</a></div>
+    <div class="alert alert-warning" role="alert">Sorry, you have failed a task. <a href="#" class="alert-link">Try again.</a></div>
+    <div class="alert alert-danger" role="alert">Game Over. <a href="/games/new" class="alert-link">Start Over</a> or <a href="/sessions/destroy" class="alert-link">Quit</a>?</div>
+
+    <div class="panel panel-default">
+
+      <div class="panel-heading">
+        <h3 class="panel-title">Progress</h3>
+      </div>
+      <div class="panel-body">
+        <div class="progress">
+          <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+            <span class="sr-only">40% Complete (success)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Menu</h3>
+      </div>
+      <div class="panel-body">
+        <button type="button" class="btn btn-sml btn-primary btn-block">Options</button>
+        <a href="/sessions/destroy" type="button" class="btn btn-sml btn-danger btn-block">Log Out</a>
+      </div>
+    </div>
+  </div>
+</div>

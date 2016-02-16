@@ -1,0 +1,19 @@
+<div class="row">
+  <div>
+
+    <%= render 'shared/signup_form' %>
+
+
+    <!-- If invalid sign-up information is provided, a table of errors is printed -->
+    <table>
+      <% if @err != nil %>
+          <% @err.each do |message| %>
+              <tr>
+                <td><%= "#{message[0].to_s.titleize} #{message[1][0]}" %></td>
+              </tr>
+          <%end%>
+      <% end %>
+    </table>
+
+  </div>
+</div>

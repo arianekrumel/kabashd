@@ -1,0 +1,27 @@
+.load-buttons {
+  margin: 10px 0;
+}
+
+#query {
+  width: 100%;
+  color: white;
+  background-color: black;
+}
+
+#queryarea {
+  overflow-y: scroll;
+  height: 50em;
+
+  .conv_entry {
+    color: #fff;
+
+    .responseSuccess {
+      color: lightgreen;
+    }
+
+    .responseFail {
+      color: red;
+    }
+  }
+
+}

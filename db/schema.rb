@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160209055817) do
+ActiveRecord::Schema.define(version: 20160215084034) do
 
   create_table "conversations", force: true do |t|
     t.text     "query"
@@ -19,6 +19,31 @@ ActiveRecord::Schema.define(version: 20160209055817) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "confidence"
+    t.integer  "game_id"
+  end
+
+  add_index "conversations", ["game_id"], name: "index_conversations_on_game_id"
+
+  create_table "games", force: true do |t|
+    t.string   "name"
+    t.integer  "time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  add_index "games", ["user_id"], name: "index_games_on_user_id"
+
+  create_table "users", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.integer  "zip_code"
+    t.string   "password"
+    t.string   "password_confirmation"
+    t.string   "password_digest"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

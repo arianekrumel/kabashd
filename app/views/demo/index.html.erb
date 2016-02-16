@@ -1,0 +1,34 @@
+<div id="conv_div">
+	<div>
+		<% count = 1 %>
+		<% @game_output.each do |input| %>
+			<% if count == 1 %>
+			    <div class="state_info">
+		    		<p><%= input %></p>
+			    </div>
+			<% elsif count == 2 %>
+			    <div class="user_command">
+		    		<p><%= input %></p>
+			    </div>
+			    <hr>
+			<% else %>
+			    <div class="response">
+    		    	<p><%= input %></p>
+		    	</div>
+		    	<% count = 0 %>
+			<% end %>
+		    <% count = count + 1 %>
+		<% end %>
+	</div>
+</div>
+
+<%= form_tag({controller: "demo", action: "index"}, method: "post", id:"queryForm") do  %>
+    <div class="input-group">
+        <span class="input-group-btn">
+          <span><%= text_field_tag(:query, '', class:'form-control', placeholder: 'Enter a command...') %></span>
+    </div>
+<% end %>
+
+<%= button_to "Start Over", {action: "new_game"}, class: "btn btn-default", id: "start_over"%>
+
+
