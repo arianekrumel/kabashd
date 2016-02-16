@@ -1,11 +1,7 @@
 module DemoHelper
-  class DemoGame
-	  @@game_state = Hash.new
-	  @@actions = Hash.new
-	  @@states_to_actions = Hash.new
-	  @@states = Hash.new
-	  @@states_to_responses = Hash.new
+  include ApplicationHelper
 
+  class DemoGame < GameSkeleton
 	  def initialize(user_state)
 	    @user_state = user_state
 	    @game_output = Array.new
@@ -79,23 +75,5 @@ module DemoHelper
 	  		" is not a valid option. Chose again."
 	  	end 
 	  end 
-
-
-	  def get_response_by_state()
-	  	return @@states_to_responses[@user_state]
-	  end 
-
-	  def set_game_output(input)
-	  	@game_output.push(input)
-	  end 
-
-	  def get_game_output()
-	  	return @game_output
-	  end 
-
-	  def get_state_id(key)
-	    return @@game_state[key]
-	  end
 	end
-
 end
