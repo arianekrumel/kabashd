@@ -1,6 +1,16 @@
 module DemoHelper
   include ApplicationHelper
 
+  # This class is a simple game with four states:
+  	# State 0: Start
+  	# State 1: Living Room
+  	# State 2: Kitchen
+  	# State 3: Bedroom
+  # Each state has specific actions which can be performed:
+  	# State 0: Go to State 1 or State 2
+  	# State 1: Turn on TV or Play piano
+  	# State 2: Go to State 3, Open the fridge, Turn on the Oven, or Wash dishes
+  	# State 3: Lay in bed, Sit on futon, or Clean room. 
   class DemoGame < GameSkeleton
 	  def initialize(user_state)
 	    @user_state = user_state
@@ -37,15 +47,17 @@ module DemoHelper
 	  end
 
 	  def self.initialize_states_to_response()
-		  @@states_to_responses['Start'] = "You're in your home. You have a living room, bedroom and a" +
-		  " kitchen. Only certain rooms are accessible from where you are. Where would you like to go? "
+	  	# This is a mapping from a state to a response message.
+		@@states_to_responses['Start'] = "You're in your home. You have a living room, bedroom and a" +
+		" kitchen. Only certain rooms are accessible from where you are. Where would you like to go? "
 
-		  @@states_to_responses['Living Room'] = "You're in the living room. You have a TV in here."
+		@@states_to_responses['Living Room'] = "You're in the living room. You have a TV and piano in here."
 
-		  @@states_to_responses['Kitchen'] = "You're in the kitchen. There is a fridge and oven. The " +
-		  "next room over is your bedroom."
+		@@states_to_responses['Kitchen'] = "You're in the kitchen. There is a fridge, oven, and sink full of " +
+		" dishes. The next room over is your bedroom."
 
-		  @@states_to_responses['Bedroom'] = "You're in the bedroom. Your bed is here."
+		@@states_to_responses['Bedroom'] = "You're in the bedroom. Your bed and a futon is here." +
+		"Your room is a mess."
 	  end 
 
 	  def self.initialize_states_to_actions()
