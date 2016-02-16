@@ -7,31 +7,31 @@
   <%= form_for(@user, url: '/users/create', method:"post") do |f| %>
 
     <%= f.label "First Name" %>
-    <%= f.text_field :first_name%>
+    <%= f.text_field :first_name, :class=>'form-control' %>
     <br>
 
     <%= f.label "Last Name" %>
-    <%= f.text_field :last_name%>
+    <%= f.text_field :last_name, :class=>'form-control' %>
     <br>
 
     <%= f.label "Email" %>
-    <%= f.email_field :email%>
+    <%= f.email_field :email, :class=>'form-control' %>
     <br>
 
     <%= f.label "Zip Code" %>
-    <%= f.number_field :zip_code, type:'number'%>
+    <%= f.number_field :zip_code, type:'number', :class=>'form-control' %>
     <br>
 
 
     <%= f.label "Password" %>
-    <%= f.password_field :password%>
+    <%= f.password_field :password, :class=>'form-control' %>
     <br>
 
     <%= f.label "Confirm Password" %>
-    <%= f.password_field :password_confirmation %>
+    <%= f.password_field :password_confirmation, :class=>'form-control' %>
     <br>
 
-    <%= f.submit "Sign up"%>
+    <%= f.submit "Sign up", :class=>'btn btn-default' %>
 <% end %>
   <p>Existing User? <%= link_to "Log in", '/sessions/new', method:"get" %></p>
 

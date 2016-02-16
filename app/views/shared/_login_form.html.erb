@@ -7,15 +7,15 @@
 
   <%= form_for(:session, url: '/sessions/create', method:"post",  html: {id:"new_session"} ) do |f| %>
     <%= f.label :email %>
-    <%= f.email_field :email%>
+    <%= f.email_field :email, :class=>'form-control' %>
 
     <br>
 
     <%= f.label :password %>
-    <%= f.password_field :password%>
+    <%= f.password_field :password, :class=>'form-control' %>
     <br>
 
-    <%= f.submit "Sign in"%>
+    <%= f.submit "Sign in", :class=>'btn btn-default' %>
     <br>
 <% end %>
 
@@ -27,4 +27,4 @@
   </table>
 
   <p>New user? <%= link_to "Sign up now!", '/users/new', method:"get" %></p>
-    </div>
+</div>
