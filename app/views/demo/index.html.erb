@@ -11,6 +11,10 @@
 		    		<p><%= input %></p>
 			    </div>
 			    <hr>
+			<% elsif count == 3 %>
+						<div class="multimedia">
+							<%= input.html_safe %>
+						</div>
 			<% else %>
 			    <div class="response">
     		    	<p><%= input %></p>
@@ -30,5 +34,3 @@
 <% end %>
 
 <%= button_to "Start Over", {action: "new_game"}, class: "btn btn-default", id: "start_over"%>
-
-

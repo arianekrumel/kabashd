@@ -1,6 +1,6 @@
 module ApplicationHelper
 	class GameSkeleton
-		# These class variables are assigned values in subclasses (i.e., for a specific game). 
+		# These class variables are assigned values in subclasses (i.e., for a specific game).
 		@@game_state = Hash.new
 		@@actions = Hash.new
 		@@states_to_actions = Hash.new
@@ -24,23 +24,23 @@ module ApplicationHelper
 				# This is state is not in this game.
 				return "You're in the " + @user_state.downcase + ". Unfortunately, " + action.downcase +
 				" is not a valid option. Chose again."
-			end 
-		end 
+			end
+		end
 
 		def get_response_by_state()
 			return @@states_to_responses[@user_state]
-		end 
+		end
 
 		def set_game_output(input)
 			@game_output.push(input)
-		end 
+		end
 
 		def get_game_output()
 			return @game_output
-		end 
+		end
 
 		def get_state_id(key)
 		return @@game_state[key]
 		end
-	end 
+	end
 end
