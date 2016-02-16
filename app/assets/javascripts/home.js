@@ -6,11 +6,11 @@ $('#queryForm').submit(function(e) {
           var waiting = $("<span></span>").text(" (Loading...)");
           query.attr('style', 'color:yellow');
           waiting.attr('style', 'color:yellow');
-          query.append(waiting);
-          container.append(query);
+          query.prepend(waiting);
+          container.prepend(query);
 
 
-          $('#conv_iframe').contents().find('body').append(container);
+          $('#conv_iframe').contents().find('body').prepend(container);
           resizeIframe();
         this.submit(); // use the native submit method of the form element
 
