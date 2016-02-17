@@ -33,7 +33,7 @@ module ApplicationHelper
 				else
 					# This is state is not in this game.
 					return "You're in the " + @user_state.downcase + ". Unfortunately, " + action.downcase +
-					" is not a valid option. Chose again."
+					" is an invalid option. Choose again."
 				end
 			end
 		end
