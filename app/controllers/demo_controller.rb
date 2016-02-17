@@ -15,6 +15,7 @@ class DemoController < ApplicationController
 
 		user_state = @@demo_game.get_updated_state(user_input)
 		@@demo_game.set_game_output(user_state)
+    	# if (@@demo_game.hasMultimedia) @@demo_game.set_game_output(someMultimediaString)
 
 		response = @@demo_game.get_response_by_state()
 		@@demo_game.set_game_output(response)
@@ -25,7 +26,7 @@ class DemoController < ApplicationController
   def new_game
 	@@demo_game = DemoGame.new('Start')
 	@user_input = Array.new
-	
+
 	redirect_to action: 'index'
   end
 end
