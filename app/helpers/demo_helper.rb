@@ -19,10 +19,13 @@ module DemoHelper
 		DemoGame.initialize_states()
 		DemoGame.initialize_states_to_actions()
 		DemoGame.initialize_states_to_response()
+		DemoGame.initialize_previous_states()
 	  end
 
 	  def self.initilize_actions()
 	    # This is a mapping from a user action to an updated state.
+	    @@actions['Go back'] = ''
+
 	    @@actions['Go to living room'] = 'Living Room'
 	    @@actions['Turn on TV'] = 'Living Room'
 	    @@actions['Play piano'] = 'Living Room'
@@ -66,6 +69,12 @@ module DemoHelper
 	    @@states_to_actions['Living Room'] = ['Turn on TV', 'Play piano']
 	    @@states_to_actions['Kitchen'] = ['Go to bedroom', 'Open the fridge', 'Turn on the oven', 'Wash dishes']
 	    @@states_to_actions['Bedroom'] = ['Lay in bed', 'Sit on futon', 'Clean room']
+	  end
+
+	  def self.initialize_previous_states()
+	  	@@previous_states['Living Room'] = 'Start'
+	  	@@previous_states['Kitchen'] = 'Start'
+	  	@@previous_states['Bedroom'] = 'Kitchen'
 	  end
 	end
 end
