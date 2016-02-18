@@ -75,7 +75,7 @@ class GamesController < ApplicationController
         Conversation.create(query: params[:query], response: answer["text"], confidence: answer["value"], game_id: params[:game_id])
         if answer["text"] != nil && isValidAction(Gamestate.getState("Location"), answer["text"])
          #give appropriate response to user
-         print "State Approved"
+      
         end
       end
     end
