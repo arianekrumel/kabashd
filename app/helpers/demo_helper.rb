@@ -95,7 +95,7 @@ module DemoHelper
 
 	  def self.initialize_percent_per_action()
 	  	# This is a mapping from a particular action to a percent.
-	  	@@percent_per_action['Go Back'] = -10;
+	  	@@percent_per_action['Go Back'] = -10
 		@@percent_per_action['Go to living room'] = 20
 		@@percent_per_action['Turn on TV'] = -30
 		@@percent_per_action['Play piano'] = 15

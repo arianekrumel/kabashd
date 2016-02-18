@@ -19,7 +19,13 @@ class DemoController < ApplicationController
 		@@demo_game.set_game_output(user_state)
     	# if (@@demo_game.hasMultimedia) @@demo_game.set_game_output(someMultimediaString)
 
-		response = @@demo_game.get_response_by_action(user_input)
+    	if user_state.include? 'again'
+    	# Action can not be performed.
+			response = @@demo_game.get_response_by_action(user_input, nil)
+		else
+			response = @@demo_game.get_response_by_action(user_input)
+		end
+
 		@@demo_game.set_game_output(response)
 
   	end

@@ -47,8 +47,8 @@ module ApplicationHelper
 			return @percent
 		end 
 
-		def get_response_by_action(action)
-			if action == 'Go back' || action.empty?
+		def get_response_by_action(action, state=0)
+			if action == 'Go back' || action.empty? || state.nil?
 				action = @user_state
 			end
 			return @@actions_to_responses[action]
