@@ -13,10 +13,6 @@
 				    		<p><%= input %></p>
 					    </div>
 					    <hr>
-					<% elsif count == 3 %>
-						<div class="multimedia">
-							<p><%= input.html_safe %></p>
-						</div>
 					<% else %>
 					    <div class="response">
 		    		    	<p><%= input %></p>
@@ -36,10 +32,12 @@
 		<% end %>
 	</div>
 	<div class="col-md-4">
-	    <%= render 'shared/alerts' %>
 
-	    <%= render :partial => "shared/progress_bar", :locals => { :percent => @percent} %>
+		<% if @user_percent > 80 %>
+	    	<%= render 'shared/alerts' %>
+	    <% end %>
 
+	    <%= render :partial => "shared/progress_bar", :locals => { :percent => @user_percent} %>
 
 	    <div class="panel panel-default">
 	      <div class="panel-heading">

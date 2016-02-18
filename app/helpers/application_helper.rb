@@ -5,8 +5,9 @@ module ApplicationHelper
 		@@actions = Hash.new
 		@@states_to_actions = Hash.new
 		@@states = Hash.new
-		@@states_to_responses = Hash.new
+		@@actions_to_responses = Hash.new
 		@@previous_states = Hash.new
+		@@percent_per_action = Hash.new
 
 		def get_updated_state(action)
 			# Returns the updated state to the user. Also updates the user state.
@@ -38,8 +39,19 @@ module ApplicationHelper
 			end
 		end
 
-		def get_response_by_state()
-			return @@states_to_responses[@user_state]
+		def set_percent_per_action(action)
+			@percent += @@percent_per_action[action] != nil ? @@percent_per_action[action] : 0
+		end
+
+		def get_percent_per_action()
+			return @percent
+		end 
+
+		def get_response_by_action(action)
+			if action == 'Go back' || action.empty?
+				action = @user_state
+			end
+			return @@actions_to_responses[action]
 		end
 
 		def set_game_output(input)
@@ -51,7 +63,7 @@ module ApplicationHelper
 		end
 
 		def get_state_id(key)
-		return @@game_state[key]
+			return @@game_state[key]
 		end
 	end
 end
