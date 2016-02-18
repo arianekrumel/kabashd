@@ -1,36 +1,55 @@
-<div id="conv_div">
-	<div>
-		<% count = 1 %>
-		<% @game_output.each do |input| %>
-			<% if count == 1 %>
-			    <div class="state_info">
-		    		<p><%= input %></p>
-			    </div>
-			<% elsif count == 2 %>
-			    <div class="user_command">
-		    		<p><%= input %></p>
-			    </div>
-			    <hr>
-			<% elsif count == 3 %>
-				<div class="multimedia">
-					<p><%= input.html_safe %></p>
-				</div>
-			<% else %>
-			    <div class="response">
-    		    	<p><%= input %></p>
-		    	</div>
-		    	<% count = 0 %>
-			<% end %>
-		    <% count = count + 1 %>
+<div class="row">
+  <div class="col-md-8">
+		<div id="conv_div">
+			<div>
+				<% count = 1 %>
+				<% @game_output.each do |input| %>
+					<% if count == 1 %>
+					    <div class="state_info">
+				    		<p><%= input %></p>
+					    </div>
+					<% elsif count == 2 %>
+					    <div class="user_command">
+				    		<p><%= input %></p>
+					    </div>
+					    <hr>
+					<% elsif count == 3 %>
+						<div class="multimedia">
+							<p><%= input.html_safe %></p>
+						</div>
+					<% else %>
+					    <div class="response">
+		    		    	<p><%= input %></p>
+				    	</div>
+				    	<% count = 0 %>
+					<% end %>
+				    <% count = count + 1 %>
+				<% end %>
+			</div>
+		</div>
+
+		<%= form_tag({controller: "demo", action: "index"}, method: "post", id:"queryForm") do  %>
+		    <div class="input-group">
+		        <span class="input-group-btn">
+		          <span><%= text_field_tag(:query, '', class:'form-control', placeholder: 'Enter a command...') %></span>
+		    </div>
 		<% end %>
 	</div>
+	<div class="col-md-4">
+	    <%= render 'shared/alerts' %>
+
+	    <%= render :partial => "shared/progress_bar", :locals => { :percent => @percent} %>
+
+
+	    <div class="panel panel-default">
+	      <div class="panel-heading">
+	        <h3 class="panel-title">Menu</h3>
+	      </div>
+	      <div class="panel-body">
+			<%= button_to "Start Over", {action: "new_game"}, class: "btn btn-sml btn-primary btn-block", id: "start_over"%>
+	        <a href="/sessions/destroy" type="button" class="btn btn-sml btn-danger btn-block">Log Out</a>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 </div>
-
-<%= form_tag({controller: "demo", action: "index"}, method: "post", id:"queryForm") do  %>
-    <div class="input-group">
-        <span class="input-group-btn">
-          <span><%= text_field_tag(:query, '', class:'form-control', placeholder: 'Enter a command...') %></span>
-    </div>
-<% end %>
-
-<%= button_to "Start Over", {action: "new_game"}, class: "btn btn-default", id: "start_over"%>
