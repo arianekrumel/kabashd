@@ -8,8 +8,9 @@ class MedicalController < ApplicationController
 
   	if user_input.empty?
   		# This is the first time the index page is being loaded (i.e., there is no user input).
-		response = @@medical_game.get_response_by_state()
+		response = @@medical_game.get_response_by_action('Initial phrase')
 		@@medical_game.set_game_output(response)
+
 	else
 		@@medical_game.set_game_output(user_input)
 

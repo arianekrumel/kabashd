@@ -10,16 +10,14 @@ module MedicalHelper
 
   class Gamestate < GameSkeleton
 
-    @@actions_to_responses = Hash.new
 
     def initialize(user_state)
       @user_state = user_state
       @game_output = Array.new
       Gamestate.initilize_actions()
-    Gamestate.initialize_states()
-    Gamestate.initialize_states_to_actions()
-    Gamestate.initialize_states_to_response()
-    Gamestate.initialize_actions_to_response()
+      Gamestate.initialize_states()
+      Gamestate.initialize_states_to_actions()
+      Gamestate.initialize_actions_to_response()
     end
 
     def self.initilize_actions()
@@ -36,19 +34,10 @@ module MedicalHelper
 
     end
 
-    def self.initialize_states_to_response()
-      # This is a mapping from a state to a response message.
-    @@states_to_responses['Emergency Room'] = "A man walks in. His arm hurts, he thinks it could be broken. You need to fix him and send him on his way "
 
-    end
-
-    def self.initialize_states_to_actions()
-      # This is a mapping from a particular state to the valid actions.
-      @@states_to_actions['Emergency Room'] = ['Talk to patient', 'X-ray patient','Re-align Bone', 'Get patient a cast']
-
-    end
 
     def self.initialize_actions_to_response()
+        @@actions_to_responses['Initial phrase'] ="A man walks in. His arm hurts, he thinks it could be broken. You need to fix him and send him on his way"
         @@actions_to_responses['Talk to patient'] = "Well doc, I was milking my cows like I do every morning, only I slipped and fell.
         Bettsy happened to hoof my arm a little, it's swelled up like a grapefruit and hurts something fierce.
          She does weigh quite a bit you know."
@@ -64,9 +53,11 @@ module MedicalHelper
 
     end
 
-    def get_response_by_action(user_input)
-      return @@actions_to_responses[user_input]
-    end
+    def self.initialize_states_to_actions()
+     # This is a mapping from a particular state to the valid actions.
+     @@states_to_actions['Emergency Room'] = ['Talk to patient', 'X-ray patient','Re-align Bone', 'Get patient a cast']
+     end
+
 
   end
 end
