@@ -1,13 +1,12 @@
 module MedicalHelper
   include ApplicationHelper
 
-
   # This class is a simple game with one state:
   # There is room to modify later
   	# State 0: Emergency Room
   # Each state has specific actions which can be performed:
   	# State 0: Talk to patient, X-ray patient, Re-align Bone, Get patient a cast
-
+  #Visit this game at /medical/index
   class Gamestate < GameSkeleton
 
 
@@ -50,6 +49,12 @@ module MedicalHelper
 
         @@actions_to_responses['Get patient a cast'] = "You gladly pawn off the job of applying the cast to a helpful nurse
               You successfully healed your first patient!"
+
+        @@actions_to_responses['Emergency Room'] = "People call you a con artist. You think that sounds overly sinister, but you can't really
+              disagree. Ever since you were young, you've never been satisfied with the way things are. You're in a hospital, posing as a new resident
+              You need to access the medical records of William Heimerdinger, a wealthy donor to the hospital.
+              He's in a coma after running afoul of Hank Strange, the man who kicked your puppy
+              Heimerdinger's record may offer the only clue to his location..."
 
     end
 
