@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-8">
+	<div class="col-md-8">
 		<div id="conv_div">
 			<div>
 				<% count = 1 %>
@@ -31,23 +31,13 @@
 		    </div>
 		<% end %>
 	</div>
-	<div class="col-md-4">
 
+	<div class="col-md-4">
 		<% if @user_percent > 80 %>
-	    	<%= render 'shared/alerts' %>
+      		<%= render 'shared/alert_won_game' %>
 	    <% end %>
 
 	    <%= render :partial => "shared/progress_bar", :locals => { :percent => @user_percent} %>
-
-	    <div class="panel panel-default">
-	      <div class="panel-heading">
-	        <h3 class="panel-title">Menu</h3>
-	      </div>
-	      <div class="panel-body">
-			<%= button_to "Start Over", {action: "new_game"}, class: "btn btn-sml btn-primary btn-block", id: "start_over"%>
-	        <a href="/sessions/destroy" type="button" class="btn btn-sml btn-danger btn-block">Log Out</a>
-	      </div>
-	    </div>
-	  </div>
-	</div>
+      	<%= render 'shared/game_menu' %>
+  	</div>
 </div>

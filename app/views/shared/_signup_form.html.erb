@@ -1,39 +1,42 @@
 <div class="jumbotron">
+    <h1>Sign up</h1>
 
+    <%= form_for(@user, url: '/users/create', method:"post") do |f| %>
+        <div class="sign_up_content">
+            <%= f.label "First Name" %>
+            <%= f.text_field :first_name, :class=>'form-control' %>
+        </div>
 
-  <h1>Sign up</h1>
+        <div class="sign_up_content">
+            <%= f.label "Last Name" %>
+            <%= f.text_field :last_name, :class=>'form-control' %>
+        </div>
 
+        <div class="sign_up_content">
+            <%= f.label "Email" %>
+            <%= f.email_field :email, :class=>'form-control' %>
+        </div>
 
-  <%= form_for(@user, url: '/users/create', method:"post") do |f| %>
+        <div class="sign_up_content">
+            <%= f.label "Zip Code" %>
+            <%= f.number_field :zip_code, type:'number', :class=>'form-control' %>
+        </div>
 
-    <%= f.label "First Name" %>
-    <%= f.text_field :first_name, :class=>'form-control' %>
-    <br>
+        <div class="sign_up_content">
+            <%= f.label "Password" %>
+            <%= f.password_field :password, :class=>'form-control' %>
+        </div>
 
-    <%= f.label "Last Name" %>
-    <%= f.text_field :last_name, :class=>'form-control' %>
-    <br>
+        <div class="sign_up_content">
+            <%= f.label "Confirm Password" %>
+            <%= f.password_field :password_confirmation, :class=>'form-control' %>
+        </div>
 
-    <%= f.label "Email" %>
-    <%= f.email_field :email, :class=>'form-control' %>
-    <br>
-
-    <%= f.label "Zip Code" %>
-    <%= f.number_field :zip_code, type:'number', :class=>'form-control' %>
-    <br>
-
-
-    <%= f.label "Password" %>
-    <%= f.password_field :password, :class=>'form-control' %>
-    <br>
-
-    <%= f.label "Confirm Password" %>
-    <%= f.password_field :password_confirmation, :class=>'form-control' %>
-    <br>
-
-    <%= f.submit "Sign up", :class=>'btn btn-default' %>
-<% end %>
-  <p>Existing User? <%= link_to "Log in", '/sessions/new', method:"get" %></p>
-
-
+        <div class="sign_up_content">
+            <%= f.submit "Sign up", :class=>'btn btn-default' %>
+        </div>
+    <% end %>
+    <div class="sign_up_content">
+        <p>Existing User? <%= link_to "Log in", '/sessions/new', method:"get" %></p>
+    </div>
 </div>

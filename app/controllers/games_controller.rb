@@ -1,10 +1,10 @@
 require 'net/http'
 require 'uri'
 require 'json'
-require 'Gamestate.rb'
 include SessionsHelper
 
 class GamesController < ApplicationController
+  @user_percent = 50
 
   def index
     @games = current_user.games
@@ -49,7 +49,6 @@ class GamesController < ApplicationController
   end
 
   def query
-
     url = 'https://dal09-gateway.watsonplatform.net/instance/579/deepqa/v1/question'
     uri = URI(url)
 

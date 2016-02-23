@@ -1,23 +1,22 @@
 <!-- Creates the form that allows a user to log in to the site -->
-
 <div class="jumbotron">
-
   <h1>Log in</h1>
 
-
   <%= form_for(:session, url: '/sessions/create', method:"post",  html: {id:"new_session"} ) do |f| %>
-    <%= f.label :email %>
-    <%= f.email_field :email, :class=>'form-control' %>
+    <div class="login_content" >
+      <%= f.label :email %>
+      <%= f.email_field :email, :class=>'form-control' %>
+    </div>
 
-    <br>
+    <div class="login_content">
+      <%= f.label :password %>
+      <%= f.password_field :password, :class=>'form-control' %>
+    </div>
 
-    <%= f.label :password %>
-    <%= f.password_field :password, :class=>'form-control' %>
-    <br>
-
-    <%= f.submit "Sign in", :class=>'btn btn-default' %>
-    <br>
-<% end %>
+    <div class="login_content">
+      <%= f.submit "Sign in", :class=>'btn btn-default' %>
+    </div>
+  <% end %>
 
   <!-- If log in information is not valid, this notifies to the user to try again or to sign up for a free account -->
   <table>

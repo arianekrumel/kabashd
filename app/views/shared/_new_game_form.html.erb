@@ -1,26 +1,21 @@
-
 <div class="jumbotron">
-  
-
   <h1>Name your new game:</h1>
 
   <%= form_tag({controller: "games", action: "create"}, id:"queryForm") do  %>
     <%= submit_tag("Enter", class: "submitQuery") %>
-      <%= text_field_tag(:name, '') %>
-      <%= hidden_field_tag(:user_id, current_user.id) %>
-      <%= hidden_field_tag(:time, 0) %>
-<% end %>
-
+    <%= text_field_tag(:name, '') %>
+    <%= hidden_field_tag(:user_id, current_user.id) %>
+    <%= hidden_field_tag(:time, 0) %>
+  <% end %>
 
   <table>
     <% if @err != nil %>
-        <% @err.each do |message| %>
-            <tr class="text-danger">
-              <td><%= "#{message[0].to_s.titleize} #{message[1][0]}" %></td>
-            </tr>
-        <%end%>
+      <% @err.each do |message| %>
+        <tr class="text-danger">
+          <td><%= "#{message[0].to_s.titleize} #{message[1][0]}" %></td>
+        </tr>
+      <%end%>
     <% end %>
   </table>
-
-    </div>
+</div>
 
