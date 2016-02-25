@@ -12,13 +12,13 @@ class UsersController < ApplicationController
 
   def create
     @err = nil
-    user =  User.create(params[:user].permit(:first_name, :last_name, :email, :zip_code, :password, :password_confirmation))
-    if !user.save
-      @err = user.errors.messages
-      user = User.new
+    @user =  User.create(params[:user].permit(:first_name, :last_name, :email, :zip_code, :password, :password_confirmation))
+    if !@user.save
+      @err = @user.errors.messages
+      @user = User.new
       render '/users/new'
     else
-      log_in user
+      log_in @user
       render '/users/home'
     end
   end
