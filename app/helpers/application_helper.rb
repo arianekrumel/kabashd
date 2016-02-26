@@ -1,5 +1,5 @@
 module ApplicationHelper
-	def queryWatson(q)
+	def query_watson(user_input)
 		url = 'https://dal09-gateway.watsonplatform.net/instance/579/deepqa/v1/question'
 		uri = URI(url)
 
@@ -9,7 +9,7 @@ module ApplicationHelper
 		request['Data-Type'] = 'json'
 		request['Content-Type'] = 'application/json'
 
-		request.body = { "question" => {"questionText" => q}}.to_json
+		request.body = { "question" => {"questionText" => user_input}}.to_json
 		request.basic_auth("osu2_student18", "4kT7XGAo")
 		http = Net::HTTP.new(uri.host, uri.port)
 		http.use_ssl = true
@@ -17,12 +17,23 @@ module ApplicationHelper
 		response = http.request(request)
 		puts response.body.as_json
 
-		jsonResponse = JSON.parse(response.body.as_json)["question"]
-		answer = nil
-		if jsonResponse != nil
-		listAnswers = jsonResponse["evidencelist"]
-			if listAnswers.size > 0
-			answer = listAnswers[0]
+		json_response = JSON.parse(response.body.as_json)["question"]
+		if json_response
+			all_answers = json_response["evidencelist"]
+
+			i = 0
+			# Iterates through the {@code all_answers} to only return an answer that corresponds
+			# to a Kabashd document.
+			begin
+				answer = all_answers[i]["title"]
+				i += 1
+			end until not answer or answer.include? "Kabashd"
+
+			if answer
+				# Removes the title of the document from the answer.
+				# This answer represents the "action" that the state machine
+				# will understand.
+				answer = answer[answer.index(':') + 1..-1].strip()
 			end
 		end
 		return answer

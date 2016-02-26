@@ -9,7 +9,7 @@
             <div class="conv_entry">
                 <p><%= conversation.query %></p>
                 <% if conversation.response != nil %>
-                    <p class="responseSuccess"><%= conversation.response %> (<%= conversation.confidence %>)</p>
+                    <p class="responseSuccess"><%= conversation.response %></p>
                 <% else %>
                     <p class="responseFail">Sorry, there is no valid response for your query.</p>
                 <%end%>

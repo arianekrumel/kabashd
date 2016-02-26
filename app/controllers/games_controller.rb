@@ -50,16 +50,15 @@ class GamesController < ApplicationController
   end
 
   def query
-	answer = queryWatson(params[:query])
-	if answer != nil
-		Conversation.create(query: params[:query], response: answer["text"], confidence: answer["value"], game_id: params[:game_id])
-		if answer["text"] != nil# && isValidAction(Gamestate.getState("Location"), answer["text"])
-		 #give appropriate response to user
-	      
-	    	end
-	end
-	@conversations = current_game.conversations
-	current_game.save
-  end
+    user_input = params[:query]
+  	answer = query_watson(user_input)
 
+  	if answer
+  		Conversation.create(query: user_input, response: answer, confidence: nil,
+        game_id: params[:game_id])
+  	end
+
+  	@conversations = current_game.conversations
+  	current_game.save
+    end
 end
