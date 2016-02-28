@@ -1,6 +1,7 @@
 class MedicalController < ApplicationController
   include MedicalHelper
-  @@medical_game = Gamestate.new('Emergency Room')
+  include ApplicationHelper
+  @@medical_game = Gamestate.new('Start')
   @user_input = Array.new
 
   def index
@@ -11,16 +12,15 @@ class MedicalController < ApplicationController
 		response = @@medical_game.get_response_by_action('Initial phrase')
 		@@medical_game.set_game_output(response)
 
-	else
+  	else
+    watson_response = query_watson(user_input)
 		@@medical_game.set_game_output(user_input)
 
-		user_state = @@medical_game.get_updated_state(user_input)
+		user_state = @@medical_game.get_updated_state(watson_response)
 		@@medical_game.set_game_output(user_state)
     	# if (@@demo_game.hasMultimedia) @@demo_game.set_game_output(someMultimediaString)
 
-		#response = @@medical_game.get_response_by_state()
-    #@@medical_game.set_game_output(response)
-    actionResponse = @@medical_game.get_response_by_action(user_input)
+    actionResponse = @@medical_game.get_response_by_action(watson_response)
     @@medical_game.set_game_output(actionResponse)
 
 
@@ -29,7 +29,7 @@ class MedicalController < ApplicationController
   end
 
   def new_game
-	@@medical_game = Gamestate.new('Emergency Room')
+	@@medical_game = Gamestate.new('Start')
 	@user_input = Array.new
 
 	redirect_to action: 'index'

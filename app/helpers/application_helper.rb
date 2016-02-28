@@ -85,7 +85,7 @@ module ApplicationHelper
 
 		def get_percent_per_action()
 			return @percent
-		end 
+		end
 
 		def get_response_by_action(action, state=0)
 			if action == 'Go back' || action.empty? || state.nil?

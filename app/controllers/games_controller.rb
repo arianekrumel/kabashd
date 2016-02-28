@@ -50,6 +50,7 @@ class GamesController < ApplicationController
   end
 
   def query
+
     user_input = params[:query]
   	answer = query_watson(user_input)
 
