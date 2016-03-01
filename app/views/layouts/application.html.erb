@@ -18,23 +18,25 @@
 		<!-- Latest compiled and minified CSS -->
 	</head>
 
-	<body style="background-color: black">
-		<div class="container">
-			<header>
+	<body>
+		<header>
+			<div class="container">
 				<%= render 'shared/header' %>
-			</header>
+			</div>
+		</header>
 
-			<main>
-				<div class="container-fluid main-content">
-  					<div class="col-md-12 content">
-						<%= yield %>
-					</div>
+		<main>
+			<div class="container main-content">
+					<div class="col-md-12 content">
+					<%= yield %>
 				</div>
-			</main>
+			</div>
+		</main>
 
-			<footer>
+		<footer>
+			<div class="container">
 				<%= render 'shared/footer' %>
-			</footer>
-		</div>
+			</div>
+		</footer>
 	</body>
 </html>

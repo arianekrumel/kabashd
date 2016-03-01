@@ -7,10 +7,10 @@
 @import "static_pages";
 
 html, body {
+	color: #fff;
 	height: 100%;
 	overflow:hidden;
 	font-family:Helvetica, Arial, sans-serif;
-    background-color: black;
     overflow: scroll;
 
 	main {
@@ -28,4 +28,42 @@ html, body {
 	.login_content, .sign_up_content {
 		margin-bottom: 10px;
 	}
+}
+
+header {
+	background-image: url('/assets/hospital-391746_1280.jpg');
+	background-position: -150px -300px;
+	height: 200px;
+	.navbar-inverse {
+		background-color: transparent;
+		border: none;
+	}
+}
+
+.alert {
+	display: none
+};
+
+.panel {
+	background-color: transparent;
+	border: none;
+	font-weight: bold;
+
+	.panel-heading {
+		background-color: transparent;
+		border: none;
+		color: #fff;
+		text-transform: uppercase;
+		padding: 0;
+	}
+	.panel-body {
+		font-size: 30px;
+		padding: 0;
+	}
+}
+
+h1 {
+	font-size: 16px;
+	font-weight: bold;
+	text-transform: uppercase;
 }
