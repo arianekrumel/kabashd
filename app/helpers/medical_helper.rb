@@ -1,29 +1,44 @@
 module MedicalHelper
   include ApplicationHelper
 
-  # This class is a simple game with two states:
+  # This class is a game with seven states:
     # State 0: Start
-  	# State 1: Emergency Room
+    # State 1: Give_Identity
+    # State 2: Ask_Patient
+    # State 3: Examine
+    # State 4: Move_Ankle
+    # STate 5: Get_Details
+    # State 6: Diagnosis
+    # State 7: Treatment
+    # State 8: Done
+
   # Each state has specific actions/commands which can be inputted by the user:
     # State 0: Yes, Bad response
-    # State 1: Whats happening to the patient, Let me examine, How did this happen, Move ankle joints,
-    #You have a sprained ankle, You should rest, Keep your ankle elevated
-    #
+    # State 1: <any text>
+    # State 2: Get Situation, Bad response
+    # State 3: Examine, Bad response
+    # State 4: Move Ankle, Bad response
+    # State 5: Get Details, Bad response
+    # State 6: Diagnosis, Bad response
+    # State 7: Rest, Ice, Elevate, Bad response
+
   #Visit this game at /medical/index
   class Gamestate < GameSkeleton
 
       #define all possible actions as constants
+     YES = 'Yes'
+     BAD_RESPONSE = 'Bad response'
+     NAME = 'User gave name'
+     GET_SITUATION = 'Get Situation'
+     EXAMINE = 'Examine'
+     GET_DETAILS = 'Injury Details'
+     MOVE_ANKLE = 'Move Ankle'
+     DIAGNOSIS = 'Diagnosis'
+     REST = 'Rest'
+     ICE = 'Ice'
+     ELEVATE = 'Elevate Ankle'
+     TREATMENT_DONE = "Treatment done"
 
-     Action1 = 'Yes'
-     Action2 = 'Bad response'
-     Action3 = 'Whats happening to the patient'
-     Action4 = 'Let me examine'
-     Action5 = 'How did this happen'
-     Action6 = 'Move ankle joints'
-     Action7 = 'You have a sprained ankle'
-     Action8 = 'You should rest'
-     Action9 = 'Keep your ankle elevated'
-     Action0 = 'Bad Response'    # Two bad responses, one for the initial question and other for duration of game
 
     def initialize(user_state)
       @user_state = user_state
@@ -36,25 +51,37 @@ module MedicalHelper
 
     def self.initilize_actions()
       # This is a mapping from a user action to an updated state.
-      @@actions[Action1] = 'Emergency Room'
-      @@actions[Action2] = 'Start'
-      @@actions[Action3] = 'Emergency Room'
-      @@actions[Action4] = 'Emergency Room'
-      @@actions[Action5] = 'Emergency Room'
-      @@actions[Action6] = 'Emergency Room'
-      @@actions[Action7] = 'Emergency Room'
-      @@actions[Action8] = 'Emergency Room'
-      @@actions[Action9] = 'Emergency Room'
-      @@actions[Action0] = 'Emergency Room'
+      @@actions[YES] = 'Give_Identity'
+      @@actions[BAD_RESPONSE] = @user_state
+      @@actions[NAME] = "Ask_Patient"
+      @@actions[GET_SITUATION] = "Examine"
+      @@actions[EXAMINE] = 'Get_Details'
+      @@actions[GET_DETAILS] = 'Move_Ankle'
+      @@actions[MOVE_ANKLE] = 'Diagnosis'
+      @@actions[DIAGNOSIS] = 'Treatment'
+      @@actions[TREATMENT_DONE] = 'Done'
+
+      # These three actions will keep you in the same state unless they
+      # are all completed
+      @@actions[REST] = @user_state
+      @@actions[ICE] = @user_state
+      @@actions[ELEVATE] = @user_state
+
     end
 
     def self.initialize_states()
       # This is a mapping from a state to a unique ID.
       @@states['Start'] = 0
-      @@states['Emergency Room'] = 1
+      @@states['Give_Identity'] = 1
+      @@states['Ask_Patient'] = 2
+      @@states['Examine'] = 3
+      @@states['Get_Details'] = 4
+      @@states['Move_Ankle'] = 5
+      @@states['Diagnosis'] = 6
+      @@states['Treatment'] = 7
+      @@states['Done'] = 8
 
     end
-
 
 
     def self.initialize_actions_to_response()
@@ -69,10 +96,12 @@ module MedicalHelper
         Oh yeah, and WATSON, you have him too.
         You're ready.
         FIRST FLOOR - NORTHWEST HOSPITAL
-        Nurse: Hey you! You're new here, but the ER is overflowing, could you take
+        Nurse: Hey You! You're new here, but the ER is overflowing, could you take
          a look at this guy? I'm sure it'll only take a few seconds..."
 
-        @@actions_to_responses[Action1] = "Nurse: Awesome, thanks! \n
+        @@actions_to_responses[YES] = "Awesome, thanks! What's your name by the way?"
+        @@actions_to_responses[NAME] =
+        "Nurse: Thanks,#{@user_input}
         WATSON: Wow, you've really gotten yourself in quite the predicament there.
         Well, I'll tell you what, getting revenge on the guy that kicked your dog is a
         pretty admirable goal you got there. I'll make myself available to you. Whenever
@@ -84,50 +113,70 @@ module MedicalHelper
 
           Patient 1: OWWWWWW!
 
-      Nurse: Hey (Name)! Get over here!
-       WATSON: Psst, ask her what's wrong"
+         Nurse: Hey #{@user_name}, Get over here
+         WATSON: Psst, ask her what's wrong"
 
-        @@actions_to_responses[Action2] = "That's not what you should be doing right now...
+        @@actions_to_responses[BAD_RESPONSE] = "That's not what you should be doing right now...
                                    You'll get caught if you don't act like a real doctor"
 
-        @@actions_to_responses[Action3] = "Patient 1: I don't know... That's why I came here.
+        @@actions_to_responses[GET_SITUATION] = "Patient 1: I don't know... That's why I came here.
                          I think I broke my ankle, it really hurts when I put pressure on it. "
 
-        @@actions_to_responses[Action4] = "Nurse: Ouch, that looks pretty bad.
+        @@actions_to_responses[EXAMINE] = "Nurse: Ouch, that looks pretty bad.
          WATSON: I'm not too sure that's a broken ankle. Why don't you try asking
          him how he got this injury?"
 
-         @@actions_to_responses[Action5] = "Patient 1: I was playing basketball... I was going
+         @@actions_to_responses[GET_DETAILS] = "Patient 1: I was playing basketball... I was going
           up for a layup when I got hit and had to land really awkwardly.
 
           WATSON: Alright, that certainly doesn't sound like a broken ankle. "
 
-          @@actions_to_responses[Action6] = "Patient 1: Ouch!"
+          @@actions_to_responses[MOVE_ANKLE] = "Patient 1: Ouch!"
 
-          @@actions_to_responses[Action7] = "WATSON: Ok, Now Let's treat it."
+          @@actions_to_responses[DIAGNOSIS] = "WATSON: Ok, Now Let's treat it."
 
-          @@actions_to_responses[Action8] = "Patient 1: Alright, anything else?"
+          @@actions_to_responses[REST] = "Patient 1:  Okay, Sounds Good"
 
-          @@actions_to_responses[Action9] = "Patient 1: Ok, thanks
+          @@actions_to_responses[ICE] = "Patient 1: Okay, Sounds Good"
+
+          @@actions_to_responses[ELEVATE] = "Patient 1:  Okay, Sounds Good?"
+
+          @@actions_to_responses[TREATMENT_DONE] = "Patient 1: Ok, thanks
           WATSON: I think you've convinced that nurse, good job.
-          Nurse: (Name), there's another patient on the next floor
+          Nurse: #{@user_name}, there's another patient on the next floor
           that needs to see someone immediately, but all of the other doctors are
           busy, mind if you give me a hand?
            You: Sure, coming right up.
 
            END LEVEL 1"
 
-          @@actions_to_responses[Action0] =  "That's not what you should be doing right now...
-                                     You'll get caught if you don't act like a real doctor"
 
     end
 
     def self.initialize_states_to_actions()
      # This is a mapping from a particular state to the valid actions.
-     @@states_to_actions['Start'] =  [Action1, Action2]
-     @@states_to_actions['Emergency Room'] = [Action3, Action4, Action5, Action6, Action7, Action8, Action9, Action0]
+     @@states_to_actions['Start'] =  [YES, BAD_RESPONSE]
+     @@states_to_actions['Give_Identity'] = [NAME]
+     @@states_to_actions['Ask_Patient'] = [GET_SITUATION, BAD_RESPONSE]
+     @@states_to_actions['Examine'] = [EXAMINE, BAD_RESPONSE]
+     @@states_to_actions['Get_Details'] = [GET_DETAILS, BAD_RESPONSE]
+     @@states_to_actions['Move_Ankle'] = [MOVE_ANKLE, BAD_RESPONSE]
+     @@states_to_actions['Diagnosis'] = [DIAGNOSIS, BAD_RESPONSE]
+     @@states_to_actions['Treatment'] = [REST, ICE, ELEVATE, TREATMENT_DONE, BAD_RESPONSE]
      end
 
+    def set_user_name(new_name)
+      @user_name = new_name
+    end
+
+    def get_user_name()
+      return @user_name
+
+    end
+
+    def get_user_state()
+      return @user_state
+    end
 
   end
 end
