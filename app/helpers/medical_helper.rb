@@ -85,24 +85,28 @@ module MedicalHelper
 
 
     def self.initialize_actions_to_response()
-        @@actions_to_responses['Initial phrase'] = "Level: Sprained Ankle
-        You've heard that a certain high powered businessman is having an extended
-        stay at Northwest General.He's the one that's responsible for kicking your dog.
-        It's time to give him a piece of your mind. Of course, you're gonna get nowhere
+        @@actions_to_responses['Initial phrase'] = "<h1>Level: Sprained Ankle</h1>
+        <p>You've heard that a certain high powered businessman is having an extended
+        stay at Northwest General.</p>
+
+        <p> He's the one that's responsible for kicking your dog.</p>
+
+        <p>It's time to give him a piece of your mind. Of course, you're gonna get nowhere
         just going into the hospital and demanding to see him. No, you'll have to be more
-        clever than that.You enter the first floor of the hospital. You've picked up
+        clever than that.</p>
+        <p>You enter the first floor of the hospital. You've picked up
         a white coat from a costume shop, swiped a stethoscope off some resident's desk,
         and are equipped to the brim with the best bandaids $5 at CVS could buy.
-        Oh yeah, and WATSON, you have him too.
-        You're ready.
-        FIRST FLOOR - NORTHWEST HOSPITAL
-        Nurse: Hey You! You're new here, but the ER is overflowing, could you take
-         a look at this guy? I'm sure it'll only take a few seconds..."
+        Oh yeah, and WATSON, you have him too.</p>
+        <p>You're ready.</p>
+        <p>FIRST FLOOR - NORTHWEST HOSPITAL</p>
+        <p>Nurse: Hey You! You're new here, but the ER is overflowing, could you take
+         a look at this guy? I'm sure it'll only take a few seconds...</p>".html_safe
 
         @@actions_to_responses[YES] = "Awesome, thanks! What's your name by the way?"
         @@actions_to_responses[NAME] =
-        "Nurse: Thanks,#{@user_input}
-        WATSON: Wow, you've really gotten yourself in quite the predicament there.
+        "<p>Nurse: Thanks #{@user_name}!</p>
+        <p>WATSON: Wow, you've really gotten yourself in quite the predicament there.
         Well, I'll tell you what, getting revenge on the guy that kicked your dog is a
         pretty admirable goal you got there. I'll make myself available to you. Whenever
         you have a question, just ask me it and I'll try and grab some info for you.
@@ -110,11 +114,11 @@ module MedicalHelper
          but of course some locations aren't gonna be available until you get past
          certain people. Use your wit and my knowledge to get past these obstacles
           and get yourself up to the 5th floor. I've heard that's where he's staying.
+           </p>
+          <p> Patient 1: OWWWWWW! </p>
 
-          Patient 1: OWWWWWW!
-
-         Nurse: Hey #{@user_name}, Get over here
-         WATSON: Psst, ask her what's wrong"
+        <p> Nurse: Hey #{@user_name}, Get over here</p>
+         <p> WATSON: Psst, ask her what's wrong</p>".html_safe
 
         @@actions_to_responses[BAD_RESPONSE] = "That's not what you should be doing right now...
                                    You'll get caught if you don't act like a real doctor"
@@ -122,14 +126,14 @@ module MedicalHelper
         @@actions_to_responses[GET_SITUATION] = "Patient 1: I don't know... That's why I came here.
                          I think I broke my ankle, it really hurts when I put pressure on it. "
 
-        @@actions_to_responses[EXAMINE] = "Nurse: Ouch, that looks pretty bad.
-         WATSON: I'm not too sure that's a broken ankle. Why don't you try asking
-         him how he got this injury?"
+        @@actions_to_responses[EXAMINE] = "<p>Nurse: Ouch, that looks pretty bad.</p>
+         <p>WATSON: I'm not too sure that's a broken ankle. Why don't you try asking
+         him how he got this injury?</p>".html_safe
 
-         @@actions_to_responses[GET_DETAILS] = "Patient 1: I was playing basketball... I was going
-          up for a layup when I got hit and had to land really awkwardly.
+         @@actions_to_responses[GET_DETAILS] = "<p>Patient 1: I was playing basketball... I was going
+          up for a layup when I got hit and had to land really awkwardly.</p>
 
-          WATSON: Alright, that certainly doesn't sound like a broken ankle. "
+          <p>WATSON: Alright, that certainly doesn't sound like a broken ankle.</p> ".html_safe
 
           @@actions_to_responses[MOVE_ANKLE] = "Patient 1: Ouch!"
 
@@ -141,14 +145,14 @@ module MedicalHelper
 
           @@actions_to_responses[ELEVATE] = "Patient 1:  Okay, Sounds Good?"
 
-          @@actions_to_responses[TREATMENT_DONE] = "Patient 1: Ok, thanks
-          WATSON: I think you've convinced that nurse, good job.
-          Nurse: #{@user_name}, there's another patient on the next floor
+          @@actions_to_responses[TREATMENT_DONE] = "<p>Patient 1: Ok, thanks</p>
+          <p>WATSON: I think you've convinced that nurse, good job.</p>
+          <p>Nurse: #{@user_name}, there's another patient on the next floor
           that needs to see someone immediately, but all of the other doctors are
-          busy, mind if you give me a hand?
-           You: Sure, coming right up.
+          busy, mind if you give me a hand?</p>
+           <p>You: Sure, coming right up.</p>
 
-           END LEVEL 1"
+           <h1> END LEVEL 1 </h1>".html_safe
 
 
     end

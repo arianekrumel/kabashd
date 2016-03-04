@@ -33,9 +33,11 @@ class MedicalController < ApplicationController
 		@@medical_game.set_game_output(user_state)
     	# if (@@demo_game.hasMultimedia) @@demo_game.set_game_output(someMultimediaString)
 
-    actionResponse = @@medical_game.get_response_by_action(watson_response)
-    @@medical_game.set_game_output(actionResponse)
-
+    #only print actionResponse if action is valid
+    if !user_state.include? "You can not"
+     actionResponse = @@medical_game.get_response_by_action(watson_response)
+     @@medical_game.set_game_output(actionResponse)
+    end
 
   	end
 	@game_output = @@medical_game.get_game_output()

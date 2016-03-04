@@ -36,6 +36,12 @@ module ApplicationHelper
 				answer = answer[answer.index(':') + 1..-1].strip()
 			end
 		end
+
+		#if Watson cannot find an answer return input back to user
+		if answer == nil
+    return user_input
+		end
+		
 		return answer
 	end
 
