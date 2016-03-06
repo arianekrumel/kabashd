@@ -1,38 +1,21 @@
-<nav class="navbar navbar-inverse">
-  <div class="navbar-header">
-    <a class="navbar-brand" href="../">
-      <img alt="kabash'd" src="/assets/kabashd.png" style="width:30px;height:30px;position:relative;transform:translateY(-20%);">
-    </a>
-    <a class="navbar-brand" href="../">Kabash'd Game</a>
-  </div>
-  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-8">
-    <ul class="nav navbar-nav">
-      <li><a href="/games/new">New Game</a></li>
-      <li><a href="/games/load">Load Game</a></li>
-      <li><a href="/static_pages/credits">Credits</a></li>
-      <li><a href="/sessions/destroy">Log Out</a></li>
-    </ul>
-  </div>
-</nav>
-
-<div class="row">
-  <div class="col-md-4">
+<div class="row jumbotron" id="header-game">
+  <div class="col-md-2">
     <div class="panel panel-default">
       <div class="panel-heading">Score</div>
       <div class="panel-body">
-        10,000
+        0
       </div>
     </div>
   </div>
-  <div class="col-md-4">
-    <%= render :partial => "shared/progress_bar", :locals => { :percent => @user_percent} %>
-  </div>
-  <div class="col-md-4">
+  <div class="col-md-2">
     <div class="panel panel-default">
       <div class="panel-heading">Level</div>
       <div class="panel-body">
-        3
+        1
       </div>
     </div>
+  </div>
+  <div class="col-md-8">
+    <%= render :partial => "shared/progress_bar", :locals => { :percent => @user_percent} %>
   </div>
 </div>

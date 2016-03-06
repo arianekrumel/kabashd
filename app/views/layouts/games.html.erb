@@ -16,13 +16,14 @@
 	<body id="GamesController">
 		<header>
 			<div class="container">
-				<%= render 'shared/header_game' %>
+				<%= render 'shared/header' %>
 			</div>
 		</header>
 
 		<main>
 			<div class="container main-content">
 					<div class="col-md-12 content">
+					<%= render 'shared/header_game' %>
 					<%= yield %>
 				</div>
 			</div>

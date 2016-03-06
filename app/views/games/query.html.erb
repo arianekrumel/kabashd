@@ -1,15 +1,15 @@
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-8 main">
     <h1>Story</h1>
     <%= render 'shared/alert_completed_task' %>
     <%= render 'shared/alert_failed_task' %>
     <%= render 'shared/alert_game_over' %>
     <%= render 'shared/alert_won_game' %>
+    
     <div class="container-fluid">
-
       <%= render 'shared/query_form' %>
 
-      <div class="container-fluid" id="queryarea">
+      <div id="queryarea">
         <% @conversations.each do |conversation| %>
             <div class="conv_entry">
                 <p><%= conversation.query %></p>
@@ -25,7 +25,7 @@
     </div>
   </div>
 
-  <div class="col-md-4">
+  <div class="col-md-4 sidebar">
     <h1>Watson</h1>
     <form>
       <div class="input-group">
