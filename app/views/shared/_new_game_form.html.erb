@@ -1,9 +1,12 @@
 <div class="jumbotron">
-  <h1>Name your new game:</h1>
+  <h1>New Game</h1>
 
   <%= form_tag({controller: "games", action: "create"}, id:"queryForm") do  %>
-    <%= submit_tag("Enter", class: "submitQuery") %>
-    <%= text_field_tag(:name, '') %>
+    <div class="form-group">
+      <%= label_tag '', 'Game Name' %>
+      <%= text_field_tag(:name, '', class: "form-control") %>
+    </div>
+    <%= submit_tag("Enter", class: "submitQuery btn btn-default") %>
     <%= hidden_field_tag(:user_id, current_user.id) %>
     <%= hidden_field_tag(:time, 0) %>
   <% end %>
@@ -18,4 +21,3 @@
     <% end %>
   </table>
 </div>
-

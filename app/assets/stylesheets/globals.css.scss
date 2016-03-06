@@ -1,0 +1,34 @@
+body {
+  background-color: #1A191F;
+  color: #fff;
+  font-family:Helvetica, Arial, sans-serif;
+}
+
+h1 {
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.jumbotron {
+	background-color: #666;
+}
+.alert {
+  display: none;
+}
+.panel {
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+
+  .panel-heading {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 0;
+  }
+  .panel-body {
+    font-size: 30px;
+    padding: 0;
+  }
+}
