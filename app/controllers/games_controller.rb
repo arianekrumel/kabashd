@@ -8,20 +8,24 @@ class GamesController < ApplicationController
   @user_percent = 50
 
   def index
+    render :layout => 'application'
     @games = current_user.games
   end
 
   def new
+    render :layout => 'application'
     end_game
     @game = Game.new
   end
 
   def load
+    render :layout => 'application'
     end_game
     @games = current_user.games
   end
 
   def create
+    render :layout => 'games'
     @err = nil
     #@game =  Game.create(params[:game].permit(:name, :time, :user_id))
 
@@ -45,12 +49,10 @@ class GamesController < ApplicationController
 
     #@err = user.errors.messages
     #@game = Game.new
-
-
   end
 
   def query
-
+    render :layout => 'games'
     user_input = params[:query]
   	answer = query_watson(user_input)
 

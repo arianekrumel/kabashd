@@ -6,6 +6,11 @@
     <a class="navbar-brand" href="../">Kabash'd Game</a>
   </div>
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-8">
-    <%= render 'shared/game_menu' %>
+    <ul class="nav navbar-nav">
+		  <li><a href="/games/new">New Game</a></li>
+		  <li><a href="/games/load">Load Game</a></li>
+		  <li><a href="/static_pages/credits">Credits</a></li>
+		  <li><a href="/sessions/destroy">Log Out</a></li>
+	  </ul>
   </div>
 </nav>

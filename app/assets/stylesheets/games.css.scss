@@ -1,78 +1,55 @@
-html, body {
+body#GamesController {
 
   main {
-    height:100vh;
-
-    .main-content, .content {
-      height: 100%;
-
       .user-input {
         margin-top: 20px;
       }
-    }
   }
 
   .login_content, .sign_up_content {
     margin-bottom: 10px;
   }
-}
 
-.panel {
-  background-color: transparent;
-  border: none;
-  font-weight: bold;
+  header {
+    background-image: url('/assets/hospital-391746_1280.jpg');
+    background-position: -150px -350px;
+    height: 175px;
+    margin-bottom: 25px;
 
-  .panel-heading {
-    background-color: transparent;
-    border: none;
-    color: #fff;
-    text-transform: uppercase;
-    padding: 0;
-  }
-  .panel-body {
-    font-size: 30px;
-    padding: 0;
-  }
-}
-
-header {
-  background-image: url('/assets/hospital-391746_1280.jpg');
-  background-position: -150px -300px;
-  height: 200px;
-
-  .navbar-inverse {
-    background-color: transparent;
-    border: none;
-  }
-
-  .navbar-brand {
-    padding-left: 0;
-  }
-}
-
-.load-buttons {
-  margin: 10px 0;
-}
-
-#query {
-  width: 100%;
-  color: black;
-}
-
-#queryarea {
-  overflow-y: scroll;
-  height: 50em;
-
-  .conv_entry {
-    color: #fff;
-
-    .responseSuccess {
-      color: lightgreen;
+    .navbar-inverse {
+      background-color: transparent;
+      border: none;
     }
 
-    .responseFail {
-      color: red;
+    .navbar-brand {
+      padding-left: 0;
     }
   }
 
+  .load-buttons {
+    margin: 10px 0;
+  }
+
+  #query {
+    width: 100%;
+    color: black;
+  }
+
+  #queryarea {
+    overflow-y: scroll;
+    height: 50em;
+
+    .conv_entry {
+      color: #fff;
+
+      .responseSuccess {
+        color: lightgreen;
+      }
+
+      .responseFail {
+        color: red;
+      }
+    }
+
+  }
 }
