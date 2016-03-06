@@ -5,27 +5,27 @@ include SessionsHelper
 include ApplicationHelper
 
 class GamesController < ApplicationController
+  layout = 'games'
   @user_percent = 50
 
   def index
-    render :layout => 'application'
     @games = current_user.games
+    render :layout => 'application'
   end
 
   def new
-    render :layout => 'application'
     end_game
     @game = Game.new
+    render :layout => 'application'
   end
 
   def load
-    render :layout => 'application'
     end_game
     @games = current_user.games
+    render :layout => 'application'
   end
 
   def create
-    render :layout => 'games'
     @err = nil
     #@game =  Game.create(params[:game].permit(:name, :time, :user_id))
 
@@ -52,7 +52,6 @@ class GamesController < ApplicationController
   end
 
   def query
-    render :layout => 'games'
     user_input = params[:query]
   	answer = query_watson(user_input)
 
@@ -63,5 +62,6 @@ class GamesController < ApplicationController
 
   	@conversations = current_game.conversations
   	current_game.save
-    end
+  end
+
 end
