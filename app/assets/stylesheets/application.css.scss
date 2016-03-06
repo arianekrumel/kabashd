@@ -34,9 +34,14 @@ header {
 	background-image: url('/assets/hospital-391746_1280.jpg');
 	background-position: -150px -300px;
 	height: 200px;
+
 	.navbar-inverse {
 		background-color: transparent;
 		border: none;
+	}
+
+	.navbar-brand {
+		padding-left: 0;
 	}
 }
 
