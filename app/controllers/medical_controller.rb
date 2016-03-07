@@ -40,7 +40,7 @@ class MedicalController < ApplicationController
     end
 
   	end
-	@game_output = @@medical_game.get_game_output()
+	 @game_output = @@medical_game.get_game_output()
   end
 
   def new_game

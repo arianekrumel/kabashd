@@ -1,0 +1,71 @@
+$jelly_bean: #2574A9;
+$silver: #BDC3C7;
+$soft_red: #EC644B;
+
+#all_content {
+	display: -webkit-box;
+	display:    -moz-box;
+	display:     -ms-flexbox;
+	display: -webkit-flex;
+	display:         flex;
+
+	height: 560px;
+	width: 100%;
+	color: white;
+	overflow: scroll;
+	font-size: 14px;
+
+	.last_input {
+		color: $jelly_bean;
+	}
+
+	.last_input_watson {
+		color: $soft_red;
+	}
+
+	.normal_input {
+		color: $silver;
+	}
+
+	#narrator_content, #watson_content {
+		display: -webkit-box;
+		display:    -moz-box;
+		display:     -ms-flexbox;
+		display: -webkit-flex;
+		display:         flex;
+
+		overflow: scroll;
+		flex-direction: column;
+
+		flex-grow: 1;
+		height: 100%;
+		width: 50%;
+
+		h2, p {
+			padding: 0 15px;
+		}
+
+		h2 {
+			color: white;
+			text-decoration: underline;
+		}
+
+		h3 {
+			padding-left: 15px;
+			text-decoration: underline;
+			color: white;
+		}
+
+		hr {
+			width: 95%;
+		}
+	}
+
+	#narrator_content {
+		background-color: #303030;
+	}
+
+	#watson_content {
+		background-color: #282828;
+	}
+}
