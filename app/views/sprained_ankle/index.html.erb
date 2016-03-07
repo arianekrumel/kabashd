@@ -1,50 +1,10 @@
-<div class="row">
-	<div class="col-md-8">
+<%= render 'shared/header_game' %>
 <!-- 		<div> WATSON RESPONSE: <%= @watson %> </div>
-		<div> STATE: <%= @updates %> </div> -->
+<div> STATE: <%= @updates %> </div> -->
 
-		<div id="all_content">
-			<div id="narrator_content">
-				<h3> Narrator </h3>
-
-				<div>
-					<% count = 1 %>
-					<% @game_output.each do |input| %>
-						<% if input %>
-							<% if count == @game_output.length() %>
-								<div class="last_input">
-			    			<% else %>
-								<div class="normal_input">
-			    			<% end %>
-		    					<p><%=raw input %></p>
-		    				</div>
-			    		<% end %>
-			    		<% count = count + 1 %>
-					<% end %>
-				</div>
-			</div>
-
-			<div id="watson_content">
-				<h3> Watson </h3>
-
-				<div>
-					<% count = 1 %>
-					<% @watson_output.each do |input| %>
-						<% if input %>
-							<% if count == @watson_output.length() %>
-								<div class="last_input_watson">
-			    			<% else %>
-								<div class="normal_input">
-			    			<% end %>
-		    					<p><%=raw input %></p>
-		    				</div>
-			    		<% end %>
-			    		<% count = count + 1 %>
-					<% end %>
-					<%= @watson_question_output %>
-				</div>
-			</div>
-		</div>
+<div id="all_content">
+	<div class="col-md-8 main">
+		<h1> Story </h1>
 
 		<%= form_tag({controller: "sprained_ankle", action: "index"}, method: "post", id:"queryForm") do  %>
 		    <div class="input-group">
@@ -53,15 +13,53 @@
 		    </div>
 		<% end %>
 
-<!-- 		<%= form_tag({controller: "sprained_ankle", action: "watson_question"}, method: "post", id:"queryForm") do  %>
-		    <div class="input-group">
-		        <span class="input-group-btn">
-		          <span><%= text_field_tag(:question, '', class:'form-control', autocomplete: 'off', placeholder: 'Enter a question for Watson...') %></span>
-		    </div>
-		<% end %> -->
-		<%= button_to "Start Over", {action: "new_game"}, class: "btn btn-default", id: "start_over"%>
+		<div>
+			<% count = 1 %>
+			<% @game_output.each do |input| %>
+				<% if input %>
+					<% if count == @game_output.length() %>
+						<div class="last_input">
+	    					<p><%=raw input %></p>
+    					</div>
+	    			<% else %>
+						<div class="normal_input">
+	    					<p><%=raw input %></p>
+    					</div>
+	    			<% end %>
+	    		<% end %>
+	    		<% count = count + 1 %>
+			<% end %>
+		</div>
 	</div>
 
-	<div class="col-md-4">
-  	</div>
+	<div class="col-md-4 sidebar">
+		<h1> Watson </h1>
+
+		<%= form_tag({controller: "sprained_ankle", action: "watson_question"}, method: "post", id:"queryForm") do  %>
+    		<div class="input-group">
+        		<span class="input-group-btn">
+          		<span><%= text_field_tag(:question, '', class:'form-control', autocomplete: 'off', placeholder: 'Enter a question for Watson...') %></span>
+    		</div>
+		<% end %>
+
+		<div>
+			<% count = 1 %>
+			<% @watson_output.each do |input| %>
+				<% if input %>
+					<% if count == @watson_output.length() %>
+						<div class="last_input_watson">
+    						<p><%=raw input %></p>
+    					</div>
+	    			<% else %>
+						<div class="normal_input">
+	    					<p><%=raw input %></p>
+    					</div>	
+	    			<% end %>
+	    		<% end %>
+	    		<% count = count + 1 %>
+			<% end %>
+			<%= @watson_question_output %>
+		</div>
+	</div>
 </div>
+<%= button_to "Start Over", {action: "new_game"}, class: "btn btn-default", id: "start_over"%>

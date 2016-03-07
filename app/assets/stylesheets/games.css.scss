@@ -10,22 +10,6 @@ body#GamesController {
     margin-bottom: 10px;
   }
 
-  #header-game {
-    background-image: url('/assets/hospital-391746_1280.jpg');
-    background-position: -150px -350px;
-    height: 175px;
-    margin-bottom: 25px;
-
-    .navbar-inverse {
-      background-color: transparent;
-      border: none;
-    }
-
-    .navbar-brand {
-      padding-left: 0;
-    }
-  }
-
   .load-buttons {
     margin: 10px 0;
   }
