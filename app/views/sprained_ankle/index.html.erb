@@ -2,63 +2,51 @@
 <!-- <div> WATSON RESPONSE: <%= @watson %> </div>
 <div> STATE: <%= @updates %> </div> -->
 
-<div id="all_content">
+<div class="row" id="sprained_ankle_header">
 	<div class="col-md-8 main">
 		<h1> Story </h1>
-
 		<%= form_tag({controller: "sprained_ankle", action: "index"}, method: "post", id:"queryForm") do  %>
 		    <div class="input-group">
 		        <span class="input-group-btn">
 	          	<span><%= text_field_tag(:query, '', class:'form-control', autocomplete: 'off',placeholder: 'Enter a command...') %></span>
 		    </div>
 		<% end %>
-
-		<div>
-			<% count = 1 %>
-			<% @game_output.each do |input| %>
-				<% if input %>
-					<% if count == @game_output.length() %>
-						<div class="last_input">
-	    					<p><%=raw input %></p>
-    					</div>
-	    			<% else %>
-						<div class="normal_input">
-	    					<p><%=raw input %></p>
-    					</div>
-	    			<% end %>
-	    		<% end %>
-	    		<% count = count + 1 %>
-			<% end %>
-		</div>
+		<p> Read from bottom to top.</p>
 	</div>
 
-	<div class="col-md-4 sidebar">
+	<div class="col-md-4">
 		<h1> Watson </h1>
-
 		<%= form_tag({controller: "sprained_ankle", action: "index"}, method: "post", id:"queryForm") do  %>
     		<div class="input-group">
         		<span class="input-group-btn">
           		<span><%= text_field_tag(:question, '', class:'form-control', autocomplete: 'off', placeholder: 'Enter a question for Watson...') %></span>
     		</div>
 		<% end %>
+	</div>
+</div>
 
-		<div>
-			<% count = 1 %>
-			<% @watson_output.each do |input| %>
+<div class="row" id="all_content">
+	<div class="col-md-8 main">
+		<div class="all_cards">
+			<% @game_output.reverse.each do |input| %>
 				<% if input %>
-					<% if count == @watson_output.length() %>
-						<div class="last_input_watson">
-    						<p><%=raw input %></p>
-    					</div>
-	    			<% else %>
-						<div class="normal_input">
-	    					<p><%=raw input %></p>
-    					</div>	
-	    			<% end %>
+					<div class="normal_input">
+    					<p><%=raw input %></p>
+					</div>
 	    		<% end %>
-	    		<% count = count + 1 %>
 			<% end %>
-			<div class="last_input_watson"><%= @watson_question_output %></div>
+		</div>
+	</div>
+
+	<div class="col-md-4 sidebar">
+		<div class="all_cards">
+			<% @watson_output.reverse.each do |input| %>
+				<% if input %>
+					<div class="normal_input">
+    					<p><%=raw input %></p>
+					</div>
+	    		<% end %>
+			<% end %>
 		</div>
 	</div>
 </div>
