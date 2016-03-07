@@ -11,7 +11,14 @@
 @import "sprained_ankle";
 
 #header-game {
-	background-image: url('/assets/hospital-391746_1280.jpg');
+	background-image:
+	    /* top, transparent black, faked with gradient */
+	    linear-gradient(
+	      rgba(0, 0, 0, 0.7),
+	      rgba(0, 0, 0, 0.7)
+	    ),
+	    /* bottom, image */
+	    url(/assets/hospital-391746_1280.jpg);
 	background-position: -150px -350px;
 	height: 175px;
 	margin-bottom: 25px;
