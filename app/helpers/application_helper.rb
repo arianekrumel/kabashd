@@ -20,16 +20,18 @@ module ApplicationHelper
 		json_response = JSON.parse(response.body.as_json)["question"]
 		if json_response
 			all_answers = json_response["evidencelist"]
-
+			test = ''
 			i = 0
 			# Iterates through the {@code all_answers} to only return an answer that corresponds
 			# to a Kabashd document.
 			begin
 				answer = all_answers[i]["title"]
+				test = answer ? test + answer : test 
+				meta_answer = all_answers[i]["metadataMap"] ? all_answers[i]["metadataMap"]["originalfile"] : ""
 				i += 1
-			end until not answer or answer.include? "Kabashd"
+			end until (answer and answer.include? "Kabashd" ) or (meta_answer and meta_answer.include? "Kabashd")
 
-			if answer
+			if answer and answer.include? ":"
 				# Removes the title of the document from the answer.
 				# This answer represents the "action" that the state machine
 				# will understand.
@@ -52,31 +54,21 @@ module ApplicationHelper
 		def get_updated_state(action)
 			# Returns the updated state to the user. Also updates the user state.
 			state = @@actions[action]
-			if not state.nil? and state.empty?
-			# Handles the 'Go back' case.
-				if @user_state == 'Start'
-					return "You are at the start. There is no previous state."
-				else
-					@user_state = @@previous_states[@user_state]
-					return "Action: " + action + " has been performed."
-				end
-			else
-				if state != nil
-					# Check if this is a valid state based on where the user is currently at.
-					if @@states_to_actions[@user_state].include? action
-						@user_state = state
-						return "Action: " + action + " has been performed."
-					else
-						# User can not perform this action based on their current state.
-						return "You can not " + action.downcase + " from the " + @user_state.downcase +
-						". Please choose again."
-					end
-				else
-					# This is state is not in this game.
-					return "You're in the " + @user_state.downcase + ". Unfortunately, " + action.downcase +
-					" is an invalid option. Choose again."
+
+			if not state.nil?
+				# Check if this is a valid state based on where the user is currently at.
+				if @@states_to_actions[@user_state].include? action
+					@user_state = state
 				end
 			end
+
+			return @user_state
+		end
+
+		def updated_state(action)
+			# Only call this method when you know the action is in the {@code actions} hashmap.
+			@user_state = @@actions[action]
+			return @user_state
 		end
 
 		def set_percent_per_action(action)
@@ -86,6 +78,10 @@ module ApplicationHelper
 		def get_percent_per_action()
 			return @percent
 		end
+
+		def get_user_state()
+			return @user_state
+		end 
 
 		def get_response_by_action(action, state=0)
 			if action == 'Go back' || action.empty? || state.nil?

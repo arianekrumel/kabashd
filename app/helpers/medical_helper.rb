@@ -52,10 +52,7 @@ module MedicalHelper
       # This is a mapping from a state to a unique ID.
       @@states['Start'] = 0
       @@states['Emergency Room'] = 1
-
     end
-
-
 
     def self.initialize_actions_to_response()
         @@actions_to_responses['Initial phrase'] = "Level: Sprained Ankle

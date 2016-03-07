@@ -51,6 +51,12 @@ Rails.application.routes.draw do
   post 'medical/index'
   get 'medical/user_input'
 
+  get 'sprained_ankle/index'
+  post 'sprained_ankle/new_game'
+  post 'sprained_ankle/index'
+  post 'sprained_ankle/watson_question'
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
