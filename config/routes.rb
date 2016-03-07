@@ -51,9 +51,9 @@ Rails.application.routes.draw do
   post 'medical/index'
   get 'medical/user_input'
 
-  get 'sprained_ankle/index'
+  get 'sprained_ankle/index', :path => "level1"
   post 'sprained_ankle/new_game'
-  post 'sprained_ankle/index'
+  post 'sprained_ankle/index', :path => "level1"
   post 'sprained_ankle/watson_question'
 
 
