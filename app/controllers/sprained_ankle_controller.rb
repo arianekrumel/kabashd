@@ -6,17 +6,21 @@ class SprainedAnkleController < ApplicationController
   @watson_question_output = ""
   user_state = ""
 
-  def index
+  def index()
 	user_input = params[:query].to_s
 	watson_response = ""
 	user_state = @@sprained_ankle_game.get_user_state()
 
-	if not params[:question].to_s.empty?
-		return 
-	end 
+	if params[:question] and not params[:question].empty?
+		user_input = params[:question].to_s
+		@game_output = @@sprained_ankle_game.get_game_output()
+		@watson_output =  @@sprained_ankle_game.get_watson_output()
+  		@watson_question_output = query_watson(user_input)[1]
+		return
+	end
 
 	if not user_input.empty? and not user_state == "Name"
-  		watson_response = query_watson(user_input)
+  		watson_response = query_watson(user_input)[0]
   	end
 
 	@@sprained_ankle_game.set_percent_per_action(watson_response)
@@ -61,12 +65,6 @@ class SprainedAnkleController < ApplicationController
 
 	@game_output = @@sprained_ankle_game.get_game_output()
 	@watson_output =  @@sprained_ankle_game.get_watson_output()
-  end
-
-  def watson_question
-	user_input = params[:query].to_s
-  	@watson_question_output = query_watson(user_input)
-  	redirect_to action: 'index'
   end
 
   def new_game
