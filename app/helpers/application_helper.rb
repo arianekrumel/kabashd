@@ -65,10 +65,11 @@ module ApplicationHelper
 				# Check if this is a valid state based on where the user is currently at.
 				if @@states_to_actions[@user_state].include? action
 					@user_state = state
+					return @user_state
 				end
 			end
 
-			return @user_state
+			return nil
 		end
 
 		def updated_state(action)

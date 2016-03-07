@@ -50,8 +50,13 @@ class SprainedAnkleController < ApplicationController
 		@@sprained_ankle_game.set_game_output(user_input)
 		user_state = @@sprained_ankle_game.get_updated_state(watson_response)
 
-		@updates = user_state
-		@@sprained_ankle_game.get_all_responses(user_state)
+		if user_state
+			@updates = user_state
+			@@sprained_ankle_game.get_all_responses(user_state)
+		else
+			# Bad Response. Get the appropriate response.
+			@@sprained_ankle_game.set_bad_response(@@sprained_ankle_game.get_user_state())
+		end
   	end
 
 	@game_output = @@sprained_ankle_game.get_game_output()

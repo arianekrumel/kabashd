@@ -129,11 +129,7 @@ module SprainedAnkleHelper
 			"I broke my ankle, it really hurts when I put pressure on it. "
 			@@actions_to_responses_patient['Move Ankle'] = " I was playing basketball... I was going up for a " +
 			"layup when I got hit and had to land really awkwardly."
-			@@actions_to_responses_patient['Diagnosis'] = ""
-
-			# These are the special cases.
-			@@actions_to_responses_patient['Bad Response'] = ""
-
+			@@actions_to_responses_patient['Diagnosis'] = "What do you think I have, doc?"
 			@@actions_to_responses_patient['Done'] = "Thank you, Doc!"
 		  end 
 
@@ -172,16 +168,17 @@ module SprainedAnkleHelper
 
 		  def self.initialize_bad_response_to_state()
 		  	@@bad_response_to_state['Start'] = "Oh c'mon! Let's play doctor."
-		  	@@bad_response_to_state['Examine'] = "If you're going to be a doctor, you should probably " +
+		  	@@bad_response_to_state['Get Situation'] = "If you're going to be a doctor, you should probably " +
 		  	"start by seeing what is wrong with your patient!"
+		  	@@bad_response_to_state['Examine'] = "Maybe you should take a further look at this situation?"
 		  	@@bad_response_to_state['Injury Details'] = "That's not what you should be doing right " +
 		  	"now... You'll get caught if you don't act like a real doctor"
-		  	@@bad_response_to_state['Move Ankle'] = "Wrong move! Act like a real doctor!"
+		  	@@bad_response_to_state['Move Ankle'] = "Wrong move! Act like a real doctor! Ask the patient to " +
+		  	"move his ankle."
 		  	@@bad_response_to_state['Diagnosis'] = "Ask Watson about common ankle injuries to " +
 		  	"diagnosis this patient."
 
-		  	# Special case!
-		  	@@bad_response_to_state['Remedy'] = ""
+		  	@@bad_response_to_state['Remedy'] = "Ask Waston about remedies for sprained ankles!"
 		  end
 
 		  def get_narrator_response(action)
@@ -223,6 +220,10 @@ module SprainedAnkleHelper
 		  			@game_output << "Okay, anything else?"
 		  		end
 		  	end
+		  end
+
+		  def set_bad_response(state)
+			@game_output << @@bad_response_to_state[state]
 		  end
 
 		  def move_to_done_state?()
