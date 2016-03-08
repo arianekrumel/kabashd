@@ -10,7 +10,7 @@ module SprainedAnkleHelper
 			@watson_output = Array.new
 			@username
 
-		    @@bad_response_to_state = Hash.new 
+		    @@bad_response_to_state = Hash.new
 			@@actions_to_responses_narrator = Hash.new
 			@@actions_to_responses_nurse = Hash.new
 			@@actions_to_responses_watson = Hash.new
@@ -54,7 +54,7 @@ module SprainedAnkleHelper
 		    # This is a mapping from a state to a unique ID.
 		    @@states['Start'] = 0
 		    @@states['Name'] = 1
-		    @@states['Get Situation'] = 2    
+		    @@states['Get Situation'] = 2
 		    @@states['Examine'] = 3
 		    @@states['Injury Details'] = 4
 		    @@states['Move Ankle'] = 5
@@ -75,19 +75,19 @@ module SprainedAnkleHelper
 			"with the best bandaids $5 at CVS could buy.</p><p> Oh yeah, and WATSON, you have him too." +
 			"</p><p>You're ready.</p></div>Location <div class='card' style='margin-top: 8px;'>" +
 			"<p>First Floor - Northwest Hospital</p></div>"
-			
+
 			@@actions_to_responses_narrator['Injury Details'] = "Image <div class='card'><%= image_tag(" +
 			"'temp.png', :alt => 'Image of injuried ankle') %></div>"
 			@@actions_to_responses_narrator['Move Ankle'] = "Image <div class='card'><%= " +
 			"image_tag('failed_layup.gif', :alt => 'Gif of failed layup') %></div>"
 			@@actions_to_responses_narrator['Diagnosis'] = "Image <div class='card'><%= image_tag(" +
-			"'move_ankle.gif', :alt => 'Gif of moving ankle') %></div>"
+			"'SwollenAnkle.png', :alt => 'Image of injuried ankle') %></div>"
 			@@actions_to_responses_narrator['Remedy'] = "Narrator <div class='card'>Correct! The patient " +
 			"does have a sprained ankle.</div>"
 
 			@@actions_to_responses_narrator['Done'] = "Narrator <div class='card'>You've completed level " +
 			"1. Congratulations!</div>"
-		  end 
+		  end
 
 		  def self.initialize_actions_to_response_nurse()
 		  	# This is a mapping from an action to a response message.
@@ -106,7 +106,7 @@ module SprainedAnkleHelper
 			@@actions_to_responses_nurse['Done'] = "Nurse <div class='card'><%= @username %>, there's " +
 			"another patient on the next floor that needs to see someone immediately, but all of the " +
 			"other doctors are busy, mind if you give me a hand?</div>"
-		  end 
+		  end
 
 		  def self.initialize_actions_to_response_watson()
 		  	# This is a mapping from an action to a response message.
@@ -131,7 +131,7 @@ module SprainedAnkleHelper
 
 			@@actions_to_responses_watson['Done'] = "Watson <div class='card'>Great job, partner! We " +
 			"make a good team!  I think you've even convinced that nurse.</div>"
-		  end 
+		  end
 
 		  def self.initialize_actions_to_response_patient()
 		  	# This is a mapping from an action to a response message.
@@ -144,7 +144,7 @@ module SprainedAnkleHelper
 			@@actions_to_responses_patient['Diagnosis'] = "Patient <div class='card'>What do you think " +
 			"I have, doc?</div>"
 			@@actions_to_responses_patient['Done'] = "Patient <div class='card'>Thank you, Doc!</div>"
-		  end 
+		  end
 
 		  def self.initialize_states_to_actions()
 		    # This is a mapping from a particular state to the valid actions.
@@ -180,7 +180,7 @@ module SprainedAnkleHelper
 		  end
 
 		  def self.initialize_bad_response_to_state()
-		  	@@bad_response_to_state['Start'] = "Bad Response: <div class='card'>Oh c'mon! Let's play " + 
+		  	@@bad_response_to_state['Start'] = "Bad Response: <div class='card'>Oh c'mon! Let's play " +
 		  	"doctor.</div>"
 		  	@@bad_response_to_state['Get Situation'] = "<div class='card'>If you're going to be a " +
 		  	"doctor, you should probably start by seeing what is wrong with your patient!</div>"
@@ -200,15 +200,15 @@ module SprainedAnkleHelper
 
 		  def get_narrator_response(action)
 		  	return @@actions_to_responses_narrator[action]
-		  end 
-		  
+		  end
+
 		  def get_watson_response(action)
 		  	return @@actions_to_responses_watson[action]
-		  end 
+		  end
 
 		  def get_patient_response(action)
 		  	return @@actions_to_responses_patient[action]
-		  end 
+		  end
 
 		  def get_nurse_response(action)
 		  	return @@actions_to_responses_nurse[action]
@@ -216,7 +216,7 @@ module SprainedAnkleHelper
 
 		  def set_remedy_value(action)
 		  	if action == "Rest"
-		  		if @remedy_values[0] == 1 
+		  		if @remedy_values[0] == 1
 		  			@game_output << "Bad Response <div class='card'><p>You've already suggested to rest. " +
 		  			" Any other suggestions?</p></div>"
 		  		else
@@ -229,13 +229,13 @@ module SprainedAnkleHelper
 		  			"ankle. Any other suggestions?</p></div>"
 		  		else
 		  			@remedy_values[1] = 1
-		  			@game_output << "Patient <div class='card'><p>What else can I do?</p></div>"	
+		  			@game_output << "Patient <div class='card'><p>What else can I do?</p></div>"
 		  		end
 		  	else action == "Ice"
 		  		if @remedy_values[2] == 1
 		  			@game_output << "Bad Response <div class='card'><p>You've already suggested to add ice " +
 		  			"Any other suggestions?</p></div>"
-		  		else 
+		  		else
 		  			@remedy_values[2] = 1
 		  			@game_output << "Patient <div class='card'><p>Okay, anything else?</p></div>"
 		  		end
@@ -254,17 +254,17 @@ module SprainedAnkleHelper
 		  	narrator_response = get_narrator_response(action)
 		  	if narrator_response and not narrator_response.empty?
 		  		@game_output << get_narrator_response(action)
-		  	end 
+		  	end
 
 		  	nurse_response = get_nurse_response(action)
-		  	if nurse_response and not nurse_response.empty? 
+		  	if nurse_response and not nurse_response.empty?
 		  		@game_output << get_nurse_response(action)
 		  	end
 
 		  	patient_response = get_patient_response(action)
 		  	if patient_response and not patient_response.empty?
 		  		@game_output << get_patient_response(action)
-		  	end 
+		  	end
 
 		  	watson_response = get_watson_response(action)
 		  	if watson_response and not watson_response.empty?
