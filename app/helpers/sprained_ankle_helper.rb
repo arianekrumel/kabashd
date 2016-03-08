@@ -8,6 +8,7 @@ module SprainedAnkleHelper
 		    @percent = 0
 		    @remedy_values = [0, 0, 0]
 			@watson_output = Array.new
+			@username
 
 		    @@bad_response_to_state = Hash.new 
 			@@actions_to_responses_narrator = Hash.new
@@ -74,7 +75,9 @@ module SprainedAnkleHelper
 			"with the best bandaids $5 at CVS could buy.</p><p> Oh yeah, and WATSON, you have him too." +
 			"</p><p>You're ready.</p></div>Location <div class='card' style='margin-top: 8px;'>" +
 			"<p>First Floor - Northwest Hospital</p></div>"
-
+			
+			@@actions_to_responses_narrator['Injury Details'] = "Image <div class='card'><%= image_tag(" +
+			"'temp.png', :alt => 'Image of injuried ankle') %></div>"
 			@@actions_to_responses_narrator['Remedy'] = "Narrator <div class='card'>Correct! The patient " +
 			"does have a sprained ankle.</div>"
 
@@ -89,14 +92,14 @@ module SprainedAnkleHelper
 			"few seconds...</p></div>"
 			@@actions_to_responses_nurse['Name'] = "Nurse <div class='card'><p>Awesome, thanks! What's " +
 			"your name by the way?</p></div>"
-			@@actions_to_responses_nurse['Get Situation'] = "Nurse <div class='card'>Thanks, #{$username}. " +
-			"<p class='xdelay'> Hey, #{$username}! Get over here!</p></div>"
+			@@actions_to_responses_nurse['Get Situation'] = "Nurse <div class='card'>Thanks, <%= @username %>. " +
+			"<p class='xdelay'> Hey, <%= @username %>! Get over here!</p></div>"
 			@@actions_to_responses_nurse['Injury Details'] = "Nurse <div class='card'>Ouch, that looks " +
 			"pretty bad.</div>"
 			@@actions_to_responses_nurse['Remedy'] = "Nurse <div class='card'>Great diagnosis, doc! Now let's " +
 			"offer the patient some remedies for his sprained ankle.</div>"
 
-			@@actions_to_responses_nurse['Done'] = "Nurse <div class='card'>#{$username}, there's " +
+			@@actions_to_responses_nurse['Done'] = "Nurse <div class='card'><%= @username %>, there's " +
 			"another patient on the next floor that needs to see someone immediately, but all of the " +
 			"other doctors are busy, mind if you give me a hand?</div>"
 		  end 
@@ -104,7 +107,7 @@ module SprainedAnkleHelper
 		  def self.initialize_actions_to_response_watson()
 		  	# This is a mapping from an action to a response message.
 			@@actions_to_responses_watson['Get Situation'] = "Watson <div class='card'>Wow, you've " +
-			"really gotten yourself in quite the predicament there #{$username}. Well, I'll tell you " +
+			"really gotten yourself in quite the predicament there <%= @username %>. Well, I'll tell you " +
 			"what, getting revenge on the guy that kicked your dog is a pretty admirable goal you got " +
 			"there. I'll make myself available to you. Whenever you have a question, just ask me it and " +
 			"I'll try and grab some info for you. You'll be able to navigate the hospital by telling me " +
@@ -226,8 +229,8 @@ module SprainedAnkleHelper
 		  		end
 		  	else action == "Ice"
 		  		if @remedy_values[2] == 1
-		  			@game_output << "Bad Response <div class='card'><p>You've already suggested to elevate " +
-		  			"ankle. Any other suggestions?</p></div>"
+		  			@game_output << "Bad Response <div class='card'><p>You've already suggested to add ice " +
+		  			"Any other suggestions?</p></div>"
 		  		else 
 		  			@remedy_values[2] = 1
 		  			@game_output << "Patient <div class='card'><p>Okay, anything else?</p></div>"
@@ -267,6 +270,14 @@ module SprainedAnkleHelper
 
 		  def get_watson_output()
 		  	return @watson_output
+		  end
+
+		  def set_username(name)
+		  	@username = name
+		  end
+
+		  def get_username()
+		  	return @username
 		  end
 	end
 end

@@ -1,12 +1,13 @@
+
 class SprainedAnkleController < ApplicationController
   include SprainedAnkleHelper
 
   @@sprained_ankle_game = SprainedAnkleGame.new('Start')
-  $username
   @watson_question_output = ""
   user_state = ""
 
   def index()
+	@username = @@sprained_ankle_game.get_username()
 	user_input = params[:query].to_s
 	watson_response = ""
 	user_state = @@sprained_ankle_game.get_user_state()
@@ -37,16 +38,13 @@ class SprainedAnkleController < ApplicationController
 		@@sprained_ankle_game.set_percent_per_action(user_state)
 		@user_percent = @@sprained_ankle_game.get_percent_per_action()
 
-		$username = user_input
+		@@sprained_ankle_game.set_username(user_input)
+		@username = @@sprained_ankle_game.get_username()
 		user_state = @@sprained_ankle_game.updated_state(user_state)
 
 		@updates = user_state
 		@@sprained_ankle_game.get_all_responses(user_state)
-
-		# @game_output = @@sprained_ankle_game.get_game_output()
-		# @game_output << watson_response
-		# @watson_output =  @@sprained_ankle_game.get_watson_output()
-	elsif watson_response.empty?
+	elsif watson_response.empty? and user_state == "Start"
   		# This is the first time the index page is being loaded (i.e., there is no user input).
 		@@sprained_ankle_game.get_all_responses()
 	elsif user_state == "Remedy"

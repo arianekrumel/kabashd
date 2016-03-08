@@ -1,5 +1,5 @@
 <%= render 'shared/header_game' %>
-<!-- <div> WATSON RESPONSE: <%= @watson %> </div>
+<!-- <div> Username: <%= @username %> </div>
 <div> STATE: <%= @updates %> </div> -->
 
 <div class="row" id="sprained_ankle_header">
@@ -31,7 +31,8 @@
 			<% @game_output.reverse.each do |input| %>
 				<% if input %>
 					<div class="normal_input">
-    					<p><%=raw input %></p>
+						<% html = ERB.new(input).result(binding) %>
+    					<p><%=raw html %></p>
 					</div>
 	    		<% end %>
 			<% end %>
@@ -43,7 +44,8 @@
 			<% @watson_output.reverse.each do |input| %>
 				<% if input %>
 					<div class="normal_input">
-    					<p><%=raw input %></p>
+						<% html = ERB.new(input).result(binding) %>
+    					<p><%=raw html %></p>
 					</div>
 	    		<% end %>
 			<% end %>
