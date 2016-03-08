@@ -65,21 +65,24 @@ module DemoHelper
     end
     def self.initialize_actions_to_response_narrator()
       # This is a mapping from an action to a response message.
-    @@actions_to_responses_narrator['Start'] = "Narrator <div class='card' style='margin-bottom: " +
-    "20px;'><p>You've heard that a certain high powered businessman is having an extended stay " +
-    "at Northwest General.</p> <p>He's the one that's responsible for kicking your dog. It's time " +
-    " to give him a piece of your mind. </p><p> Of course, you're gonna get nowhere just going " +
-    "into the hospital and demanding to see him. No, you'll have to be more clever than that." +
-    "</p> <p>You enter the first floor of the hospital. You've picked up a white coat from a " +
-    "costume shop, swiped a stethoscope off some resident's desk, and are equipped to the brim " +
-    "with the best bandaids $5 at CVS could buy.</p><p> Oh yeah, and WATSON, you have him too." +
-    "</p><p>You're ready.</p></div>Location <div class='card' style='margin-top: 8px;'>" +
-    "<p>First Floor - Northwest Hospital</p></div>"
-
-    @@actions_to_responses_narrator['Injury Details'] = "Image <div class='card'><%= image_tag(" +
-    "'SwollenAnkle.png', :alt => 'Image of injuried ankle') %></div>"
-    @@actions_to_responses_narrator['Remedy'] = "Narrator <div class='card'>Correct! The patient " +
-    "does have a sprained ankle.</div>"
+	    @@actions_to_responses_narrator['Start'] = "Narrator <div class='card' style='margin-bottom: " +
+	    "20px;'><p>You've heard that a certain high powered businessman is having an extended stay " +
+	    "at Northwest General.</p> <p>He's the one that's responsible for kicking your dog. It's time " +
+	    " to give him a piece of your mind. </p><p> Of course, you're gonna get nowhere just going " +
+	    "into the hospital and demanding to see him. No, you'll have to be more clever than that." +
+	    "</p> <p>You enter the first floor of the hospital. You've picked up a white coat from a " +
+	    "costume shop, swiped a stethoscope off some resident's desk, and are equipped to the brim " +
+	    "with the best bandaids $5 at CVS could buy.</p><p> Oh yeah, and WATSON, you have him too." +
+	    "</p><p>You're ready.</p></div>Location <div class='card' style='margin-top: 8px;'>" +
+	    "<p>First Floor - Northwest Hospital</p></div>"
+		@@actions_to_responses_narrator['Injury Details'] = "Image <div class='card'><%= image_tag(" +
+		"'SwollenAnkle.png', :alt => 'Image of injured ankle') %></div>"
+		@@actions_to_responses_narrator['Move Ankle'] = "Image <div class='card'><%= " +
+		"image_tag('failed_layup.gif', :alt => 'Gif of failed layup') %></div>"
+		@@actions_to_responses_narrator['Diagnosis'] = "Image <div class='card'><%= image_tag(" +
+		"'move_ankle.gif', :alt => 'Image of injured ankle') %></div>"
+		@@actions_to_responses_narrator['Remedy'] = "Narrator <div class='card'>Correct! The patient " +
+		"does have a sprained ankle.</div>"
 
     @@actions_to_responses_narrator['Done'] = "Narrator <div class='card'>You've completed level " +
     "1. Congratulations!</div>"
