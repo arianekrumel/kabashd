@@ -77,11 +77,11 @@ module SprainedAnkleHelper
 			"<p>First Floor - Northwest Hospital</p></div>"
 
 			@@actions_to_responses_narrator['Injury Details'] = "Image <div class='card'><%= image_tag(" +
-			"'temp.png', :alt => 'Image of injuried ankle') %></div>"
+			"'SwollenAnkle.png', :alt => 'Image of injured ankle') %></div>"
 			@@actions_to_responses_narrator['Move Ankle'] = "Image <div class='card'><%= " +
 			"image_tag('failed_layup.gif', :alt => 'Gif of failed layup') %></div>"
 			@@actions_to_responses_narrator['Diagnosis'] = "Image <div class='card'><%= image_tag(" +
-			"'SwollenAnkle.png', :alt => 'Image of injuried ankle') %></div>"
+			"'move_ankle.gif', :alt => 'Image of injured ankle') %></div>"
 			@@actions_to_responses_narrator['Remedy'] = "Narrator <div class='card'>Correct! The patient " +
 			"does have a sprained ankle.</div>"
 
