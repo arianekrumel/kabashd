@@ -29,6 +29,21 @@ h1 {
   }
   .panel-body {
     font-size: 30px;
-    padding: 0;
+    padding: 10px;
   }
+}
+#Progress{
+  .panel-body {
+    background-color: #F14E69;
+  }
+
+  .progress {
+    margin: 10px;
+  }
+  .progress-bar-success {
+    background-color: #DB1B38;
+  }
+}
+.sidebar {
+  background-color: #343745;
 }
