@@ -78,6 +78,10 @@ module SprainedAnkleHelper
 			
 			@@actions_to_responses_narrator['Injury Details'] = "Image <div class='card'><%= image_tag(" +
 			"'temp.png', :alt => 'Image of injuried ankle') %></div>"
+			@@actions_to_responses_narrator['Move Ankle'] = "Image <div class='card'><%= " +
+			"image_tag('failed_layup.gif', :alt => 'Gif of failed layup') %></div>"
+			@@actions_to_responses_narrator['Diagnosis'] = "Image <div class='card'><%= image_tag(" +
+			"'move_ankle.gif', :alt => 'Gif of moving ankle') %></div>"
 			@@actions_to_responses_narrator['Remedy'] = "Narrator <div class='card'>Correct! The patient " +
 			"does have a sprained ankle.</div>"
 
