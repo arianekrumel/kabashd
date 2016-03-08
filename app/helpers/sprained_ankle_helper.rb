@@ -180,21 +180,21 @@ module SprainedAnkleHelper
 		  end
 
 		  def self.initialize_bad_response_to_state()
-		  	@@bad_response_to_state['Start'] = "Bad Response: <div class='card'>Oh c'mon! Let's play " +
+		  	@@bad_response_to_state['Start'] = "Bad Response <div class='card'>Oh c'mon! Let's play " + 
 		  	"doctor.</div>"
-		  	@@bad_response_to_state['Get Situation'] = "<div class='card'>If you're going to be a " +
+		  	@@bad_response_to_state['Get Situation'] = "Bad Response <div class='card'>If you're going to be a " +
 		  	"doctor, you should probably start by seeing what is wrong with your patient!</div>"
 		  	@@bad_response_to_state['Examine'] = "Bad Response: <div class='card'>Maybe you should " +
 		  	"take a further look at this situation?</div>"
-		  	@@bad_response_to_state['Injury Details'] = "Bad Response: <div class='card'>That's not " +
+		  	@@bad_response_to_state['Injury Details'] = "Bad Response <div class='card'>That's not " +
 		  	"what you should be doing right now... You'll get caught if you don't act like a real " +
 		  	"doctor</div>"
-		  	@@bad_response_to_state['Move Ankle'] = "Bad Response: <div class='card'>Wrong move! Act " +
+		  	@@bad_response_to_state['Move Ankle'] = "Bad Response <div class='card'>Wrong move! Act " +
 		  	"like a real doctor! Ask the patient to move his ankle.</div>"
 		  	@@bad_response_to_state['Diagnosis'] = "Bad Response: <div class='card'>Ask Watson about " +
 		  	"common ankle injuries to diagnosis this patient.</div>"
 
-		  	@@bad_response_to_state['Remedy'] = "Bad Response: <div class='card'>Ask Waston about " +
+		  	@@bad_response_to_state['Remedy'] = "Bad Response <div class='card'>Ask Waston about " +
 		  	"remedies for sprained ankles!</div>"
 		  end
 
@@ -221,7 +221,9 @@ module SprainedAnkleHelper
 		  			" Any other suggestions?</p></div>"
 		  		else
 		  			@remedy_values[0] = 1
-		  			@game_output << "Patient <div class='card'><p>Okay, what's next?</p></div>"
+		  			if not @remedy_values.reduce(0, :+) == 3
+		  				@game_output << "Patient <div class='card'><p>Okay, what's next?</p></div>"
+		  			end
 		  		end
 		  	elsif action == "Elevate Ankle"
 		  		if @remedy_values[1] == 1
@@ -229,7 +231,10 @@ module SprainedAnkleHelper
 		  			"ankle. Any other suggestions?</p></div>"
 		  		else
 		  			@remedy_values[1] = 1
-		  			@game_output << "Patient <div class='card'><p>What else can I do?</p></div>"
+
+		  			if not @remedy_values.reduce(0, :+) == 3
+		  				@game_output << "Patient <div class='card'><p>What else can I do?</p></div>"
+		  			end	
 		  		end
 		  	else action == "Ice"
 		  		if @remedy_values[2] == 1
@@ -237,7 +242,9 @@ module SprainedAnkleHelper
 		  			"Any other suggestions?</p></div>"
 		  		else
 		  			@remedy_values[2] = 1
-		  			@game_output << "Patient <div class='card'><p>Okay, anything else?</p></div>"
+		  			if not @remedy_values.reduce(0, :+) == 3
+		  				@game_output << "Patient <div class='card'><p>Okay, anything else?</p></div>"
+		  			end
 		  		end
 		  	end
 		  end

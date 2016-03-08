@@ -25,9 +25,13 @@ module ApplicationHelper
 			# Iterates through the {@code all_answers} to only return an answer that corresponds
 			# to a Kabashd document.
 			begin
-				answer = all_answers[i] ? all_answers[i]["title"] : ""
-				test = answer ? test + answer : test
-				meta_answer = all_answers[i]["metadataMap"] ? all_answers[i]["metadataMap"]["originalfile"] : ""
+				if all_answers[i]
+					answer = all_answers[i]["title"]
+					meta_answer = all_answers[i]["metadataMap"] ? 
+					all_answers[i]["metadataMap"]["originalfile"] : ""
+				else 
+					return [nil, nil]
+				end
 				i += 1
 			end until (answer and answer.include? "Kabashd" ) or (meta_answer and meta_answer.include? "Kabashd")
 
@@ -41,7 +45,7 @@ module ApplicationHelper
 
 		#if Watson cannot find an answer return input back to user
 		if answer == nil
-    return user_input
+    		return [user_input, nil]
 		end
 		
 		return [answer, all_answers[i - 1]["text"]]
