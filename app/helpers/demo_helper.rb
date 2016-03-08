@@ -77,7 +77,7 @@ module DemoHelper
     "<p>First Floor - Northwest Hospital</p></div>"
 
     @@actions_to_responses_narrator['Injury Details'] = "Image <div class='card'><%= image_tag(" +
-    "'temp.png', :alt => 'Image of injuried ankle') %></div>"
+    "'SwollenAnkle.png', :alt => 'Image of injuried ankle') %></div>"
     @@actions_to_responses_narrator['Remedy'] = "Narrator <div class='card'>Correct! The patient " +
     "does have a sprained ankle.</div>"
 
