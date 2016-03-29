@@ -15,7 +15,7 @@ module SprainedAnkleHelper
 			@@actions_to_responses_nurse = Hash.new
 			@@actions_to_responses_watson = Hash.new
 			@@actions_to_responses_patient = Hash.new
-
+		
 		    SprainedAnkleGame.initilize_actions()
 			SprainedAnkleGame.initialize_states()
 			SprainedAnkleGame.initialize_states_to_actions()
@@ -198,22 +198,6 @@ module SprainedAnkleHelper
 		  	"remedies for sprained ankles!</div>"
 		  end
 
-		  def get_narrator_response(action)
-		  	return @@actions_to_responses_narrator[action]
-		  end
-
-		  def get_watson_response(action)
-		  	return @@actions_to_responses_watson[action]
-		  end
-
-		  def get_patient_response(action)
-		  	return @@actions_to_responses_patient[action]
-		  end
-
-		  def get_nurse_response(action)
-		  	return @@actions_to_responses_nurse[action]
-		  end
-
 		  def set_remedy_value(action)
 		  	if action == "Rest"
 		  		if @remedy_values[0] == 1
@@ -255,32 +239,6 @@ module SprainedAnkleHelper
 
 		  def move_to_done_state?()
 		  	return @remedy_values.reduce(0, :+) == 3
-		  end
-
-		  def get_all_responses(action='Start')
-		  	narrator_response = get_narrator_response(action)
-		  	if narrator_response and not narrator_response.empty?
-		  		@game_output << get_narrator_response(action)
-		  	end
-
-		  	nurse_response = get_nurse_response(action)
-		  	if nurse_response and not nurse_response.empty?
-		  		@game_output << get_nurse_response(action)
-		  	end
-
-		  	patient_response = get_patient_response(action)
-		  	if patient_response and not patient_response.empty?
-		  		@game_output << get_patient_response(action)
-		  	end
-
-		  	watson_response = get_watson_response(action)
-		  	if watson_response and not watson_response.empty?
-		  		@watson_output << get_watson_response(action)
-		  	end
-		  end
-
-		  def get_watson_output()
-		  	return @watson_output
 		  end
 
 		  def set_username(name)

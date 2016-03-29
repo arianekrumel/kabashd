@@ -61,6 +61,11 @@ module ApplicationHelper
 		@@previous_states = Hash.new
 		@@percent_per_action = Hash.new
 
+		@@actions_to_responses_narrator = Hash.new
+		@@actions_to_responses_nurse = Hash.new
+		@@actions_to_responses_watson = Hash.new
+		@@actions_to_responses_patient = Hash.new
+
 		def get_updated_state(action)
 			# Returns the updated state to the user. Also updates the user state.
 			state = @@actions[action]
@@ -111,6 +116,52 @@ module ApplicationHelper
 
 		def get_state_id(key)
 			return @@game_state[key]
+		end
+
+		def get_narrator_response(action)
+			return @@actions_to_responses_narrator[action]
+		end
+
+		def get_watson_response(action)
+			return @@actions_to_responses_watson[action]
+		end
+
+		def get_patient_response(action)
+			return @@actions_to_responses_patient[action]
+		end
+
+		def get_nurse_response(action)
+			return @@actions_to_responses_nurse[action]
+		end
+
+		def get_watson_output()
+			return @watson_output
+		end
+
+		def get_all_responses(action='Start')
+			narrator_response = get_narrator_response(action)
+			if narrator_response and not narrator_response.empty?
+				@game_output << get_narrator_response(action)
+			end
+
+			nurse_response = get_nurse_response(action)
+			if nurse_response and not nurse_response.empty?
+				@game_output << get_nurse_response(action)
+			end
+
+			patient_response = get_patient_response(action)
+			if patient_response and not patient_response.empty?
+				@game_output << get_patient_response(action)
+			end
+
+			watson_response = get_watson_response(action)
+			if watson_response and not watson_response.empty?
+				@watson_output << get_watson_response(action)
+			end
+		end
+
+		def get_watson_output()
+			return @watson_output
 		end
 	end
 end
