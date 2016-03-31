@@ -27,19 +27,30 @@ module LymeDiseaseHelper
 		end
 
 		def self.initilize_actions()
-			return
+		    # This is a mapping from a user action to an updated state.
+		    @@actions['University'] = 'Get Situation'
+
 		end 
 
 		def self.initialize_states()
 		    @@states['Start'] = 0
+		    @@states['University'] = 1
+		    @@states['Patient'] = 2
+		    @@states['Injury Start'] = 3
+		    @@states['Travel'] = 4
+		    @@states['Rash'] = 5
+		    @@states['Blood Test'] = 6
+		    @@states['Diagnosis'] = 7
+		    @@states['Treatment'] = 8
+		    @@states['Antibotics'] = 9
+		    @@states['Done'] = 10
 		end
 
 		def self.initialize_states_to_actions()
-			return
 		end
 
 		def self.initialize_actions_to_response_narrator()
-			@@actions_to_responses_narrator['Start'] = 'Lyme disease game.'
+			@@actions_to_responses_narrator['Start'] = "Narrator <div class='card'> Lyme Disease </div>"
 		end
 
 		def self.initialize_actions_to_response_nurse()
@@ -49,10 +60,18 @@ module LymeDiseaseHelper
 		end
 
 		def self.initialize_actions_to_response_patient()
+			@@bad_response_to_state['University'] = "Bad Response <div class='card'></div>"
+			@@bad_response_to_state['Patient'] = "Bad Response <div class='card'></div>"
+			@@bad_response_to_state['Injury Start'] = "Bad Response <div class='card'></div>"
+			@@bad_response_to_state['Travel'] = "Bad Response <div class='card'></div>"
+			@@bad_response_to_state['Rash'] = "Bad Response <div class='card'></div>"
+			@@bad_response_to_state['Blood Test'] = "Bad Response <div class='card'></div>"
+			@@bad_response_to_state['Diagnosis'] = "Bad Response <div class='card'></div>"
+			@@bad_response_to_state['Treatment'] = "Bad Response <div class='card'></div>"
+			@@bad_response_to_state['Antibotics'] = "Bad Response <div class='card'></div>"
 		end
 
 		def self.initialize_percent_per_action()
-			return
 		end
 
 		def self.initialize_bad_response_to_state()

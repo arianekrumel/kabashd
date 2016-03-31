@@ -191,7 +191,7 @@ module SprainedAnkleHelper
 		  	"doctor</div>"
 		  	@@bad_response_to_state['Move Ankle'] = "Bad Response <div class='card'>Wrong move! Act " +
 		  	"like a real doctor! Ask the patient to move his ankle.</div>"
-		  	@@bad_response_to_state['Diagnosis'] = "Bad Response: <div class='card'>Ask Watson about " +
+		  	@@bad_response_to_state['Diagnosis'] = "Bad Response <div class='card'>Ask Watson about " +
 		  	"common ankle injuries to diagnosis this patient.</div>"
 
 		  	@@bad_response_to_state['Remedy'] = "Bad Response <div class='card'>Ask Waston about " +
