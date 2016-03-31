@@ -59,6 +59,10 @@ Rails.application.routes.draw do
   post 'lyme_disease/new_game'
   post 'lyme_disease/index', :path => "level2"
 
+  get 'severe_burns/index', :path => "level3"
+  post 'severe_burns/new_game'
+  post 'severe_burns/index', :path => "level3"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
