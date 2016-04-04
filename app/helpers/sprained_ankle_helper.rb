@@ -15,7 +15,7 @@ module SprainedAnkleHelper
 			@@actions_to_responses_nurse = Hash.new
 			@@actions_to_responses_watson = Hash.new
 			@@actions_to_responses_patient = Hash.new
-		
+
 		    SprainedAnkleGame.initilize_actions()
 			SprainedAnkleGame.initialize_states()
 			SprainedAnkleGame.initialize_states_to_actions()
@@ -37,7 +37,7 @@ module SprainedAnkleHelper
 		    @@actions['Injury Details'] = 'Move Ankle'
 		    @@actions['Move Ankle'] = 'Diagnosis'
 
-		    @@actions['Sprained ankle'] = 'Remedy'
+		    @@actions['Diagnose Sprained Ankle'] = 'Remedy'
 
 		    # Special cases handled in controller.
 		    @@actions['Rest'] = 'Special Case'
@@ -154,7 +154,7 @@ module SprainedAnkleHelper
 		    @@states_to_actions['Examine'] = ['Examine']
 		    @@states_to_actions['Injury Details'] = ['Injury Details']
 		    @@states_to_actions['Move Ankle'] = ['Move Ankle']
-		    @@states_to_actions['Diagnosis'] = ['Sprained ankle']
+		    @@states_to_actions['Diagnosis'] = ['Diagnose Sprained Ankle']
 		    @@states_to_actions['Remedy'] = ['Done']
 		    @@states_to_actions['Done'] = []
 		  end
@@ -170,7 +170,7 @@ module SprainedAnkleHelper
 			@@percent_per_action['Injury Details'] = 10
 			@@percent_per_action['Move Ankle'] = 10
 
-			@@percent_per_action['Sprained ankle'] = 35
+			@@percent_per_action['Diagnose Sprained Ankle'] = 35
 
 			@@percent_per_action['Rest'] = 10
 			@@percent_per_action['Elevate Ankle'] = 10
@@ -180,7 +180,7 @@ module SprainedAnkleHelper
 		  end
 
 		  def self.initialize_bad_response_to_state()
-		  	@@bad_response_to_state['Start'] = "Bad Response <div class='card'>Oh c'mon! Let's play " + 
+		  	@@bad_response_to_state['Start'] = "Bad Response <div class='card'>Oh c'mon! Let's play " +
 		  	"doctor.</div>"
 		  	@@bad_response_to_state['Get Situation'] = "Bad Response <div class='card'>If you're going to be a " +
 		  	"doctor, you should probably start by seeing what is wrong with your patient!</div>"
@@ -218,7 +218,7 @@ module SprainedAnkleHelper
 
 		  			if not @remedy_values.reduce(0, :+) == 3
 		  				@game_output << "Patient <div class='card'><p>What else can I do?</p></div>"
-		  			end	
+		  			end
 		  		end
 		  	else action == "Ice"
 		  		if @remedy_values[2] == 1
