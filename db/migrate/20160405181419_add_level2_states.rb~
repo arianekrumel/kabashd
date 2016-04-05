@@ -1,0 +1,7 @@
+class AddLevel2States < ActiveRecord::Migration
+  def change
+	add_column :game_states, :level, :string		
+	add_column :game_states, :diagnosed_lyme, :boolean
+	add_column :game_states, :doxycycline, :boolean
+  end
+end

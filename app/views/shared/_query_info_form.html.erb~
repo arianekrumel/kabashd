@@ -1,10 +1,11 @@
 <%= form_tag({controller: "games", action: "query"}, method: "post", id:"queryForm") do  %>
   <div class="input-group">
-    <%= text_field_tag(:query, '', class:'form-control', placeholder: 'Enter a command...') %>
+    <%= text_field_tag(:query, '', class:'form-control', placeholder: 'Enter a question...') %>
       <div class="input-group-btn">
         <%= submit_tag("Go!", class: "btn btn-default") %>
         <%= hidden_field_tag(:game_id, current_game.id) %>
-        <%= hidden_field_tag(:tag, "Story") %>
+        <%= hidden_field_tag(:is_story, false) %>
       </div>
   </div>
 <% end %>
+

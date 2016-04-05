@@ -18,7 +18,7 @@ Action.delete_all
 
 	gs4 = GameState.create(level: "Sprained_Ankle", diagnosisMade: false)
 
-	gs5 = GameState.create(level: "Sprained_Ankle", diagnosisMade: true, treated: false)
+	gs5 = GameState.create(level: "Sprained_Ankle", treated: false)
 
 	gsNextLevel =  GameState.create(level: "Lyme_Disease", diagnosed_lyme: false)
 

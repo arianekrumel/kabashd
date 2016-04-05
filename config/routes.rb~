@@ -12,8 +12,6 @@ Rails.application.routes.draw do
 
   post 'games/query'
 
-  get 'games/create'
-
   post 'games/create'
 
   get  '/query' , to:'games#query', as:"query"

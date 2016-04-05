@@ -1,0 +1,19 @@
+module GamesHelper
+
+	def process_action ( user_input, result_command, gameID )
+		action = gamestate.actions.where(["command = ?", result_command]).first
+
+	  	if action
+
+	  		Conversation.create(query: user_input, response: action.response.gsub("%n", current_game.player_name), confidence: nil,
+		game_id: gameID)
+			current_game.game_state_id = action.result_state_id
+
+		else
+			Conversation.create(query: user_input, response:
+	"Sorry, you can't do that right now", confidence: nil, game_id: gameID)
+	  	end
+
+	end
+
+end

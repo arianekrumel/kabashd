@@ -1,5 +1,10 @@
 module ApplicationHelper
-	def query_watson(user_input)
+
+
+
+	def query_watson(user_input, tag)
+
+
 		url = 'https://dal09-gateway.watsonplatform.net/instance/579/deepqa/v1/question'
 		uri = URI(url)
 
@@ -25,26 +30,34 @@ module ApplicationHelper
 			# Iterates through the {@code all_answers} to only return an answer that corresponds
 			# to a Kabashd document.
 			begin
-				answer = all_answers[i]["title"]
-				test = answer ? test + answer : test 
-				meta_answer = all_answers[i]["metadataMap"] ? all_answers[i]["metadataMap"]["originalfile"] : ""
-				i += 1
-			end until (answer and answer.include? "Kabashd" ) or (meta_answer and meta_answer.include? "Kabashd")
 
-			if answer and answer.include? ":"
+				if all_answers.size <= i+1
+					break
+				end
+				answer = all_answers[i]
+				title = answer["title"]				
+				test = title ? test + title : test 
+				meta_answer = answer["metadataMap"] ? answer["metadataMap"]["originalfile"] : ""
+				i += 1
+			end until (title and title.include? "Kabashd" and title.include? tag) or (meta_answer and meta_answer.include? "Kabashd" and meta_answer.include? tag)
+
+			if title and title.include? ":"
 				# Removes the title of the document from the answer.
 				# This answer represents the "action" that the state machine
 				# will understand.
-				answer = answer[answer.index(':') + 1..-1].strip()
+				title = title[title.index(':') + 1..-1].strip()
+				result = title
 			end
 		end
 
 		#if Watson cannot find an answer return input back to user
-		if answer == nil
-    return user_input
+		if result == nil
+    			return user_input
+		elsif tag == "Knowledge"
+			return result += "\n" + answer["text"]
 		end
 		
-		return answer
+		return result
 	end
 
 	class GameSkeleton

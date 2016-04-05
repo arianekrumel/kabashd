@@ -1,0 +1,4 @@
+class GameState < ActiveRecord::Base
+  has_many :actions
+  has_many :games
+end

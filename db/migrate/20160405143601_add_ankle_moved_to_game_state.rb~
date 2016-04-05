@@ -1,0 +1,6 @@
+class AddAnkleMovedToGameState < ActiveRecord::Migration
+  def change
+	add_column :game_states, :ankleMoved, :boolean
+	remove_column :game_states, :ankleWrapped
+  end
+end

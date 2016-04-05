@@ -4,7 +4,7 @@
       <div class="input-group-btn">
         <%= submit_tag("Go!", class: "btn btn-default") %>
         <%= hidden_field_tag(:game_id, current_game.id) %>
-        <%= hidden_field_tag(:tag, "Story") %>
+        <%= hidden_field_tag(:is_story, true) %>
       </div>
   </div>
 <% end %>
