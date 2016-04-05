@@ -32,3 +32,88 @@
 	  padding-left: 0;
 	}
 }
+
+// Styling for all levels.
+#all_content {
+	display: -webkit-box;
+	display:    -moz-box;
+	display:     -ms-flexbox;
+	display: -webkit-flex;
+	display:         flex;
+
+	height: 500px;
+	color: white;
+	overflow: scroll;
+	overflow-x:hidden;
+	font-size: 14px;
+
+	.last_input {
+		color: $jelly_bean;
+	}
+
+	.last_input_watson {
+		color: $soft_red;
+	}
+
+	.normal_input {
+		color: $silver;
+	}
+
+	.all_cards {
+	  padding: 0;
+	  margin: 0;
+	  list-style: none;
+
+	  display: -webkit-box;
+	  display: -moz-box;
+	  display: -ms-flexbox;
+	  display: -webkit-flex;
+	  display: flex;
+	  flex-direction: column;
+
+		.card {
+			color: white;
+			width: 100%;
+			overflow: scroll;
+			border-radius: 4px;
+			background-color: #404040;
+			padding: 5px 10px;
+			overflow:hidden;
+		}
+
+		.cards:hover {
+
+		}
+
+		p {
+			margin: 10px 0;
+		}
+	}
+
+	#narrator_content, #watson_content {
+		display: -webkit-box;
+		display:    -moz-box;
+		display:     -ms-flexbox;
+		display: -webkit-flex;
+		display:         flex;
+
+		overflow: scroll;
+		flex-direction: column;
+
+		flex-grow: 1;
+		height: 100%;
+		width: 50%;
+
+		hr {
+			width: 95%;
+		}
+	}
+
+	#narrator_content {
+		background-color: #303030;
+	}
+
+	#watson_content {
+		background-color: #282828;
+	}
+}

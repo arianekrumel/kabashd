@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get 'games/query'
   post 'games/query'
   post 'games/create'
-  get  '/query' , to:'games#query', as:"query"
+  get  '/query', to:'games#query', as:"query"
 
   get 'sessions/new'
   get 'sessions/destroy'
