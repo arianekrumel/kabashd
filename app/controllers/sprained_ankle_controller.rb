@@ -12,6 +12,7 @@ class SprainedAnkleController < ApplicationController
 	watson_response = ""
 	user_state = @@sprained_ankle_game.get_user_state()
 
+	# User has asked Watson a question.
 	if params[:question] and not params[:question].empty?
 		user_input = params[:question].to_s
 		@game_output = @@sprained_ankle_game.get_game_output()
@@ -22,14 +23,17 @@ class SprainedAnkleController < ApplicationController
 		return
 	end
 
+	# User has entered a command. Disambiguate this command by sending it to Watson.
 	if not user_input.empty? and not user_state == "Name"
   		watson_response = query_watson(user_input)[0]
   	end
 
+  	# Set the percentage and then retrieve it.
 	@@sprained_ankle_game.set_percent_per_action(watson_response)
 	@user_percent = @@sprained_ankle_game.get_percent_per_action()
 
   	if watson_response.nil? 
+  		# Watson did not return any documents.
   		@watson_output = Array.new
 		@watson_output << "WATSON RETURNS NIL :(. - No Ka-bash'd documents..."
 	elsif user_state == "Name"
@@ -73,6 +77,7 @@ class SprainedAnkleController < ApplicationController
   end
 
   def new_game
+  	# Restarts the game.
 	@@sprained_ankle_game = SprainedAnkleGame.new('Start')
 	@user_input = Array.new
 
