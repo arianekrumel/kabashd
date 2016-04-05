@@ -118,15 +118,15 @@
 	}
 }
 
-#sign-up {
+#sign-up, #login {
 	background-color: #505050;
 
 	p {
 		font-size: 14px !important;
-		margin: -10px 0 3px 0 !important;
+		margin: -10px 0 10px 0 !important;
 	}
 
-	.sign_up_content {
+	.sign_up_content, .login_content {
 		margin-bottom: 10px;
 	}
 }
