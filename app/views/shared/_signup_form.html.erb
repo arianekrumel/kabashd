@@ -1,42 +1,62 @@
-<div class="jumbotron">
-    <h1>Sign up</h1>
-
-    <%= form_for(@user, url: '/users/create', method:"post") do |f| %>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2 jumbotron" id="sign-up">
+        <h1>Sign up</h1>
         <div class="sign_up_content">
-            <%= f.label "First Name" %>
-            <%= f.text_field :first_name, :class=>'form-control' %>
+            <p>Existing User? <%= link_to "Log in", '/sessions/new', method:"get" %></p>
         </div>
 
-        <div class="sign_up_content">
-            <%= f.label "Last Name" %>
-            <%= f.text_field :last_name, :class=>'form-control' %>
-        </div>
+        <%= form_for(@user, url: '/users/create', method:"post") do |f| %>
+            <div class="sign_up_content">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <%= f.text_field :first_name, :class=>'form-control', :placeholder => "First Name" %>
+                    </div>
+                </div>
+            </div>
 
-        <div class="sign_up_content">
-            <%= f.label "Email" %>
-            <%= f.email_field :email, :class=>'form-control' %>
-        </div>
+            <div class="sign_up_content">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <%= f.text_field :last_name, :class=>'form-control', :placeholder => "Last Name" %>
+                    </div>
+                </div>
+            </div>
 
-        <div class="sign_up_content">
-            <%= f.label "Zip Code" %>
-            <%= f.number_field :zip_code, type:'number', :class=>'form-control' %>
-        </div>
+            <div class="sign_up_content">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <%= f.email_field :email, :class=>'form-control',  :placeholder => "E-mail" %>
+                    </div>
+                </div>
+            </div>
 
-        <div class="sign_up_content">
-            <%= f.label "Password" %>
-            <%= f.password_field :password, :class=>'form-control' %>
-        </div>
+            <div class="sign_up_content">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <%= f.number_field :zip_code, type:'number', :class=>'form-control',  :placeholder => "Zipcode" %>
+                    </div>
+                </div>
+            </div>
 
-        <div class="sign_up_content">
-            <%= f.label "Confirm Password" %>
-            <%= f.password_field :password_confirmation, :class=>'form-control' %>
-        </div>
+            <div class="sign_up_content">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <%= f.password_field :password, :class=>'form-control', :placeholder => "Password" %>
+                    </div>
+                </div>
+            </div>
 
-        <div class="sign_up_content">
-            <%= f.submit "Sign up", :class=>'btn btn-default' %>
-        </div>
-    <% end %>
-    <div class="sign_up_content">
-        <p>Existing User? <%= link_to "Log in", '/sessions/new', method:"get" %></p>
+            <div class="sign_up_content">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <%= f.password_field :password_confirmation, :class=>'form-control', :placeholder => "Confirm Password" %>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sign_up_content">
+                <%= f.submit "Sign up", :class=>'btn btn-default' %>
+            </div>
+        <% end %>
     </div>
 </div>
