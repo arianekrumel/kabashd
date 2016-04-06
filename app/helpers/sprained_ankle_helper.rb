@@ -42,7 +42,7 @@ module SprainedAnkleHelper
 		    # Special cases handled in controller.
 		    @@actions['Rest'] = 'Special Case'
 		    @@actions['Elevate Ankle'] = 'Special Case'
-		    @@actions['Ice'] = 'Special Case'
+		    @@actions['Ice Ankle'] = 'Special Case'
 
 		    @@actions['Remedy'] = 'Done'
 
@@ -174,7 +174,7 @@ module SprainedAnkleHelper
 
 			@@percent_per_action['Rest'] = 10
 			@@percent_per_action['Elevate Ankle'] = 10
-			@@percent_per_action['Ice'] = 10
+			@@percent_per_action['Ice Ankle'] = 10
 
 			@@percent_per_action['Bad Response'] = -10
 		  end
@@ -220,7 +220,7 @@ module SprainedAnkleHelper
 		  				@game_output << "Patient <div class='card'><p>What else can I do?</p></div>"
 		  			end
 		  		end
-		  	else action == "Ice"
+		  	else action == "Ice Ankle"
 		  		if @remedy_values[2] == 1
 		  			@game_output << "Bad Response <div class='card'><p>You've already suggested to add ice " +
 		  			"Any other suggestions?</p></div>"

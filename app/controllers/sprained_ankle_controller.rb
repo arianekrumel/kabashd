@@ -19,6 +19,8 @@ class SprainedAnkleController < ApplicationController
 		@watson_output =  @@sprained_ankle_game.get_watson_output()
   		@watson_question_output = query_watson(user_input)[1]
   		@watson_output << "<p> Watson's Brain <p> <div class='card'>#{@watson_question_output}></div>"
+      #Retain current percent value
+      	@user_percent = @@sprained_ankle_game.get_percent_per_action()
 
 		return
 	end
@@ -32,7 +34,7 @@ class SprainedAnkleController < ApplicationController
 	@@sprained_ankle_game.set_percent_per_action(watson_response)
 	@user_percent = @@sprained_ankle_game.get_percent_per_action()
 
-  	if watson_response.nil? 
+  	if watson_response.nil?
   		# Watson did not return any documents.
   		@watson_output = Array.new
 		@watson_output << "WATSON RETURNS NIL :(. - No Ka-bash'd documents..."

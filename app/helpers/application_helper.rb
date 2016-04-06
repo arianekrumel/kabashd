@@ -27,9 +27,9 @@ module ApplicationHelper
 			begin
 				if all_answers[i]
 					answer = all_answers[i]["title"]
-					meta_answer = all_answers[i]["metadataMap"] ? 
+					meta_answer = all_answers[i]["metadataMap"] ?
 					all_answers[i]["metadataMap"]["originalfile"] : ""
-				else 
+	  		else
 					return [nil, nil]
 				end
 				i += 1
@@ -47,7 +47,7 @@ module ApplicationHelper
 		if answer == nil
     		return [user_input, nil]
 		end
-		
+
 		return [answer, all_answers[i - 1]["text"]]
 	end
 
@@ -97,7 +97,7 @@ module ApplicationHelper
 
 		def get_user_state()
 			return @user_state
-		end 
+		end
 
 		def get_response_by_action(action, state=0)
 			if action == 'Go back' || action.empty? || state.nil?
