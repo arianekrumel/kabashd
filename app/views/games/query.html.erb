@@ -12,13 +12,36 @@
       <div id="queryarea">
 
    	<div class="conv_entry">
-        	<p>Nurse: Hey you! You're new here, but the ER is overflowing. What is your name? </p>
+        	<p>Level: Sprained Ankle</p>
+		<br>
+
+		<p>You've heard that a certain high powered businessman is having an extended stay at Northwest General.</p>
+		<br>
+		<p>He's the one that's responsible for kicking your dog. It's time to give him a piece of your mind.</p>
+		<br>
+		<p>Of course, you're gonna get nowhere just going into the hospital and demanding to see him. No, you'll have to be more clever than that.</p>
+		<br>
+		<p>You enter the first floor of the hospital. You've picked up a white coat from a costume shop, swiped a stethoscope off some resident's desk, and are equipped to the brim with the best bandaids $5 at CVS could buy.</p>
+		<br>
+		<p>Oh yeah, and WATSON, you have him too.</p>
+		<br>
+		<p>You're ready.</p>
+		<br>
+		<p>FIRST FLOOR - NORTHWEST HOSPITAL</p>
+		<br>
+		<p>Hey you! You're new here, but the ER is overflowing. What is your name? </p>
+		<br>
+
 	</div>
         <% @conversations.each do |conversation| %>
             <div class="conv_entry">
                 <p><%= conversation.query %></p>
                 <% if conversation.response != nil %>
-                    <p class="responseSuccess"><%= conversation.response %></p>
+			<% conversation.response.split("\n").each do |response| %>
+                  	<p class="responseSuccess"><%= response %></p>
+			<br>
+			<% end %>
+
                 <% else %>
                     <p class="responseFail">Sorry, there is no valid response for your query.</p>
                 <%end%>
