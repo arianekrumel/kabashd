@@ -1,0 +1,39 @@
+body#GamesController {
+
+  main {
+      .user-input {
+        margin-top: 20px;
+      }
+  }
+
+  .login_content, .sign_up_content {
+    margin-bottom: 10px;
+  }
+
+  .load-buttons {
+    margin: 10px 0;
+  }
+
+  #query {
+    width: 100%;
+    color: black;
+  }
+
+  #queryarea {
+    overflow-y: scroll;
+    max-height: 20em;
+
+    .conv_entry {
+      color: #fff;
+
+      .responseSuccess {
+        color: lightgreen;
+      }
+
+      .responseFail {
+        color: red;
+      }
+    }
+
+  }
+}

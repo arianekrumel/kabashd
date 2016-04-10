@@ -170,8 +170,13 @@ class GamesController < ApplicationController
 			current_game.game_state_id = action.result_state_id
 
 		else
-			Conversation.create(query: user_input, response:
-	"Sorry, you can't do that right now.", confidence: nil, game_id: gameID)
+
+			action = Action.all.where(["command = ?", answer]).first
+			if(action and action.earlyResponse != nil)
+				Conversation.create(query: user_input, response: action.earlyResponse, confidence: nil, game_id: gameID)
+			else
+				Conversation.create(query: user_input, response: "Sorry, you can't do that right now.", confidence: nil, game_id: gameID)
+			end
 	  	end
 
 	end

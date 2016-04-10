@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-8 main">
+  <div class="col-md-8 main" style="padding-bottom:300px">
     <h1>Story</h1>
     <%= render 'shared/alert_completed_task' %>
     <%= render 'shared/alert_failed_task' %>
@@ -9,10 +9,10 @@
     <div class="container-fluid">
       <%= render 'shared/query_form' %>
 
-      <div id="queryarea">
+      <div id="queryarea" style="height:300px">
 
    	<div class="conv_entry">
-        	<h3>Level: Sprained Ankle<h3>
+        	<p>Level: Sprained Ankle</p>
 		<br>
 
 		<p>You've heard that a certain high powered businessman is having an extended stay at Northwest General.</p>

@@ -132,23 +132,23 @@ Action.delete_all
 
 	##State 3 Actions
 
-	Action.create(command: "Examine", response: "[Image of sprained Ankle]\nNurse: Ouch, that looks pretty bad.\nWATSON: I'm not too sure that's a broken ankle. Why don't you try asking him to move it", repeatResponse: "default", start_state_id: gs3.id, result_state_id: gs4.id)
+	Action.create(command: "Examine", response: "[Image of sprained Ankle]\nNurse: Ouch, that looks pretty bad.\nWATSON: I'm not too sure that's a broken ankle. Why don't you try asking him to move it", repeatResponse: "default", earlyResponse: "WATSON: You haven't even asked him what's wrong. Get the details first.", start_state_id: gs3.id, result_state_id: gs4.id)
 
 	##State 4 Actions
 
-	Action.create(command: "Move Ankle", response: "Patient: I can move it, but it hurts really bad!", repeatResponse: "Patient: I can't do it again, it hurts too much!", start_state_id: gs4.id, result_state_id: gs5.id)
+	Action.create(command: "Move Ankle", response: "Patient: I can move it, but it hurts really bad!", repeatResponse: "Patient: I can't do it again, it hurts too much!", earlyResponse: "WATSON: You haven't looked at it yet. What if it's broken?", start_state_id: gs4.id, result_state_id: gs5.id)
 
 	##State 5 Actions
 
-	Action.create(command: "Diagnose Sprained Ankle", response: "WATSON: You are correct! Now we should treat it.", repeatResponse: "WATSON: You already diagnosed this patient. Perhaps he needs more treatment.", start_state_id: gs5.id, result_state_id: gs6.id)
+	Action.create(command: "Diagnose Sprained Ankle", response: "WATSON: You are correct! Now we should treat it.", repeatResponse: "WATSON: You already diagnosed this patient. Perhaps he needs more treatment.", earlyResponse: "WATSON: I think you should find out more about the injury before jumping to such a conclusion", start_state_id: gs5.id, result_state_id: gs6.id)
 
 	##State 6 Actions
 
-	Action.create(command: "Ice Ankle", response: "*The patient begins icing his ankle.*", repeatResponse: "Patient: I'm already icing my ankle!", start_state_id: gs6.id, result_state_id: gs6.id)
+	Action.create(command: "Ice Ankle", response: "*The patient begins icing his ankle.*", repeatResponse: "Patient: I'm already icing my ankle!", earlyResponse: "WATSON: You haven't even diagnosed him yet!", start_state_id: gs6.id, result_state_id: gs6.id)
 
-	Action.create(command: "Elevate Ankle", response: "*You elevate the ankle*", repeatResponse: "Patient: It's elevated enough!", start_state_id: gs6.id, result_state_id: gs6.id)
+	Action.create(command: "Elevate Ankle", response: "*You elevate the ankle*", repeatResponse: "Patient: It's elevated enough!", earlyResponse: "WATSON: You haven't even diagnosed him yet!", start_state_id: gs6.id, result_state_id: gs6.id)
 
-	Action.create(command: "Rest", response: "*You tell the patient to rest his ankle.*", repeatResponse: "Patient: I'm already resting my ankle, What else should I do?", start_state_id: gs6.id, result_state_id: gs6.id)
+	Action.create(command: "Rest", response: "*You tell the patient to rest his ankle.*", repeatResponse: "Patient: I'm already resting my ankle, What else should I do?", earlyResponse: "WATSON: You haven't even diagnosed him yet!", start_state_id: gs6.id, result_state_id: gs6.id)
 
 	Action.create(command: "Finished Treating", response: "It appears that the patient has been properly treated. You walk up to the next floor.", start_state_id: gs6.id, result_state_id: gsNextLevel.id)
 
