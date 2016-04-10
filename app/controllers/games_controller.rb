@@ -116,7 +116,6 @@ class GamesController < ApplicationController
 		
 			if keyset[action] != nil
 				if keyset[action] == true
-					action = "Already Done"
 					break
 				else
 					keyset[action] = true

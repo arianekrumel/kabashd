@@ -36,6 +36,7 @@
 		These sets of key commands must also be separated by comma-spaces.
 		The corresponding goalAction will automatically be called when all keys in the set are called.
 		Thus we do not need to put these values in the corpus.
+		Any goalAction that has keys must have an action for "Already Done"
 
 		eg. "(Rest, Ice Ankle), (Elevate Ankle, Rest)"
 
@@ -115,7 +116,7 @@ Action.delete_all
 
 	gs4 = GameState.create(level: "Sprained_Ankle", goalActions: "Diagnose Sprained Ankle")
 
-	gs5 = GameState.create(level: "Sprained_Ankle", goalActions: "Finished Treating, Already Done", keys: "(Rest, Ice Ankle), (Elevate Ankle, Rest)")
+	gs5 = GameState.create(level: "Sprained_Ankle", goalActions: "Finished Treating, Ice Ankle", keys: "(Rest, Ice Ankle), (Elevate Ankle)")
 
 	gsNextLevel =  GameState.create(level: "Lyme_Disease", goalActions: "Injury Details")
 
@@ -125,7 +126,7 @@ Action.delete_all
 
 	##State 2 Actions
 
-	Action.create(command: "Examine", response: "You examine the ankle", repeat_response: "default", start_state_id: gs2.id, result_state_id: gs3.id)
+	Action.create(command: "Examine", response: "You examine the ankle", repeatResponse: "default", start_state_id: gs2.id, result_state_id: gs3.id)
 
 	##State 3 Actions
 
@@ -139,13 +140,12 @@ Action.delete_all
 
 	##State 5 Actions
 
-	Action.create(command: "Ice Ankle", response: "The patient begins icing the ankle.", start_state_id: gs5.id, result_state_id: gs5.id)
+	Action.create(command: "Ice Ankle", response: "The patient begins icing the ankle.", repeatResponse: "Patient: I'm already icing my ankle!", start_state_id: gs5.id, result_state_id: gs5.id)
 
-	Action.create(command: "Elevate Ankle", response: "You elevate the ankle", start_state_id: gs5.id, result_state_id: gs5.id)
+	Action.create(command: "Elevate Ankle", response: "You elevate the ankle", repeatResponse: "Patient: It's elevated enough!", start_state_id: gs5.id, result_state_id: gs5.id)
 
-	Action.create(command: "Rest", response: "You tell the patient to rest his ankle.", start_state_id: gs5.id, result_state_id: gs5.id)
+	Action.create(command: "Rest", response: "You tell the patient to rest his ankle.", repeatResponse: "Patient: I'm already resting my ankle, What else should I do?", start_state_id: gs5.id, result_state_id: gs5.id)
 
-	Action.create(command: "Already Done", response: "You already performed this treatment to the patient. Try another treatment.", start_state_id: gs5.id, result_state_id: gs5.id)
 	Action.create(command: "Finished Treating", response: "It appears that the patient has been properly treated. You walk up to the next floor.", start_state_id: gs5.id, result_state_id: gsNextLevel.id)
 
 

@@ -31,6 +31,7 @@ class GamesController < ApplicationController
 		@@repeats = Hash.new()
 		@err = nil
 		gamestate = GameState.first();
+		@@level = gamestate.level
 		if params[:loaded_game_id] == nil
 			@game = Game.new(game_state_id: gamestate.id, name: params[:name], time: 0, user_id: params[:user_id])
 			if !@game.save
@@ -51,10 +52,14 @@ class GamesController < ApplicationController
 	end
 
 	def query
+
 		input = params[:query]
 	
 		gamestate = GameState.find(current_game.game_state_id)
-
+		
+		if(@@level != gamestate.level)
+			@@repeats = Hash.new()
+		end
 		parseGoal(gamestate.goalActions, gamestate.keys)
 
 		if(params[:tag] == "Story")
