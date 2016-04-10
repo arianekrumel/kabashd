@@ -171,7 +171,15 @@ class GamesController < ApplicationController
 
 		else
 
-			action = Action.all.where(["command = ?", answer]).first
+			action = nil
+			actions = Action.all.where(["command = ?", answer])
+			for temp in actions
+				if GameState.find(temp.start_state_id).level == gamestate.level
+					action = temp
+					break
+				end
+			end
+			print action
 			if(action and action.earlyResponse != nil)
 				Conversation.create(query: user_input, response: action.earlyResponse, confidence: nil, game_id: gameID)
 			else

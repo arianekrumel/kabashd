@@ -3,13 +3,15 @@
 ### GameState Attributes ###
 
 	
+	*REQUIRED*
 	level: String
 
 		Holds the name of the current level
 		eg. "Lyme Disease"
 
 
-	
+
+	*REQUIRED*
 	goalActions: String
 
 		Holds a list of all commands that will result in a change of state.
@@ -47,6 +49,7 @@
 ### Action Attributes ###
 
 
+	*REQUIRED*
 	command: String
 
 		Holds the name of the command needed to initiate this action in the current state.
@@ -56,6 +59,7 @@
 
 
 
+	*REQUIRED*
 	response: String
 
 		Holds the response part of the conversation resulting from this action.
@@ -77,6 +81,16 @@
 
 
 
+	earlyResponse: String
+
+		Holds the response to be delivered in the case that this action is called before the appropriate state.
+		If set to nil, will be be equal to "You can't do that right now."
+
+		eg. "WATSON: You haven't even diagnosed him yet!"
+
+
+
+	*REQUIRED*
 	start_state_id: int
 
 		Holds an integer id that references the GameState that this action must be called from.
@@ -85,7 +99,7 @@
 
 
 
-
+	*REQUIRED*
 	result_state_id: int
 
 		Holds an integer id that references the GameState that we will enter after the action is called.
@@ -118,17 +132,17 @@ Action.delete_all
 
 	gs5 = GameState.create(level: "Sprained_Ankle", goalActions: "Diagnose Sprained Ankle")
 
-	gs6 = GameState.create(level: "Sprained_Ankle", goalActions: "Finished Treating, Ice Ankle", keys: "(Rest, Ice Ankle), (Elevate Ankle)")
+	gs6 = GameState.create(level: "Sprained_Ankle", goalActions: "Finished Treating, Finished Treating", keys: "(Rest, Ice Ankle), (Elevate Ankle)")
 
 	gsNextLevel =  GameState.create(level: "Lyme_Disease", goalActions: "Injury Details")
 
 	##State 1 Actions
 
-	Action.create(command: "Name", response: "Nurse: Hello, %n. Take a look at this patient please, I'm sure it'll only take a few seconds...\nWATSON: Wow, you've really gotten yourself in quite the predicament there %n. Well, I'll tell you what, getting revenge on the guy that kicked your dog is a pretty admirable goal you got there. I'll make myself available to you. Whenever you have a question, just ask me it and I'll try and grab some info for you. You'll be able to navigate the hospital by telling me where you want to go, but of course some locations aren't gonna be available until you get past certain people. Use your wit and my knowledge to get past these obstacles and get yourself up to the 5th floor. I've heard that's where he's staying.\nPatient 1: OWWWWWW!\nNurse: Hey %n! Get over here!\nWATSON: Psst, ask her what's wrong", start_state_id: gs1.id, result_state_id: gs2.id)
+	Action.create(command: "Name", response: "Nurse: Hello, %n. Take a look at this patient please, I'm sure it'll only take a few seconds...\nWATSON: Wow, you've really gotten yourself in quite the predicament there %n. Well, I'll tell you what, getting revenge on the guy that kicked your dog is a pretty admirable goal you got there. I'll make myself available to you. Whenever you have a question, just ask me it and I'll try and grab some info for you. You'll be able to navigate the hospital by telling me where you want to go, but of course some locations aren't gonna be available until you get past certain people. Use your wit and my knowledge to get past these obstacles and get yourself up to the 5th floor. I've heard that's where he's staying.\nPatient: OWWWWWW!\nNurse: Hey %n! Get over here!\nWATSON: Psst, ask her what's wrong", start_state_id: gs1.id, result_state_id: gs2.id)
 
 	##State 2 Actions
 
-	Action.create(command: "Injury Details", response: "Patient 1: I don't know... That's why I came here. I think I broke my ankle, it really hurts when I put pressure on it.", repeatResponse: "default", start_state_id: gs2.id, result_state_id: gs3.id)
+	Action.create(command: "Injury Details", response: "Patient: I don't know... That's why I came here. I think I broke my ankle, it really hurts when I put pressure on it.", repeatResponse: "default", start_state_id: gs2.id, result_state_id: gs3.id)
 
 	##State 3 Actions
 

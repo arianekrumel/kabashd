@@ -158,7 +158,7 @@ class GamesController < ApplicationController
 		action = gamestate.actions.where(["command = ?", answer]).first
 
 	  	if action
-			if action and action.repeatResponse != nil
+			if action.repeatResponse != nil
 				if(action.repeatResponse == "default")
 					@@repeats[action.command] = action.response
 				else
@@ -171,8 +171,16 @@ class GamesController < ApplicationController
 
 		else
 
-			action = Action.all.where(["command = ?", answer]).first
-			if(action.earlyResponse != nil)
+			action = nil
+			actions = Action.all.where(["command = ?", answer])
+			for temp in actions
+				if GameState.find(temp.start_state_id).level == gamestate.level
+					action = temp
+					break
+				end
+			end
+			print action
+			if(action and action.earlyResponse != nil)
 				Conversation.create(query: user_input, response: action.earlyResponse, confidence: nil, game_id: gameID)
 			else
 				Conversation.create(query: user_input, response: "Sorry, you can't do that right now.", confidence: nil, game_id: gameID)
