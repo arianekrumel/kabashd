@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160405195615) do
+ActiveRecord::Schema.define(version: 20160410111617) do
 
   create_table "actions", force: true do |t|
     t.text     "command"
@@ -37,18 +37,13 @@ ActiveRecord::Schema.define(version: 20160405195615) do
   add_index "conversations", ["game_id"], name: "index_conversations_on_game_id"
 
   create_table "game_states", force: true do |t|
-    t.boolean  "nameGiven"
-    t.boolean  "diagnosisMade"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "actions_id"
-    t.boolean  "ankleMoved"
-    t.boolean  "examined"
     t.string   "level"
-    t.boolean  "diagnosed_lyme"
-    t.boolean  "doxycycline"
-    t.boolean  "diagnose_burn"
-    t.boolean  "treated"
+    t.string   "goalActions"
+    t.string   "keys"
+    t.string   "saveValue"
   end
 
   add_index "game_states", ["actions_id"], name: "index_game_states_on_actions_id"
@@ -64,6 +59,7 @@ ActiveRecord::Schema.define(version: 20160405195615) do
     t.boolean  "ankle_iced"
     t.boolean  "ankle_elevated"
     t.boolean  "ankle_rested"
+    t.boolean  "ankle_diagnosed"
   end
 
   add_index "games", ["game_state_id"], name: "index_games_on_game_state_id"

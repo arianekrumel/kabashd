@@ -1,4 +1,7 @@
-module GamesHelper
 
+include SessionsHelper
+include ApplicationHelper
+module GamesHelper
+	
 
 end

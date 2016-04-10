@@ -20,7 +20,6 @@ module ApplicationHelper
 		http.use_ssl = true
 
 		response = http.request(request)
-		puts response.body.as_json
 
 		json_response = JSON.parse(response.body.as_json)["question"]
 		if json_response

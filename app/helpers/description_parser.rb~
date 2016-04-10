@@ -1,10 +1,20 @@
 
 include SessionsHelper
 include ApplicationHelper
-module GamesHelper
-	
-	@@goal = nil
-	@@keys = Hash.new
+include GamesHelper
+class DescriptionParser
+
+
+	def initialize()
+
+		@@goal = nil
+		@@keys = Hash.new
+
+	end
+
+	def goal_action
+		return @@goal
+	end
 
 	def parseDescription(description)
 		if(description.index("{") != nil)
@@ -24,14 +34,15 @@ module GamesHelper
 	end
 
 
-	def parseAction(user_input)
+	def parseAction(args)
 		
 		if @@goal == "Name"
-			current_game["player_name"] = user_input
+			game = Games.find(args[0])
+			game.player_name = args[1]
 			return @@goal
 		end
 			
-		action = query_watson(user_input, "Story")
+		action = query_watson(input, "Story")
 		if @@keys[action] != nil
 			if @@keys[action] == true
 				return "Already Done"
@@ -46,8 +57,9 @@ module GamesHelper
 				return action
 			end
 		end
-		result = @@goal
-		@@goal = nil
+
 		return @@goal
 	end
+
+
 end
