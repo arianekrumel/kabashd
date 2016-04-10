@@ -78,9 +78,9 @@ class GamesController < ApplicationController
 		@@goal = goalActions.split(", ")
 
 		if(keysets != nil and @@keys.size() == 0)
-			keysets = keysets.tr(" ", "").split("),(")
+			keysets = keysets.split("), (")
 			for keyset in keysets
-				keyset = keyset.tr("()", "").split(",")
+				keyset = keyset.tr("()", "").split(", ")
 				temp = Hash.new
 				for key in keyset
 					temp[key] = false
@@ -142,8 +142,10 @@ class GamesController < ApplicationController
 			if(action == goal)
 				@@goal = nil
 				@@keys = Set.new()
+
 				break
 			end
+
 		end
 	end
 
@@ -153,7 +155,11 @@ class GamesController < ApplicationController
 
 	  	if action
 			if action.repeatResponse != nil
-				@@repeats[action.command] = action.repeatResponse
+				if(action.repeatResponse == "default")
+					@@repeats[action.command] = action.response
+				else
+					@@repeats[action.command] = action.repeatResponse
+				end
 			end
 	  		Conversation.create(query: user_input, response: action.response.gsub("%n", current_game.player_name), confidence: nil,
 		game_id: gameID)

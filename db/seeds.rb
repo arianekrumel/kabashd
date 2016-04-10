@@ -125,7 +125,7 @@ Action.delete_all
 
 	##State 2 Actions
 
-	Action.create(command: "Examine", response: "You examine the ankle", start_state_id: gs2.id, result_state_id: gs3.id)
+	Action.create(command: "Examine", response: "You examine the ankle", repeatResponse: "default", start_state_id: gs2.id, result_state_id: gs3.id)
 
 	##State 3 Actions
 

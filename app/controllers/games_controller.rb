@@ -31,6 +31,7 @@ class GamesController < ApplicationController
 		@@repeats = Hash.new()
 		@err = nil
 		gamestate = GameState.first();
+		@@level = gamestate.level
 		if params[:loaded_game_id] == nil
 			@game = Game.new(game_state_id: gamestate.id, name: params[:name], time: 0, user_id: params[:user_id])
 			if !@game.save
@@ -51,10 +52,14 @@ class GamesController < ApplicationController
 	end
 
 	def query
+
 		input = params[:query]
 	
 		gamestate = GameState.find(current_game.game_state_id)
-
+		
+		if(@@level != gamestate.level)
+			@@repeats = Hash.new()
+		end
 		parseGoal(gamestate.goalActions, gamestate.keys)
 
 		if(params[:tag] == "Story")
@@ -142,8 +147,10 @@ class GamesController < ApplicationController
 			if(action == goal)
 				@@goal = nil
 				@@keys = Set.new()
+
 				break
 			end
+
 		end
 	end
 
@@ -153,7 +160,11 @@ class GamesController < ApplicationController
 
 	  	if action
 			if action.repeatResponse != nil
-				@@repeats[action.command] = action.repeatResponse
+				if(action.repeatResponse == "default")
+					@@repeats[action.command] = action.response
+				else
+					@@repeats[action.command] = action.repeatResponse
+				end
 			end
 	  		Conversation.create(query: user_input, response: action.response.gsub("%n", current_game.player_name), confidence: nil,
 		game_id: gameID)
