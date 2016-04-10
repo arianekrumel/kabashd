@@ -12,9 +12,9 @@
       <div id="queryarea" style="height:500px">
 
    	<div class="conv_entry">
-        	<p class="responseSuccess">Level: Sprained Ankle</p>
-		<br>
 
+		<p class="responseSuccess">FIRST FLOOR - NORTHWEST HOSPITAL</p>
+		<br>
 		<p class="responseSuccess">You've heard that a certain high powered businessman is having an extended stay at Northwest General.</p>
 		<br>
 		<p class="responseSuccess">He's the one that's responsible for kicking your dog. It's time to give him a piece of your mind.</p>
@@ -27,9 +27,8 @@
 		<br>
 		<p class="responseSuccess">You're ready.</p>
 		<br>
-		<p class="responseSuccess">FIRST FLOOR - NORTHWEST HOSPITAL</p>
-		<br>
-		<p class="responseSuccess">Hey you! You're new here, but the ER is overflowing. What is your name? </p>
+
+		<p class="responseSuccess">Nurse: Hey you! You're new here, but the ER is overflowing. What is your name? </p>
 		<br>
 
 	</div>

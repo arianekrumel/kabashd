@@ -164,7 +164,8 @@ Action.delete_all
 
 	Action.create(command: "Rest", response: "*You tell the patient to rest his ankle.*", repeatResponse: "Patient: I'm already resting my ankle, What else should I do?", earlyResponse: "WATSON: You haven't even diagnosed him yet!", start_state_id: gs6.id, result_state_id: gs6.id)
 
-	Action.create(command: "Finished Treating", response: "It appears that the patient has been properly treated. You walk up to the next floor.", start_state_id: gs6.id, result_state_id: gsNextLevel.id)
+	Action.create(command: "Finished Treating", response: "It appears that the patient has been properly treated.\nLevel 2\nYou walk up to the second floor, wondering what new challenge awaits you. As you exit the stairwell, Diana calls out to a tall, middle aged doctor. He marches towards you, looking like he doesn’t suffer fools lightly. You’d best be on your toes.\bNurse Diana: Dr. Johnson! We have a new resident here, and it’s your turn as mentor.\nShe gives him a stern look.\nDr. Johnson: So you're my new resident. You're going to have to impress me before I let you near my interesting patients.\nHe points to a sickly man lying in a bed across the room.\nDr. Johnson: You see that man there? His name is Jack Smirnoff, and I was just getting started talking to him before you interrupted. Why don’t you make yourself useful and handle it? If you can diagnose and treat him correctly, it would go a long way towards getting in my good books. \nYou gather yourself and walk over to the bed. At least you still have Watson in your pocket and Diana by your side to give you a little guidance. Dr. Johnson is scribbling on a notepad across the room, periodically looking up and giving you little glances and glares. You’d better not mess this one up.\nJack: If you’re my new doctor, I really hope you can tell me what’s wrong with me!
+", start_state_id: gs6.id, result_state_id: gsNextLevel.id)
 
 
 ##################################
@@ -186,29 +187,29 @@ Action.delete_all
 
 	##State 1 Actions
 
-	Action.create(command: "Injury Details", response: "Patient: Well I've been getting these really terrible headaches, and feeling awful feverish. My neck is stiff and my joints are all swollen and painful. And I've got this really weird rash on my shoulder. ", start_state_id: gs1.id, result_state_id: gs2.id)
+	Action.create(command: "Injury Details", response: "Jack: Well I've been getting these really terrible headaches, and feeling awful feverish. My neck is stiff and my joints are all swollen and painful. And I've got this really weird rash on my shoulder.", repeatResponse: "default", start_state_id: gs1.id, result_state_id: gs2.id)
 
 
 	##State 2 Actions
 
-	Action.create(command: "Travelling", response: "Patient: I went hiking in Yellowstone recently.", start_state_id: gs2.id, result_state_id: gs2.id)
+	Action.create(command: "Travelling", response: "Jack: I went hiking in Yellowstone recently.", repeatResponse: "default", earlyResponse: "Jack: What does that matter? You haven't even asked me what's wrong.", start_state_id: gs2.id, result_state_id: gs2.id)
 
-	Action.create(command: "How Long", response: "Patient: Everything started a few weeks ago but it's been worse recently.", start_state_id: gs2.id, result_state_id: gs2.id)
+	Action.create(command: "How Long", response: "Jack: Everything started a few weeks ago but it's been worse recently.", repeatResponse: "default", earlyResponse: "Jack: Aren't you going to ask what's wrong first?", start_state_id: gs2.id, result_state_id: gs2.id)
 
-	Action.create(command: "Blood Test", response: "*In Progress... In Progress... Done!* The Blood test shows an unusually high level of IgG and IgM antibodies.", start_state_id: gs2.id, result_state_id: gs2.id)
+	Action.create(command: "Blood Test", response: "*In Progress... In Progress... Done!*\nNurse: The Blood test showed an unusually high level of IgG and IgM antibodies.", repeatResponse: "Dr. Johnson: We can't take another blood test, are you crazy?", earlyResponse: "Dr. Johnson: Why do you want to take a blood test? You haven't even asked what the problem is.", start_state_id: gs2.id, result_state_id: gs2.id)
 
-	Action.create(command: "Examine", response: "*Picture of a Bullseye Rash* This rash is bright red and has a distinct bullseye pattern.", start_state_id: gs2.id, result_state_id: gs3.id)
+	Action.create(command: "Examine", response: "*Picture of a Bullseye Rash* This rash is bright red and has a distinct bullseye pattern.", repeatResponse: "default", start_state_id: gs2.id, result_state_id: gs3.id)
 
 
 	##State 3 Actions
 
-	Action.create(command: "Diagnose Lyme", response: "You have successfully diagnosed Lyme Disease.", start_state_id: gs3.id, result_state_id: gs4.id)
+	Action.create(command: "Diagnose Lyme", response: "Dr. Johnson: You're right! Good job %n. There must be some kind of medication we can prescribe him.", repeatResponse: "Dr. Johnson: You already diagnosed the patient. We need to focus on treatment, now.", earlyResponse: "Dr. Johnson: You need to learn more about the patient before you make a diagnosis.", start_state_id: gs3.id, result_state_id: gs4.id)
 
-	Action.create(command: "Bad response", response: "That is the wrong diagnosis.", start_state_id: gs3.id, result_state_id: gs3.id)
+	Action.create(command: "Bad response", response: "Dr. Johnson: That is the wrong diagnosis. You need to be more careful!", repeatResponse: "Dr. Johnson: Another wrong diagnosis? You need to ask more questions.", earlyResponse: "Dr. Johnson: You need to learn more about the patient before you make a diagnosis.", start_state_id: gs3.id, result_state_id: gs3.id)
 
 	##State 4 Actions
 
-	Action.create(command: "Doxycycline", response: "You prescribe the patient Doxycycline. Go to the next level.", start_state_id: gs4.id, result_state_id: gsNextLevel.id)
+	Action.create(command: "Doxycycline", response: "You prescribe the patient Doxycycline. Go to the next level.", earlyResponse: "WATSON: Are you crazy? You can't just prescribe medication without making a diagnosis!", start_state_id: gs4.id, result_state_id: gsNextLevel.id)
 
 
 

@@ -170,7 +170,6 @@ class GamesController < ApplicationController
 			current_game.game_state_id = action.result_state_id
 
 		else
-
 			action = nil
 			actions = Action.all.where(["command = ?", answer])
 			for temp in actions
