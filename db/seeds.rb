@@ -1,7 +1,104 @@
+=begin
+
+### GameState Attributes ###
+
+	
+	level: String
+
+		Holds the name of the current level
+		eg. "Lyme Disease"
+
+
+	
+	goalActions: String
+
+		Holds a list of all commands that will result in a change of state.
+		Must be separated by comma-spaces.
+
+		eg. "Finished Treating, Already Done"
+
+
+
+	saveValue: String
+
+		Holds the name of the 'Game' attribute in which to save the user's input.
+		This value must also be migrated into the Game model's schema.
+
+		eg. "player_name"
+
+
+
+	keys: String
+
+		Holds a set of key commands for each goalAction respectively.
+		A key command is a command that must be called before its corresponding goalAction will be called.
+		Each set of key commands is a comma-space separated list surrounded by parentheses.
+		These sets of key commands must also be separated by comma-spaces.
+		The corresponding goalAction will automatically be called when all keys in the set are called.
+		Thus we do not need to put these values in the corpus.
+
+		eg. "(Rest, Ice Ankle), (Elevate Ankle, Rest)"
+
+
+
+
+
+### Action Attributes ###
+
+
+	command: String
+
+		Holds the name of the command needed to initiate this action in the current state.
+
+		eg. "Ice Ankle"
+
+
+
+
+	response: String
+
+		Holds the response part of the conversation resulting from this action.
+		Will be saved into a Conversation object.
+
+		eg. "You examine the ankle."
+
+
+
+
+	repeatResponse: String
+
+		Holds the response to be delivered in the case that this action is called more than once.
+		If set to 'default', it will be equal to response.
+		If set to nil, will be be equal to "You can't do that right now."
+
+		eg. "Patient: I can't do it again, it hurts too much!"
+
+
+
+
+	start_state_id: int
+
+		Holds an integer id that references the GameState that this action must be called from.
+
+		eg. gs1.id
+
+
+
+
+	result_state_id: int
+
+		Holds an integer id that references the GameState that we will enter after the action is called.
+
+		eg. gsNextLevel.id
+
+
+
+=end
 
 
 GameState.delete_all
 Action.delete_all
+
 
 ##################################
 #### LEVEL 1 - Sprained Ankle ####
@@ -32,13 +129,13 @@ Action.delete_all
 
 	##State 3 Actions
 
-	Action.create(command: "Move Ankle", response: "Patient moves ankle.", start_state_id: gs3.id, result_state_id: gs4.id)
+	Action.create(command: "Move Ankle", response: "Patient moves ankle.", repeatResponse: "Patient: I can't do it again, it hurts too much!", start_state_id: gs3.id, result_state_id: gs4.id)
 
 	##State 4 Actions
 
 	Action.create(command: "Ice Ankle", response: "You haven't even diagnosed the patient yet!", start_state_id: gs4.id, result_state_id: gs4.id)
 
-	Action.create(command: "Diagnose Sprained Ankle", response: "Ankle diagnosed", start_state_id: gs4.id, result_state_id: gs5.id)
+	Action.create(command: "Diagnose Sprained Ankle", response: "Ankle diagnosed", repeatResponse: "You already diagnosed this patient.", start_state_id: gs4.id, result_state_id: gs5.id)
 
 	##State 5 Actions
 

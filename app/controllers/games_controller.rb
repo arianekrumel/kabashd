@@ -28,6 +28,7 @@ class GamesController < ApplicationController
 	def create
 		@@goal = nil
 		@@keys = Set.new()
+		@@repeats = Hash.new()
 		@err = nil
 		gamestate = GameState.first();
 		if params[:loaded_game_id] == nil
@@ -99,6 +100,10 @@ class GamesController < ApplicationController
 			action = @@goal[0]
 		else
 			action = query_watson(input, "Story")
+			if(@@repeats.key?(action))
+				Conversation.create(query: input, response: @@repeats[action], confidence: nil, game_id: current_game.id)
+				return
+			end
 		end
 		
 		goalIndex = 0
@@ -147,7 +152,9 @@ class GamesController < ApplicationController
 		action = gamestate.actions.where(["command = ?", answer]).first
 
 	  	if action
-
+			if action.repeatResponse != nil
+				@@repeats[action.command] = action.repeatResponse
+			end
 	  		Conversation.create(query: user_input, response: action.response.gsub("%n", current_game.player_name), confidence: nil,
 		game_id: gameID)
 			current_game.game_state_id = action.result_state_id

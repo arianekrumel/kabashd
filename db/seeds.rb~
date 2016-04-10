@@ -1,7 +1,33 @@
+=begin
+
+GameState Attributes
+	
+	level: String
+		Holds the name of the current level
+	
+	goalActions: String
+		Holds a list of all commands that will result in a change of state. Must be separated by commas.
+
+	saveValue: String
+		Holds the name of the 'Game' attribute in which to save the user's input
+
+	keys: String
+		Holds a set of key commands for each goalAction respectively. A key command is a command that must be called before its corresponding goalAction can called. Each set of key commands is a comma separated list surrounded by parentheses. These sets of key commands must also be separated by commas.
+		eg. "(Rest, Ice Ankle), (Elevate Ankle, Rest)"
+
+
+
+
+
+
+
+
+=end
 
 
 GameState.delete_all
 Action.delete_all
+
 
 ##################################
 #### LEVEL 1 - Sprained Ankle ####
@@ -32,13 +58,13 @@ Action.delete_all
 
 	##State 3 Actions
 
-	Action.create(command: "Move Ankle", response: "Patient moves ankle.", start_state_id: gs3.id, result_state_id: gs4.id)
+	Action.create(command: "Move Ankle", response: "Patient moves ankle.", repeatResponse: "Patient: I can't do it again, it hurts too much!", start_state_id: gs3.id, result_state_id: gs4.id)
 
 	##State 4 Actions
 
 	Action.create(command: "Ice Ankle", response: "You haven't even diagnosed the patient yet!", start_state_id: gs4.id, result_state_id: gs4.id)
 
-	Action.create(command: "Diagnose Sprained Ankle", response: "Ankle diagnosed", start_state_id: gs4.id, result_state_id: gs5.id)
+	Action.create(command: "Diagnose Sprained Ankle", response: "Ankle diagnosed", repeatResponse: "You already diagnosed this patient.", start_state_id: gs4.id, result_state_id: gs5.id)
 
 	##State 5 Actions
 

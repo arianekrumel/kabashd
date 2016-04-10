@@ -28,8 +28,8 @@ class GamesController < ApplicationController
 	def create
 		@@goal = nil
 		@@keys = Set.new()
+		@@repeats = Hash.new()
 		@err = nil
-		#@game =  Game.create(params[:game].permit(:name, :time, :user_id))
 		gamestate = GameState.first();
 		if params[:loaded_game_id] == nil
 			@game = Game.new(game_state_id: gamestate.id, name: params[:name], time: 0, user_id: params[:user_id])
@@ -48,8 +48,6 @@ class GamesController < ApplicationController
 		@conversations = current_game.conversations
 		render '/games/query'
 
-		#@err = user.errors.messages
-		#@game = Game.new
 	end
 
 	def query
@@ -80,9 +78,9 @@ class GamesController < ApplicationController
 		@@goal = goalActions.split(", ")
 
 		if(keysets != nil and @@keys.size() == 0)
-			keysets = keysets.split("), (")
+			keysets = keysets.tr(" ", "").split("),(")
 			for keyset in keysets
-				keyset = keyset.tr("()", "").split(", ")
+				keyset = keyset.tr("()", "").split(",")
 				temp = Hash.new
 				for key in keyset
 					temp[key] = false
@@ -102,6 +100,10 @@ class GamesController < ApplicationController
 			action = @@goal[0]
 		else
 			action = query_watson(input, "Story")
+			if(@@repeats.key?(action))
+				Conversation.create(query: input, response: @@repeats[action], confidence: nil, game_id: current_game.id)
+				return
+			end
 		end
 		
 		goalIndex = 0
@@ -150,7 +152,9 @@ class GamesController < ApplicationController
 		action = gamestate.actions.where(["command = ?", answer]).first
 
 	  	if action
-
+			if action.repeatResponse != nil
+				@@repeats[action.command] = action.repeatResponse
+			end
 	  		Conversation.create(query: user_input, response: action.response.gsub("%n", current_game.player_name), confidence: nil,
 		game_id: gameID)
 			current_game.game_state_id = action.result_state_id

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160410111617) do
+ActiveRecord::Schema.define(version: 20160410133632) do
 
   create_table "actions", force: true do |t|
     t.text     "command"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20160410111617) do
     t.datetime "updated_at"
     t.integer  "result_state_id"
     t.integer  "start_state_id"
+    t.string   "repeatResponse"
   end
 
   add_index "actions", ["result_state_id"], name: "index_actions_on_result_state_id"
