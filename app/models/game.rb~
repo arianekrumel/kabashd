@@ -3,5 +3,4 @@ class Game < ActiveRecord::Base
 
   has_many :conversations
   belongs_to :user
-  belongs_to :game_state
 end

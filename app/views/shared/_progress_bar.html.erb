@@ -1,24 +1,14 @@
-<div class="panel panel-default" id="Progress">
+
+<div class="panel panel-default">
 
   <div class="panel-heading">
-    <span class="panel-title">Progress</span>
+    <h3 class="panel-title">Progress</h3>
   </div>
 
   <div class="panel-body">
-    <div class="row">
-      <div class="col-md-3">
-        <%if percent > 100 %>
-           100.0%
-        <%else%>
-          <%=  percent %>%
-        <%end%>
-      </div>
-      <div class="col-md-9">
-        <div class="progress">
-          <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="<%= percent %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= percent %>%">
-            <span class="sr-only"><%= percent %>% Complete (success)</span>
-          </div>
-        </div>
+    <div class="progress">
+      <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="<%= percent %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= percent %>%">
+        <span class="sr-only"><%= percent %>% Complete (success)</span>
       </div>
     </div>
   </div>

@@ -5,20 +5,24 @@ include SessionsHelper
 include ApplicationHelper
 
 class GamesController < ApplicationController
+  layout = 'games'
   @user_percent = 50
 
   def index
     @games = current_user.games
+    render :layout => 'application'
   end
 
   def new
     end_game
     @game = Game.new
+    render :layout => 'application'
   end
 
   def load
     end_game
     @games = current_user.games
+    render :layout => 'application'
   end
 
   def create
@@ -45,21 +49,19 @@ class GamesController < ApplicationController
 
     #@err = user.errors.messages
     #@game = Game.new
-
-
   end
 
   def query
-	answer = queryWatson(params[:query])
-	if answer != nil
-		Conversation.create(query: params[:query], response: answer["text"], confidence: answer["value"], game_id: params[:game_id])
-		if answer["text"] != nil# && isValidAction(Gamestate.getState("Location"), answer["text"])
-		 #give appropriate response to user
+    user_input = params[:query]
+  	answer = query_watson(user_input)
 
-	    	end
-	end
-	@conversations = current_game.conversations
-	current_game.save
+  	if answer
+  		Conversation.create(query: user_input, response: answer, confidence: nil,
+        game_id: params[:game_id])
+  	end
+
+  	@conversations = current_game.conversations
+  	current_game.save
   end
 
 end

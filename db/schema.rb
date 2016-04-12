@@ -11,7 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160215084034) do
+ActiveRecord::Schema.define(version: 20160412223413) do
+
+  create_table "actions", force: true do |t|
+    t.text     "command"
+    t.text     "response"
+    t.text     "repeatResponse"
+    t.text     "earlyResponse"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "result_state_id"
+    t.integer  "start_state_id"
+  end
+
+  add_index "actions", ["result_state_id"], name: "index_actions_on_result_state_id"
+  add_index "actions", ["start_state_id"], name: "index_actions_on_start_state_id"
 
   create_table "conversations", force: true do |t|
     t.text     "query"
@@ -24,14 +38,29 @@ ActiveRecord::Schema.define(version: 20160215084034) do
 
   add_index "conversations", ["game_id"], name: "index_conversations_on_game_id"
 
+  create_table "game_states", force: true do |t|
+    t.string   "level"
+    t.string   "goalActions"
+    t.string   "keys"
+    t.string   "saveValue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "actions_id"
+  end
+
+  add_index "game_states", ["actions_id"], name: "index_game_states_on_actions_id"
+
   create_table "games", force: true do |t|
     t.string   "name"
     t.integer  "time"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.integer  "game_state_id"
+    t.string   "player_name"
   end
 
+  add_index "games", ["game_state_id"], name: "index_games_on_game_state_id"
   add_index "games", ["user_id"], name: "index_games_on_user_id"
 
   create_table "users", force: true do |t|
