@@ -1,5 +1,7 @@
-# kabashd
-An interactive game managed by Watson to allow the user to insert commands/ questions in order to learn more about the virtual environment.
+# Ka-bash'd: A Natural Language Game Framework
+
+Ka-bash’d is a natural language, game creation framework with valuable applications in training and learning. Games created with Ka-bash’d allow a player to use their own words to control game play with IBM Watson interpreting user input as in-game commands. Watson is also available in the traditional question answering context via a gametime companion that provides related data on request. The initial game is a medical game where a player must examine, interact, diagnose, and give treatment options to patients. Ka-bash’d includes an extensible API that allows easy creation of game scenarios that each provide unique skill-building opportunities to players.
+
 
 ## Installation
 
