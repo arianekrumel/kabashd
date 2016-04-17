@@ -1,21 +1,15 @@
-<div class="row jumbotron" id="header-game">
-  <div class="col-md-2">
+<div class="row" id="header-game">
     <div class="panel panel-default">
       <div class="panel-heading">Score</div>
       <div class="panel-body">
         0
       </div>
     </div>
-  </div>
-  <div class="col-md-2">
     <div class="panel panel-default">
       <div class="panel-heading">Level</div>
       <div class="panel-body">
         1
       </div>
     </div>
-  </div>
-  <div class="col-md-8">
     <%= render :partial => "shared/progress_bar", :locals => { :percent => @user_percent} %>
-  </div>
 </div>

@@ -20,19 +20,12 @@
 			</div>
 		</header>
 
-		<main>
-			<div class="container main-content">
-					<div class="col-md-12 content">
-					<%= render 'shared/header_game' %>
-					<%= yield %>
-				</div>
-			</div>
+		<main class="container-fluid">
+			<%= yield %>
 		</main>
 
 		<footer>
-			<div class="container">
-				<%= render 'shared/footer' %>
-			</div>
+			<%= render 'shared/footer' %>
 		</footer>
 
 		<!--

@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-8 main">
+  <div class="col-md-6 col-md-offset-2 main">
     <h1>Story</h1>
     <%= render 'shared/alert_completed_task' %>
     <%= render 'shared/alert_failed_task' %>
@@ -59,7 +59,16 @@
     </div>
   </div>
 
-  <div class="col-md-4 sidebar">
+  <div class="col-md-2 sidebar">
+    &nbsp;
+    <%= render 'shared/header_game' %>
+    <a href="/games/new" type="button" class="btn btn-lg btn-success btn-block">New Game</a>
+    <a href="/level1" type="button" class="btn btn-lg btn-success btn-block">Level 1</a>
+    <a href="/level2" type="button" class="btn btn-lg btn-success btn-block">Level 2</a>
+    <a href="/level3" type="button" class="btn btn-lg btn-success btn-block">Level 3</a>
+  </div>
+
+  <div class="col-md-4 main">
     <h1>Watson</h1>
 <%= form_tag({controller: "games", action: "query"}, method: "post", id:"queryForm") do  %>
   <div class="input-group">
