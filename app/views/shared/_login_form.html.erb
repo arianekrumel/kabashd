@@ -9,7 +9,7 @@
     <h1>Log in</h1>
     <p>New user? <%= link_to "Sign up now!", '/users/new', method:"get" %></p>
 
-    <%= form_for(:session, url: '/sessions/create', method:"post",  html: {id:"new_session"} ) do |f| %>
+    <%= form_for(:session, url: '/sessions/create', method:"post",  html: {id:"new_session", class:"well"} ) do |f| %>
         <div class="form-group">
             <%= f.email_field :email, :class=>'form-control', :placeholder => "E-mail" %>
         </div>
@@ -18,7 +18,7 @@
             <%= f.password_field :password, :class=>'form-control', :placeholder => "Password" %>
         </div>
 
-        <%= f.submit "Sign in", :class=>'btn btn-default' %>
+        <%= f.submit "Sign in", :class=>'btn btn-primary' %>
     <% end %>
 
     <!-- If log in information is not valid, this notifies to the user to try again or to sign up for a free account -->
