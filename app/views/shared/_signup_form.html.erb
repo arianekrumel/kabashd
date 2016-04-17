@@ -1,36 +1,41 @@
-    <div class="panel" id="sign-up">
-        <h1>Sign up</h1>
-        <div class="sign_up_content">
-            <p>Existing User? <%= link_to "Log in", '/sessions/new', method:"get" %></p>
+<div class="row">
+  <div class="col-md-8">
+    <h1>Welcome to Ka-bash’d!</h1>
+    <h2>Ka-bash'd: A Natural Language Game Framework</h2>
+    <p>Ka-bash’d is a natural language, game creation framework with valuable applications in training and learning. Games created in Ka-bash’d allow players to use their own words to control game play. IBM Watson, specifically the Watson Engagement Advisor (WEA), interprets user input as in-game commands. IBM Watson is also available in the traditional question answering context via a gametime companion that provides related data on request. The initial game is a medical game where a player must examine, interact, diagnose, and give treatment options to patients. Ka-bash’d includes an extensible API that allows easy creation of game scenarios that each provide unique skill-building opportunities to players.</p>
+  </div>
+  <div class="col-md-4">    
+    <h1>Sign up</h1>
+    <p>Existing User? <%= link_to "Log in", '/sessions/new', method:"get" %></p>
+
+    <%= form_for(@user, url: '/users/create', method:"post") do |f| %>
+        <div class="form-group">
+            <%= f.text_field :first_name, :class=>'form-control', :placeholder => "First Name" %>
         </div>
 
-        <%= form_for(@user, url: '/users/create', method:"post") do |f| %>
-            <div class="sign_up_content">
-                        <%= f.text_field :first_name, :class=>'form-control', :placeholder => "First Name" %>
-            </div>
+        <div class="form-group">
+            <%= f.text_field :last_name, :class=>'form-control', :placeholder => "Last Name" %>
+        </div>
 
-            <div class="sign_up_content">
-                        <%= f.text_field :last_name, :class=>'form-control', :placeholder => "Last Name" %>
-            </div>
+        <div class="form-group">
+            <%= f.email_field :email, :class=>'form-control',  :placeholder => "E-mail" %>
+        </div>
 
-            <div class="sign_up_content">
-                        <%= f.email_field :email, :class=>'form-control',  :placeholder => "E-mail" %>
-            </div>
+        <div class="form-group">
+            <%= f.number_field :zip_code, type:'number', :class=>'form-control',  :placeholder => "Zipcode" %>
+        </div>
 
-            <div class="sign_up_content">
-                        <%= f.number_field :zip_code, type:'number', :class=>'form-control',  :placeholder => "Zipcode" %>
-            </div>
+        <div class="form-group">
+            <%= f.password_field :password, :class=>'form-control', :placeholder => "Password" %>
+        </div>
 
-            <div class="sign_up_content">
-                        <%= f.password_field :password, :class=>'form-control', :placeholder => "Password" %>
-            </div>
+        <div class="form-group">
+            <%= f.password_field :password_confirmation, :class=>'form-control', :placeholder => "Confirm Password"%>
+        </div>
 
-            <div class="sign_up_content">
-                        <%= f.password_field :password_confirmation, :class=>'form-control', :placeholder => "Confirm Password" %>
-            </div>
-
-            <div class="sign_up_content">
-                <%= f.submit "Sign up", :class=>'btn btn-default' %>
-            </div>
-        <% end %>
+        <div class="form-group">
+            <%= f.submit "Sign up", :class=>'btn btn-default' %>
+        </div>
+    <% end %>
     </div>
+</div>
