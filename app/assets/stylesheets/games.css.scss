@@ -24,7 +24,7 @@ body#GamesController {
     height: 50em;
 
     .conv_entry {
-      color: #fff;
+      color: #000;
 
       .responseSuccess {
         color: black;
@@ -40,5 +40,9 @@ body#GamesController {
   .storycommands{
     position:absolute;
     bottom:0px;
+  }
+  .story-box{
+    padding-top:20px;
+    padding-bottom:20px;
   }
 }

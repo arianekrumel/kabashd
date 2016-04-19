@@ -16,7 +16,7 @@ body {
 }
 
 #HomePage {
-	
+
 	.jumbotron {
 		background-image:
   	    linear-gradient(
@@ -37,16 +37,33 @@ body {
 }
 
 footer {
-	position: absolute;
+	position: fixed;
     bottom: 0;
     width: 100%;
     height: 100px;
-    background-color: #555;
+    background-color: #3C8DBC;
     color: #fff;
 
     p {
     	margin: 35px;
     }
+}
+
+footerfixed {
+	position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background-color: #3C8DBC;
+    color: #fff;
+
+    p {
+    	margin: 35px;
+    }
+}
+
+.row{
+  padding-bottom:20px;
 }
 
 // Styling for all levels.

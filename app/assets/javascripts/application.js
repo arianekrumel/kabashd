@@ -14,3 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+var objDiv = document.getElementById("storybox");
+objDiv.scrollTop = objDiv.scrollHeight;

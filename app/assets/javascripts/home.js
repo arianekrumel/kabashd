@@ -22,3 +22,6 @@ $('#queryForm').submit(function(e) {
 function resizeIframe(){
     $('#conv_iframe').attr("height", $('#conv_iframe').contents().find('html').outerHeight());
 }
+
+var objDiv = document.getElementById("storybox");
+objDiv.scrollTop = objDiv.scrollHeight;
