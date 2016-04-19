@@ -65,9 +65,9 @@ body {
     position: fixed;
     color:#4E4E4E;
     top: 51px;
-    bottom: 100px;
+    bottom: 0;
     right: 0;
-    z-index: 0;
+    z-index: 1000;
     display: block;
     padding: 20px;
     overflow-x: hidden;
