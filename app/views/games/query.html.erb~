@@ -44,7 +44,6 @@
 			<% if conversation.image != nil %>
 				<div class='card'><%= image_tag(conversation.image) %>
 				</div>
-				<br>
 			<% end %>
 		        <% if conversation.response != nil %>
 		        	<% conversation.response.split("\n").each do |response| %>

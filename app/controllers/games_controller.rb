@@ -6,7 +6,7 @@ include ApplicationHelper
 include GamesHelper
 class GamesController < ApplicationController
 	layout = 'games'
-	@user_percent = 50
+	@@levelNumbers = Hash.new()
 
 	def index
 		@games = current_user.games
@@ -158,6 +158,8 @@ class GamesController < ApplicationController
 		action = gamestate.actions.where(["command = ?", answer]).first
 
 	  	if action
+			current_game.score += action.score_reward
+			current_game.progress += action.progress_reward
 			if action.repeatResponse != nil
 				if(action.repeatResponse == "default")
 					@@repeats[action.command] = action.response
@@ -166,8 +168,13 @@ class GamesController < ApplicationController
 				end
 			end
 	  		Conversation.create(query: user_input, response: action.response.gsub("%n", current_game.player_name), confidence: nil,
-		game_id: gameID)
+		game_id: gameID, image: action.image)
 			current_game.game_state_id = action.result_state_id
+			lvl = current_game.game_state.level
+			if(!@@levelNumbers.key?(lvl))
+				@@levelNumbers[lvl] = @@levelNumbers.size() + 1
+			end
+			current_game.level_num = @@levelNumbers[lvl]
 
 		else
 			action = nil

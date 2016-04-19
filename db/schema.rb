@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160412223413) do
+ActiveRecord::Schema.define(version: 20160419103755) do
 
   create_table "actions", force: true do |t|
     t.text     "command"
@@ -22,6 +22,9 @@ ActiveRecord::Schema.define(version: 20160412223413) do
     t.datetime "updated_at"
     t.integer  "result_state_id"
     t.integer  "start_state_id"
+    t.integer  "progress_reward", default: 0
+    t.integer  "score_reward",    default: 0
+    t.string   "image"
   end
 
   add_index "actions", ["result_state_id"], name: "index_actions_on_result_state_id"
@@ -34,6 +37,7 @@ ActiveRecord::Schema.define(version: 20160412223413) do
     t.datetime "updated_at"
     t.string   "confidence"
     t.integer  "game_id"
+    t.string   "image"
   end
 
   add_index "conversations", ["game_id"], name: "index_conversations_on_game_id"
@@ -58,6 +62,9 @@ ActiveRecord::Schema.define(version: 20160412223413) do
     t.integer  "user_id"
     t.integer  "game_state_id"
     t.string   "player_name"
+    t.integer  "level_num",     default: 1
+    t.integer  "progress",      default: 0
+    t.integer  "score",         default: 0
   end
 
   add_index "games", ["game_state_id"], name: "index_games_on_game_state_id"
