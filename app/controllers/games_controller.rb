@@ -33,7 +33,7 @@ class GamesController < ApplicationController
 		gamestate = GameState.first();
 		@@level = gamestate.level
 		if params[:loaded_game_id] == nil
-			@game = Game.new(game_state_id: gamestate.id, name: params[:name], time: 0, user_id: params[:user_id])
+			@game = Game.new(game_state_id: gamestate.id, name: params[:name], time: 0, user_id: params[:user_id], info: "No information to display")
 			if !@game.save
 				@err = @game.errors.messages
 				render '/games/new'
@@ -65,9 +65,8 @@ class GamesController < ApplicationController
 		if(params[:tag] == "Story")
 	
 			parseAction(input, gamestate.saveValue)
-			@information = "No information to display"
 		else
-			@information = query_watson(input, "Knowledge")
+			current_game.info = query_watson(input, "Knowledge")
 		end
 
 		@conversations = current_game.conversations

@@ -92,10 +92,8 @@
           <div data-role="header" data-position="fixed">
           </div>
             <div class="conv_entry">
-                <%if @information%>
                   <h3>Watson says:</h3>
-                  <p><%= @information %></p>
-                <%end%>
+                  <p><%= current_game.info %></p>
             </div>
         </div>
     </div>

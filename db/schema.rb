@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160419103755) do
+ActiveRecord::Schema.define(version: 20160419111642) do
 
   create_table "actions", force: true do |t|
     t.text     "command"
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 20160419103755) do
     t.integer  "level_num",     default: 1
     t.integer  "progress",      default: 0
     t.integer  "score",         default: 0
+    t.text     "info",          default: "No information to display."
   end
 
   add_index "games", ["game_state_id"], name: "index_games_on_game_state_id"

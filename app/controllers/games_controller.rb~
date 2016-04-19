@@ -26,6 +26,7 @@ class GamesController < ApplicationController
 	end
 
 	def create
+		@@information = "No information to display"
 		@@goal = nil
 		@@keys = Set.new()
 		@@repeats = Hash.new()
@@ -65,9 +66,8 @@ class GamesController < ApplicationController
 		if(params[:tag] == "Story")
 	
 			parseAction(input, gamestate.saveValue)
-			@information = "No information to display"
 		else
-			@information = query_watson(input, "Knowledge")
+			@@information = query_watson(input, "Knowledge")
 		end
 
 		@conversations = current_game.conversations
@@ -168,7 +168,7 @@ class GamesController < ApplicationController
 				end
 			end
 	  		Conversation.create(query: user_input, response: action.response.gsub("%n", current_game.player_name), confidence: nil,
-		game_id: gameID)
+		game_id: gameID, image: action.image)
 			current_game.game_state_id = action.result_state_id
 			lvl = current_game.game_state.level
 			if(!@@levelNumbers.key?(lvl))
