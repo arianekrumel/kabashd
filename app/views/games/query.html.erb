@@ -1,15 +1,10 @@
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-12">
         <div data-role="header" data-position="fixed">
             <h1>Story</h1>
         </div>
     </div>
-    <div class="col-md-4">
-        <div data-role="header" data-position="fixed">
-            <h1>Watson</h1>
-        </div>
-    </div>
-    <div class="col-md-8 story-box" id="storybox">
+    <div class="col-md-12 story-box" id="storybox">
         <%= render 'shared/alert_completed_task' %>
         <%= render 'shared/alert_failed_task' %>
         <%= render 'shared/alert_game_over' %>
@@ -59,34 +54,13 @@
         </div>
     </div>
     <div class="col-md-2 sidebar">
-        &nbsp;
         <img src="/assets/kabashdfull.png" width="100%" />
         <hr />
-        <%= render 'shared/header_game' %>
-        <a href="/games/new" type="button" class="btn btn-lg btn-success btn-block">New Game</a>
-        <a href="/level1" type="button" class="btn btn-lg btn-success btn-block">Level 1</a>
-        <a href="/level2" type="button" class="btn btn-lg btn-success btn-block">Level 2</a>
-        <a href="/level3" type="button" class="btn btn-lg btn-success btn-block">Level 3</a>
-    </div>
-
-    <div class="col-md-4 watson-box">
-        <div id="infoarea">
-            <div class="conv_entry">
-                <p><%= @information %></p>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-8">
-        <div data-role="footer" data-position="fixed">
-          <%= render 'shared/query_form' %>
-        </div>
-    </div>
-
-    <div class="col-md-4">
-        <div data-role="footer" data-position="fixed">
+        <div class="panel panel-info">
+          <div class="panel-heading">Ask Watson</div>
+          <div class="panel-body">
             <%= form_tag({controller: "games", action: "query"}, method: "post", id:"queryForm") do  %>
-            <div class="input-group storycommands">
+            <div class="input-group">
                 <%= text_field_tag(:query, '', class:'form-control', placeholder: 'Enter a question...') %>
                 <div class="input-group-btn">
                     <%= submit_tag("Go!", class: "btn btn-default") %>
@@ -95,6 +69,35 @@
                 </div>
             </div>
             <% end %>
+          </div>
+        </div>
+        <%= render 'shared/header_game' %>
+        <a href="/games/new" type="button" class="btn btn-lg btn-success btn-block">New Game</a>
+        <a href="/level1" type="button" class="btn btn-lg btn-success btn-block">Level 1</a>
+        <a href="/level2" type="button" class="btn btn-lg btn-success btn-block">Level 2</a>
+        <a href="/level3" type="button" class="btn btn-lg btn-success btn-block">Level 3</a>
+    </div>
+
+    <div class="col-md-2 right-sidebar">
+      <hr />
+      <img  class="img-responsive center-block" src="https://developer.ibm.com/watson/wp-content/uploads/sites/19/2015/01/IBM_Watson_avatar_pos.png" width=30%>
+      <hr />
+        <div id="infoarea">
+          <div data-role="header" data-position="fixed">
+          </div>
+            <div class="conv_entry">
+                <%if @information%>
+                  <h3>Watson says:</h3>
+                  <p><%= @information %></p>
+                <%end%>
+            </div>
         </div>
     </div>
+
+    <div class="col-md-12">
+        <div data-role="footer" data-position="fixed">
+          <%= render 'shared/query_form' %>
+        </div>
+    </div>
+
 </div>
