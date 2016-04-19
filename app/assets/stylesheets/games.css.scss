@@ -27,7 +27,7 @@ body#GamesController {
       color: #fff;
 
       .responseSuccess {
-        color: lightgreen;
+        color: black;
       }
 
       .responseFail {
@@ -35,5 +35,10 @@ body#GamesController {
       }
     }
 
+  }
+
+  .storycommands{
+    position:absolute;
+    bottom:0px;
   }
 }
