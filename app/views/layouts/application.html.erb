@@ -11,19 +11,14 @@
     </head>
 
     <body id="ApplicationController">
-        <div class="wrap">
             <header>
                 <%= render 'shared/header' %>
             </header>
-
-            <main id="main">
+            <main class="main">
                 <%= yield %>
             </main>
-
-        </div>
-
-        <footer>
-            <%= render 'shared/footer' %>
-        </footer>
+            <footer>
+                <%= render 'shared/footer' %>
+            </footer>
     </body>
 </html>
