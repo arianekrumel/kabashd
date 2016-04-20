@@ -1,21 +1,21 @@
-  <h1>New Game</h1>
+<h1>New Game</h1>
 
-  <%= form_tag({controller: "games", action: "create"}, id:"queryForm") do  %>
-    <div class="form-group">
-      <%= label_tag '', 'Game Name' %>
-      <%= text_field_tag(:name, '', class: "form-control") %>
-    </div>
-    <%= submit_tag("Enter", class: "submitQuery btn btn-default") %>
-    <%= hidden_field_tag(:user_id, current_user.id) %>
-    <%= hidden_field_tag(:time, 0) %>
-  <% end %>
+<%= form_tag({controller: "games", action: "create"}, id:"queryForm") do  %>
+<div class="form-group">
+    <%= label_tag '', 'Game Name' %>
+    <%= text_field_tag(:name, '', class: "form-control") %>
+</div>
+<%= submit_tag("Enter", class: "submitQuery btn btn-default") %>
+<%= hidden_field_tag(:user_id, current_user.id) %>
+<%= hidden_field_tag(:time, 0) %>
+<% end %>
 
-  <table>
+<table>
     <% if @err != nil %>
-      <% @err.each do |message| %>
-        <tr class="text-danger">
-          <td><%= "#{message[0].to_s.titleize} #{message[1][0]}" %></td>
-        </tr>
-      <%end%>
+    <% @err.each do |message| %>
+    <tr class="text-danger">
+        <td><%= "#{message[0].to_s.titleize} #{message[1][0]}" %></td>
+    </tr>
+    <%end%>
     <% end %>
-  </table>
+</table>

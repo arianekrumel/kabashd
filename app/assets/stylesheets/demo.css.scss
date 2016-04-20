@@ -1,27 +1,22 @@
 $turquoise: #1ABC9C;
 $silver: #BDC3C7;
 $orange: #E67E22;
-
 #conv_div {
-	height: 500px;
-	width: 100%;
-	color: white;
-	overflow: scroll;
-	font-size: 14px;
-
-	.state_info {
-		color: $silver;
-	}
-
-	.user_command {
-		color: $turquoise;
-	}
-
-	.response {
-		color: $orange;
-	}
+    height: 500px;
+    width: 100%;
+    color: white;
+    overflow: scroll;
+    font-size: 14px;
+    .state_info {
+        color: $silver;
+    }
+    .user_command {
+        color: $turquoise;
+    }
+    .response {
+        color: $orange;
+    }
 }
-
 #start_over {
-	margin: 10px 0;
+    margin: 10px 0;
 }

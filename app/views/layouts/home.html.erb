@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html>
-	<head>
-	  <title>Kabashd</title>
-		<%= favicon_link_tag 'kabashdicon.png' %>
-		<script src="https://code.jquery.com/jquery-2.2.0.min.js"/>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-	  	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-	  	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-	  	<%= csrf_meta_tags %>
-	</head>
+    <head>
+        <title>Kabashd</title>
+        <%= favicon_link_tag 'kabashdicon.png' %>
+        <script src="https://code.jquery.com/jquery-2.2.0.min.js"/>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+        <%= csrf_meta_tags %>
+    </head>
 
-	<body id="ApplicationController">
-		<header>
-			<%= render 'shared/header' %>
-		</header>
+    <body id="ApplicationController">
+        <header>
+            <%= render 'shared/header' %>
+        </header>
 
-		<main class="container">
-		   	<%= yield %>
-		</main>
-<!--
+        <main class="container">
+            <%= yield %>
+        </main>
+        <!--
 		<footer>
 			<%= render 'shared/footer' %>
 		</footer> -->
-	</body>
+    </body>
 </html>

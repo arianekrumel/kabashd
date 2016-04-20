@@ -11,11 +11,11 @@ body#GamesController {
         border-radius: 0;
         box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
     }
-    .chat-heading{
-      text-align: center;
-      background-color: #fff;
-      border-color: rgb(198, 198, 198);
-      color: #0e80ff;
+    .chat-heading {
+        text-align: center;
+        background-color: #fff;
+        border-color: rgb(198, 198, 198);
+        color: #0e80ff;
     }
     .talkbubble {
         display: table;
@@ -27,10 +27,10 @@ body#GamesController {
         border: solid #f1f0f0;
         background: #f1f0f0;
     }
-    .imageHeader{
-      width: 100%;
-      height: 200px;
-      overflow:hidden;
+    .imageHeader {
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
     }
     .selftalkbubble {
         display: table;
@@ -45,10 +45,10 @@ body#GamesController {
         margin-right: 0;
         color: white;
     }
-    .talk-image{
-      margin:5px;
-      max-width: 500px;
-      max-height: 500px;
+    .talk-image {
+        margin: 5px;
+        max-width: 500px;
+        max-height: 500px;
     }
     .talkbubble p {
         position: inherit;

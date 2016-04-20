@@ -44,7 +44,7 @@
                 <% if conversation.response != nil %>
                 <% conversation.response.split("\n").each do |response| %>
                 <% if response.include? "Level 2"%>
-                <hr />
+                <hr/>
                 <div class="imageHeader">
                     <img class="center-block img-responsive" id="clip" src="http://altushealthsystem.com/wp-content/uploads/ngg_featured/Banners_2000x600_hospital.jpg">
                 </div>
@@ -64,11 +64,6 @@
                 <p class="responseFail">Sorry, there is no valid response for your query.</p>
                 <%end%>
             </div>
-            <script>
-              console.log("hello");
-              $('#chat-body').scrollTop($'#chat-body')[0].scrollHeight);
-              console.log("hello");
-            </script>
             <% end %>
         </div>
     </div>

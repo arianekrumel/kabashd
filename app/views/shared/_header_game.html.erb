@@ -1,15 +1,15 @@
 <div id="header-game">
     <div class="panel panel-default">
-      <div class="panel-heading">Score</div>
-      <div class="panel-body">
-		<%= current_game.score %>
-      </div>
+        <div class="panel-heading">Score</div>
+        <div class="panel-body">
+            <%= current_game.score %>
+        </div>
     </div>
     <div class="panel panel-default">
-      <div class="panel-heading">Level</div>
-      <div class="panel-body">
-		<%= current_game.level_num %>
-      </div>
+        <div class="panel-heading">Level</div>
+        <div class="panel-body">
+            <%= current_game.level_num %>
+        </div>
     </div>
     <%= render :partial => "shared/progress_bar", :locals => { :percent => current_game.progress} %>
 </div>

@@ -1,3 +1,3 @@
 class Action < ActiveRecord::Base
-  has_one :result_state
+    has_one :result_state
 end
