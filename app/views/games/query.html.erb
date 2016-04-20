@@ -1,63 +1,62 @@
 <div class="row">
-    <div class="col-md-12 story-box" id="storybox">
+    <div class="col-md-12" id="storybox">
         <%= render 'shared/alert_completed_task' %>
         <%= render 'shared/alert_failed_task' %>
         <%= render 'shared/alert_game_over' %>
         <%= render 'shared/alert_won_game' %>
         <div id="queryarea">
             <div class="conv_entry">
-                <p class="responseSuccess">FIRST FLOOR - NORTHWEST HOSPITAL</p>
                 <br>
+                <h3 style = "text-align:center" class="responseSuccess">Level 1</h3>
+                <p style = "text-align:center" class="responseSuccess">FIRST FLOOR - NORTHWEST HOSPITAL</p>
 
-                <p class="responseSuccess">Level 1</p>
-                <br>
-                <p class="responseSuccess">You've heard that a certain high powered businessman is having an extended stay at Northwest General.</p>
-                <br>
-                <p class="responseSuccess">He's the one that's responsible for kicking your dog. It's time to give him a piece of your mind.</p>
-                <br>
-                <p class="responseSuccess">Of course, you're gonna get nowhere just going into the hospital and demanding to see him. No, you'll have to be more clever than that.</p>
-                <br>
-                <p class="responseSuccess">You enter the first floor of the hospital. You've picked up a white coat from a costume shop, swiped a stethoscope off some resident's desk, and are equipped to the brim with the best bandaids $5 at CVS could buy.</p>
-                <br>
-                <p class="responseSuccess">Oh yeah, and WATSON, you have him too.</p>
-                <br>
-                <p class="responseSuccess">You're ready.</p>
-                <br>
-                <p class="responseSuccess">Nurse: Hey you! You're new here, but the ER is overflowing. What is your name?
-                </p>
-                <br>
+                <div class="talkbubble">
+                    <p class="responseSuccess">You've heard that a certain high powered businessman is having an extended stay at Northwest General.</p>
+                    <p class="responseSuccess">He's the one that's responsible for kicking your dog. It's time to give him a piece of your mind.</p>
+                    <p class="responseSuccess">Of course, you're gonna get nowhere just going into the hospital and demanding to see him. No, you'll have to be more clever than that.</p>
+                    <p class="responseSuccess">You enter the first floor of the hospital. You've picked up a white coat from a costume shop, swiped a stethoscope off some resident's desk, and are equipped to the brim with the best bandaids $5 at CVS could buy.</p>
+                    <p class="responseSuccess">Oh yeah, and WATSON, you have him too.</p>
+                    <p class="responseSuccess">You're ready.</p>
+                </div>
+                <div class="talkbubble">
+                    <p class="responseSuccess">Nurse: Hey you! You're new here, but the ER is overflowing. What is your name?
+                    </p>
+                </div>
             </div>
             <% @conversations.each do |conversation| %>
-		    <div class="conv_entry">
+            <div class="conv_entry">
 
-		        <% if conversation.query.length() > 0 %>
-		        	<% name = "You: " %>
-		   	 <% else %>
-		        	<% name = "" %>
-		        <% end %>
-		        <p><%= name + conversation.query %></p>
-			<% if conversation.image != nil %>
-				<div class='card'><%= image_tag(conversation.image) %>
-				</div>
-				<br>
-			<% end %>
-		        <% if conversation.response != nil %>
-		        	<% conversation.response.split("\n").each do |response| %>
-		        		<p class="responseSuccess"><%= response %></p>
-		        		<br>
-		        	<% end %>
+                <% if conversation.query.length() > 0 %>
+                  <% name = "You: " %>
+            <% else %>
+                <% name = "" %>
+                <% end %>
+                <div class="selftalkbubble">
+                  <p><%= conversation.query %></p>
+                </div>
+                <% if conversation.image != nil %>
+                <div class='card'><%= image_tag(conversation.image) %>
+                </div>
+                <br>
+                <% end %>
+                <% if conversation.response != nil %>
+                <% conversation.response.split("\n").each do |response| %>
+                <div class="talkbubble">
+                  <p class="responseSuccess"><%= response %></p>
+                </div>
+                <% end %>
 
-		    	<% else %>
-		        	<p class="responseFail">Sorry, there is no valid response for your query.</p>
-		        <%end%>
-		    </div>
+            <% else %>
+                <p class="responseFail">Sorry, there is no valid response for your query.</p>
+                <%end%>
+            </div>
             <% end %>
         </div>
     </div>
     <div class="col-md-2 sidebar">
-        <hr />
-        <img src="/assets/kabashdfull.png" width="100%" />
-        <hr />
+        <hr/>
+        <img src="/assets/kabashdfull.png" width="100%"/>
+        <hr/>
         <%= render 'shared/header_game' %>
         <a href="/games/new" type="button" class="btn btn-lg btn-success btn-block">New Game</a>
         <a href="/level1" type="button" class="btn btn-lg btn-success btn-block">Level 1</a>
@@ -66,31 +65,30 @@
     </div>
 
     <div class="col-md-2 right-sidebar">
-      <hr />
-      <img  class="img-responsive center-block" src="https://developer.ibm.com/watson/wp-content/uploads/sites/19/2015/01/IBM_Watson_avatar_pos.png" width=30%>
-      <hr />
-      <div class="panel panel-info">
-        <div class="panel-heading">Ask Watson</div>
-        <div class="panel-body">
-          <%= form_tag({controller: "games", action: "query"}, method: "post", id:"queryForm") do  %>
-          <div class="input-group">
-              <%= text_field_tag(:query, '', class:'form-control', placeholder: 'Enter a question...') %>
-              <div class="input-group-btn">
-                  <%= submit_tag("Go!", class: "btn btn-default") %>
-                  <%= hidden_field_tag(:game_id, current_game.id) %>
-                  <%= hidden_field_tag(:tag, "Knowledge") %>
-              </div>
-          </div>
-          <% end %>
+        <hr/>
+        <img class="img-responsive center-block" src="https://developer.ibm.com/watson/wp-content/uploads/sites/19/2015/01/IBM_Watson_avatar_pos.png" width=30%>
+        <hr/>
+        <div class="panel panel-info">
+            <div class="panel-heading">Ask Watson</div>
+            <div class="panel-body">
+                <%= form_tag({controller: "games", action: "query"}, method: "post", id:"queryForm") do  %>
+                <div class="input-group">
+                    <%= text_field_tag(:query, '', class:'form-control', placeholder: 'Enter a question...') %>
+                    <div class="input-group-btn">
+                        <%= submit_tag("Go!", class: "btn btn-default") %>
+                        <%= hidden_field_tag(:game_id, current_game.id) %>
+                        <%= hidden_field_tag(:tag, "Knowledge") %>
+                    </div>
+                </div>
+                <% end %>
+            </div>
         </div>
-      </div>
 
         <div id="infoarea">
-          <div data-role="header" data-position="fixed">
-          </div>
+            <div data-role="header" data-position="fixed"></div>
             <div class="conv_entry">
-                  <h3>Watson says:</h3>
-                  <p><%= current_game.info %></p>
+                <h3>Watson says:</h3>
+                <p><%= current_game.info %></p>
             </div>
         </div>
     </div>
