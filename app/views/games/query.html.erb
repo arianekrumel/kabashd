@@ -43,9 +43,21 @@
                 <% end %>
                 <% if conversation.response != nil %>
                 <% conversation.response.split("\n").each do |response| %>
+                <% if response.include? "Level 2"%>
+                <hr />
+                <div class="imageHeader">
+                    <img class="center-block img-responsive" id="clip" src="http://altushealthsystem.com/wp-content/uploads/ngg_featured/Banners_2000x600_hospital.jpg">
+                </div>
+                <hr/>
+                <h3 style="text-align:center" class="responseSuccess"><%=response%></h3>
+                <p style="text-align:center">SECOND FLOOR - NORTHWEST HOSPITAL</p>
+                <hr/>
+            <% else %>
+
                 <div class="talkbubble">
                     <p class="responseSuccess"><%= response %></p>
                 </div>
+                <% end%>
                 <% end %>
 
             <% else %>
