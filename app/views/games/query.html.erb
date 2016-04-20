@@ -6,10 +6,13 @@
         <%= render 'shared/alert_won_game' %>
         <div id="queryarea">
             <div class="conv_entry">
-                <br>
-                <h3 style = "text-align:center" class="responseSuccess">Level 1</h3>
-                <p style = "text-align:center" class="responseSuccess">FIRST FLOOR - NORTHWEST HOSPITAL</p>
-
+              <div class="imageHeader">
+                <img class="center-block img-responsive" id="clip" src="https://licensing.jamendo.com/images/heroes/licensing/in-store-wellness-hospital.jpg?version=3">
+              </div>
+                <hr/>
+                <h3 style="text-align:center" class="responseSuccess">Level 1</h3>
+                <p style="text-align:center" class="responseSuccess">FIRST FLOOR - NORTHWEST HOSPITAL</p>
+                <hr/>
                 <div class="talkbubble">
                     <p class="responseSuccess">You've heard that a certain high powered businessman is having an extended stay at Northwest General.</p>
                     <p class="responseSuccess">He's the one that's responsible for kicking your dog. It's time to give him a piece of your mind.</p>
@@ -27,12 +30,12 @@
             <div class="conv_entry">
 
                 <% if conversation.query.length() > 0 %>
-                  <% name = "You: " %>
+                <% name = "You: " %>
             <% else %>
                 <% name = "" %>
                 <% end %>
                 <div class="selftalkbubble">
-                  <p><%= conversation.query %></p>
+                    <p><%= conversation.query %></p>
                 </div>
                 <% if conversation.image != nil %>
                 <div class='card'><%= image_tag(conversation.image) %>
@@ -42,7 +45,7 @@
                 <% if conversation.response != nil %>
                 <% conversation.response.split("\n").each do |response| %>
                 <div class="talkbubble">
-                  <p class="responseSuccess"><%= response %></p>
+                    <p class="responseSuccess"><%= response %></p>
                 </div>
                 <% end %>
 
@@ -58,7 +61,6 @@
         <img src="/assets/kabashdfull.png" width="100%"/>
         <hr/>
         <%= render 'shared/header_game' %>
-        <a href="/games/new" type="button" class="btn btn-lg btn-success btn-block">New Game</a>
         <a href="/level1" type="button" class="btn btn-lg btn-success btn-block">Level 1</a>
         <a href="/level2" type="button" class="btn btn-lg btn-success btn-block">Level 2</a>
         <a href="/level3" type="button" class="btn btn-lg btn-success btn-block">Level 3</a>
