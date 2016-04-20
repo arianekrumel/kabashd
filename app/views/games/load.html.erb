@@ -4,8 +4,8 @@
 
     <% @games.to_a.each do |game| %>
         <%= form_tag({controller: "games", action: "create"}, method: "post", id:"queryForm") do  %>
-            <div class="col-md-4" style="padding:10px">
-              <%= submit_tag game.name + ' - ' + game.id.to_s, class:'btn btn-lg btn-primary btn-block load-buttons'%>
+            <div class="col-md-3" style="padding:10px">
+              <%= submit_tag game.name + ' - ' + game.id.to_s, class:'btn btn-lg btn-primary btn-block load-buttons', style:'background-color: #0e80ff; border-color:#0e80ff'%>
               <%= hidden_field_tag(:loaded_game_id, game.id) %>
             </div>
         <% end %>

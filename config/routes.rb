@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'static_pages/games'
   get 'static_pages/credits'
   get 'static_pages/help'
+  get 'static_pages/documentation'
   
   get 'games/new'
   get 'games/load'
@@ -27,7 +28,7 @@ Rails.application.routes.draw do
   post 'demo/new_game'
   post 'demo/index'
   get 'demo/user_input'
-  
+
   get 'medical/index'
   post 'medical/new_game'
   post 'medical/index'

@@ -1,6 +1,6 @@
 <h1 style="text-align:center">Sign up</h1>
 <p style="text-align:center">Existing User? <%= link_to "Log in", '/sessions/new', method:"get" %></p>
-<div class="center-blocK">
+
     <%= form_for(@user, url: '/users/create', method:"post",  html: {class:"well"}) do |f| %>
         <div class="row" style="padding-bottom:0px">
           <div class="form-group col-xs-6">
@@ -25,7 +25,6 @@
         </div>
 
         <div class="form-group">
-            <%= f.submit "Sign up", :class=>'btn btn-primary' %>
+            <%= f.submit "Sign up", :class=>'btn btn-primary', :style=>"background-color: #0e80ff; border-color:#0e80ff" %>
         </div>
     <% end %>
-</div>
