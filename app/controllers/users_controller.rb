@@ -25,6 +25,7 @@ class UsersController < ApplicationController
 
   def home
     if !logged_in?
+      render :layout => "home"
       render '/sessions/new'
     else
       #otherwise, store the user's entry that is currently logged in

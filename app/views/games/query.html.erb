@@ -6,9 +6,9 @@
         <%= render 'shared/alert_won_game' %>
         <div id="queryarea">
             <div class="conv_entry">
-              <div class="imageHeader">
-                <img class="center-block img-responsive" id="clip" src="https://licensing.jamendo.com/images/heroes/licensing/in-store-wellness-hospital.jpg?version=3">
-              </div>
+                <div class="imageHeader">
+                    <img class="center-block img-responsive" id="clip" src="https://licensing.jamendo.com/images/heroes/licensing/in-store-wellness-hospital.jpg?version=3">
+                </div>
                 <hr/>
                 <h3 style="text-align:center" class="responseSuccess">Level 1</h3>
                 <p style="text-align:center" class="responseSuccess">FIRST FLOOR - NORTHWEST HOSPITAL</p>
@@ -38,8 +38,7 @@
                     <p><%= conversation.query %></p>
                 </div>
                 <% if conversation.image != nil %>
-                <div class='card'><%= image_tag(conversation.image) %>
-                </div>
+                <%= image_tag(conversation.image, :class=>"img-thumbnail talk-image") %>
                 <br>
                 <% end %>
                 <% if conversation.response != nil %>
@@ -61,9 +60,11 @@
         <img src="/assets/kabashdfull.png" width="100%"/>
         <hr/>
         <%= render 'shared/header_game' %>
-        <a href="/level1" type="button" class="btn btn-lg btn-success btn-block">Level 1</a>
-        <a href="/level2" type="button" class="btn btn-lg btn-success btn-block">Level 2</a>
-        <a href="/level3" type="button" class="btn btn-lg btn-success btn-block">Level 3</a>
+        <div class="btn-group text-center">
+            <a href="/level1" type="button" class="btn btn-lg btn-success">Level 1</a>
+            <a href="/level2" type="button" class="btn btn-lg btn-success">Level 2</a>
+            <a href="/level3" type="button" class="btn btn-lg btn-success">Level 3</a>
+        </div>
     </div>
 
     <div class="col-md-2 right-sidebar">

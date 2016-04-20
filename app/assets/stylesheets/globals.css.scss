@@ -1,16 +1,18 @@
 body {
-  background-color: #ecf0f5;
+  background-color: #fff;
   color: #333;
 }
 
-.navbar-inverse {
-    background-color: #3c8dbc;
+.navbar {
+    background-color: #fff;
     border-color: #367fa9;
+    margin-bottom:0px;
 }
 
-.navbar-inverse .navbar-brand,
-.navbar-inverse .navbar-nav > li > a {
-  color: #fff;
+.navbar .navbar-brand,
+.navbar .navbar-nav > li > a {
+  color: #0e80ff;
+  padding-right: 10px;
 }
 
 .alert {

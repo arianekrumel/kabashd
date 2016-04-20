@@ -54,16 +54,16 @@ class GamesController < ApplicationController
 	def query
 
 		input = params[:query]
-	
+
 		gamestate = GameState.find(current_game.game_state_id)
-		
+
 		if(@@level != gamestate.level)
 			@@repeats = Hash.new()
 		end
 		parseGoal(gamestate.goalActions, gamestate.keys)
 
 		if(params[:tag] == "Story")
-	
+
 			parseAction(input, gamestate.saveValue)
 		else
 			current_game.info = query_watson(input, "Knowledge")
@@ -98,7 +98,7 @@ class GamesController < ApplicationController
 
 
 	def parseAction(input, saveValue)
-		
+
 		if saveValue != nil
 			current_game[saveValue] = input.titleize()
 			action = @@goal[0]
@@ -109,10 +109,10 @@ class GamesController < ApplicationController
 				return
 			end
 		end
-		
+
 		goalIndex = 0
 		for keyset in @@keys
-		
+
 			if keyset[action] != nil
 				if keyset[action] == true
 					break
@@ -126,7 +126,7 @@ class GamesController < ApplicationController
 						end
 					end
 					print("\n")
-		
+
 					if(goal)
 						processResponse(action, input, current_game.id)
 						action = @@goal[goalIndex]
@@ -135,13 +135,13 @@ class GamesController < ApplicationController
 					end
 				end
 			end
-			
+
 			goalIndex += 1
 		end
 
 		processResponse(action, input, params[:game_id])
 		for goal in @@goal
-	
+
 			if(action == goal)
 				@@goal = nil
 				@@keys = Set.new()

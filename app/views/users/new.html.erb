@@ -1,46 +1,82 @@
-<div class="container">
-  <div id="HomePage" class="row">
-    <div class="col-md-12">
-      <div class="jumbotron">
-        <h1>Welcome to Ka-bash’d!</h1>
-        <h2>Ka-bash'd: A Natural Language Game Framework</h2>
-        <p>Ka-bash’d is a natural language, game creation framework with valuable applications in training and learning. Games created in Ka-bash’d allow players to use their own words to control game play. IBM Watson, specifically the Watson Engagement Advisor (WEA), interprets user input as in-game commands. IBM Watson is also available in the traditional question answering context via a gametime companion that provides related data on request. The initial game is a medical game where a player must examine, interact, diagnose, and give treatment options to patients. Ka-bash’d includes an extensible API that allows easy creation of game scenarios that each provide unique skill-building opportunities to players.</p>
-        <a href="#signin" class="btn btn-default btn-lg">Sign Up</a>
-      </div>
+<div id="HomePage">
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Ka-bash’d</h1>
+            <h2>Ka-bash'd: A Natural Language Game Framework</h2>
+            <p>The natural language game creation framework with valuable applications in training and learning.</p>
+            <a href="#signin" class="btn btn-default btn-lg">Sign Up</a>
+        </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-4">
-      <h1 style="text-align:center"><i class="glyphicon glyphicon-knight"></i></h1>
-      <h2>Play a game using your own words.</h2>
-      <p>The Ka-bash’d team is interested in finding a unique way to use, maximize, and present IBM Watson through an interactive game platform. The game platform should progress using commands offered by the user and should have more than one sequence of commands which result in game completion. Ka-bash’d uses IBM Watson to understand natural language in two different ways. The first of which, disambiguates user input as commands and the second takes user input and provides factual answers. </p>
-    </div>
-    <div class="col-md-4">
-      <h1 style="text-align:center; color:#882E00"><i class="glyphicon glyphicon-book"></i></h1>
-      <h2>Learn in an interactive platform.</h2>
-      <p>Further, the Ka-bash’d team is intrigued with the idea of personality combined with technology. As such, IBM Watson, to the user, is not only a source for asking questions but also a personal companion to the user.</p>
-    </div>
-    <div class="col-md-4">
-      <h1 style="text-align:center; color:green"><i class="glyphicon glyphicon-grain"></i></h1>
-      <h2>Build new levels and scenarios.</h2>
-      <p>Finally, the Ka-bash’d team is determined to make this platform expandable and adaptable to people who have game scenarios of their own to share. Ka-bash’d should be used not only with the game levels presently offered, but as a framework to easily add your own game story to play along to and share amongst friends.</p>
-    </div>
-  </div>
-  <hr />
-  <div class="row">
-    <div class="col-md-12">
-      <a name="signin"></a>
-      <%= render 'shared/signup_form' %>
-      <!-- If invalid sign-up information is provided, a table of errors is printed -->
-      <table>
-        <% if @err != nil %>
-            <% @err.each do |message| %>
-                <tr>
-                  <td><%= "#{message[0].to_s.titleize} #{message[1][0]}" %></td>
-                </tr>
-            <%end%>
-        <% end %>
-      </table>
-    </div>
-  </div>
 </div>
+
+<div class="container">
+    <div class="row">
+        <h1 style="text-align:center">About Kabash'd</h1>
+        <hr/>
+        <div class="col-md-4">
+            <p>Games created in Ka-bash’d allow players to use their own words to control game play. IBM Watson, specifically the Watson Engagement Advisor (WEA), interprets user input as in-game commands.
+            </div>
+            <div class="col-md-4">
+                <p>IBM Watson is also available in the traditional question answering context via a gametime companion that provides related data on request.
+                </p>
+            </div>
+
+            <div class="col-md-4">
+                <p>The initial game is a medical game where a player must examine, interact, diagnose, and give treatment options to patients.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <blockquote>
+                    Ka-bash’d includes an extensible API that allows easy creation of game scenarios that each provide unique skill-building opportunities to players.
+                </blockquote>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <h1 style="text-align:center">
+                    <i class="glyphicon glyphicon-knight"></i>
+                </h1>
+                <h2>Play a game using your own words.</h2>
+                <p>The Ka-bash’d team is interested in finding a unique way to use, maximize, and present IBM Watson through an interactive game platform. The game platform should progress using commands offered by the user and should have more than one sequence of
+                    commands which result in game completion. Ka-bash’d uses IBM Watson to understand natural language in two different ways. The first of which, disambiguates user input as commands and the second takes user input and provides factual answers.
+                </p>
+            </div>
+            <div class="col-md-4">
+                <h1 style="text-align:center; color:#882E00">
+                    <i class="glyphicon glyphicon-book"></i>
+                </h1>
+                <h2>Learn in an interactive platform.</h2>
+                <p>Further, the Ka-bash’d team is intrigued with the idea of personality combined with technology. As such, IBM Watson, to the user, is not only a source for asking questions but also a personal companion to the user.</p>
+            </div>
+            <div class="col-md-4">
+                <h1 style="text-align:center; color:green">
+                    <i class="glyphicon glyphicon-grain"></i>
+                </h1>
+                <h2>Build new levels and scenarios.</h2>
+                <p>Finally, the Ka-bash’d team is determined to make this platform expandable and adaptable to people who have game scenarios of their own to share. Ka-bash’d should be used not only with the game levels presently offered, but as a framework to
+                    easily add your own game story to play along to and share amongst friends.</p>
+            </div>
+        </div>
+        <hr/>
+
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 center-block">
+                <a name="signin"></a>
+                <%= render 'shared/signup_form' %>
+                <!-- If invalid sign-up information is provided, a table of errors is printed -->
+                <table>
+                    <% if @err != nil %>
+                    <% @err.each do |message| %>
+                    <tr>
+                        <td><%= "#{message[0].to_s.titleize} #{message[1][0]}" %></td>
+                    </tr>
+                    <%end%>
+                    <% end %>
+                </table>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
