@@ -22,6 +22,7 @@ body {
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
     padding-top: 50px;
+    overflow-x:hidden;
 }
 .sub-header {
     padding-bottom: 10px;
@@ -29,6 +30,11 @@ body {
 }
 .navbar-fixed-top {
     border: 0;
+}
+
+.btn-primary{
+  background-color:#0e80ff;
+  border-color:#0e80ff;
 }
 /*
  * Sidebar
@@ -49,9 +55,8 @@ body {
         overflow-x: hidden;
         overflow-y: auto;
         /* Scrollable contents if viewport is shorter than content. */
-        background-color: #f5f5f5;
-        border-right: 1px solid #eee;
-        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        background-color: #fff;
+        border-right: 1px solid #F5F5F5;
     }
     .right-sidebar {
         position: fixed;
@@ -65,9 +70,8 @@ body {
         overflow-x: hidden;
         overflow-y: auto;
         /* Scrollable contents if viewport is shorter than content. */
-        background-color: #F5F5F5;
-        border-right: 1px solid #eee;
-        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        background-color: #fff;
+        border-left: 1px solid #F5F5F5;
     }
 }
 nav {
