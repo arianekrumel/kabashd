@@ -19,9 +19,10 @@ $('#queryForm').submit(function(e) {
         }, 100);
 });
 
-function resizeIframe(){
-    $('#conv_iframe').attr("height", $('#conv_iframe').contents().find('html').outerHeight());
-}
-
-var objDiv = document.getElementById("storybox");
-objDiv.scrollTop = objDiv.scrollHeight;
+$(document).ready(function() {
+	// Scrolls {@code #conv_div} down to bottom of page for when content is beyond the fixed div height.
+    var element = document.getElementById("chat-body");
+    if (element) {
+    	element.scrollTop = element.scrollHeight;
+    }
+});

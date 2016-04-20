@@ -64,47 +64,12 @@
                 <p class="responseFail">Sorry, there is no valid response for your query.</p>
                 <%end%>
             </div>
+            <script>
+              console.log("hello");
+              $('#chat-body').scrollTop($'#chat-body')[0].scrollHeight);
+              console.log("hello");
+            </script>
             <% end %>
-        </div>
-    </div>
-    <div class="col-md-2 sidebar">
-        <hr/>
-        <img src="/assets/kabashdfull.png" width="100%"/>
-        <hr/>
-        <%= render 'shared/header_game' %>
-        <div class="btn-group text-center">
-            <a href="/level1" type="button" class="btn btn-lg btn-default">Level 1</a>
-            <a href="/level2" type="button" class="btn btn-lg btn-default">Level 2</a>
-            <a href="/level3" type="button" class="btn btn-lg btn-default">Level 3</a>
-        </div>
-    </div>
-
-    <div class="col-md-2 right-sidebar">
-        <hr/>
-        <img class="img-responsive center-block" src="https://developer.ibm.com/watson/wp-content/uploads/sites/19/2015/01/IBM_Watson_avatar_pos.png" width=30%>
-        <hr/>
-        <div class="panel panel-info">
-            <div class="panel-heading">Ask Watson</div>
-            <div class="panel-body">
-                <%= form_tag({controller: "games", action: "query"}, method: "post", id:"queryForm") do  %>
-                <div class="input-group">
-                    <%= text_field_tag(:query, '', class:'form-control', placeholder: 'Enter a question...') %>
-                    <div class="input-group-btn">
-                        <%= submit_tag("Go!", class: "btn btn-default") %>
-                        <%= hidden_field_tag(:game_id, current_game.id) %>
-                        <%= hidden_field_tag(:tag, "Knowledge") %>
-                    </div>
-                </div>
-                <% end %>
-            </div>
-        </div>
-
-        <div id="infoarea">
-            <div data-role="header" data-position="fixed"></div>
-            <div class="conv_entry">
-                <h3>Watson says:</h3>
-                <p><%= current_game.info %></p>
-            </div>
         </div>
     </div>
 </div>
