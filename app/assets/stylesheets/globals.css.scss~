@@ -36,10 +36,6 @@ body {
   background-color:#0e80ff;
   border-color:#0e80ff;
 }
-.btn-success{
-    background-color:rgb(78, 222, 75);
-    border-color:rgb(78, 222, 75);
-}
 /*
  * Sidebar
  */

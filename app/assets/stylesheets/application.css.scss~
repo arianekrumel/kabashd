@@ -15,6 +15,10 @@ body {
 	position: relative;
 }
 
+.btn-success{
+    background-color:rgb(78, 222, 75);
+    border-color:rgb(78, 222, 75);
+}
 
 #HomePage {
 

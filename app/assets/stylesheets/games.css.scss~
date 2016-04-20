@@ -1,0 +1,116 @@
+body#GamesController {
+    background-color: #fff;
+    overflow-y: hidden;
+    .chat-body {
+        height: 75vh;
+        overflow-y: scroll;
+    }
+    .chat-panel {
+        margin-top: 30px;
+        background-color: #fff;
+        border-radius: 0;
+          box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    }
+    .chat-heading {
+        text-align: center;
+        background-color: #fff;
+        border-color: rgb(198, 198, 198);
+        color: #0e80ff;
+    }
+    .talkbubble {
+        display: table;
+        position: relative;
+        max-width: 60%;
+        margin: 5px;
+        padding: 5px;
+        border-radius: 30px;
+        border: solid #f1f0f0;
+        background: #f1f0f0;
+    }
+    .imageHeader {
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+    }
+    .selftalkbubble {
+        display: table;
+        position: relative;
+        max-width: 60%;
+        margin: 5px;
+        padding: 5px;
+        border-radius: 30px;
+        border: solid #0e80ff;
+        background: #0e80ff;
+        margin-left: auto;
+        margin-right: 0;
+        color: white;
+    }
+    .talk-image {
+        margin: 5px;
+        max-width: 500px;
+        max-height: 500px;
+    }
+    .talkbubble p {
+        position: inherit;
+        width: 100%;
+        height: 100%;
+        background: rgba(1,1,1,0);
+        margin: 0;
+        padding-left: 10px;
+        padding-right: 10px;
+        border: none;
+        resize: none;
+    }
+    .selftalkbubble p {
+        position: inherit;
+        width: 100%;
+        height: 100%;
+        background: rgba(1,1,1,0);
+        margin: 0;
+        padding-left: 10px;
+        padding-right: 10px;
+        border: none;
+        resize: none;
+    }
+    main {
+        .user-input {
+            margin-top: 20px;
+        }
+    }
+    .login_content,
+    .sign_up_content {
+        margin-bottom: 10px;
+    }
+    .load-buttons {
+        margin: 10px 0;
+    }
+    #query {
+        width: 100%;
+        color: black;
+    }
+    // #queryarea {
+    //   overflow-y: scroll;
+    //   height: 50em;
+    //
+    //   .conv_entry {
+    //     color: #000;
+    //
+    //     .responseSuccess {
+    //       color: black;
+    //     }
+    //
+    //     .responseFail {
+    //       color: red;
+    //     }
+    //   }
+    //
+    // }
+    .storycommands {
+        position: absolute;
+        bottom: 0;
+    }
+    .story-box {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+}
