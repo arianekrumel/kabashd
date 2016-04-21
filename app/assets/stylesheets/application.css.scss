@@ -38,6 +38,20 @@ body {
 	}
 }
 
+#Docs {
+	ul {
+		list-style-type: none;
+
+		li {
+			margin: 10px 0;
+		}
+	}
+}
+
+.required {
+	color: red;
+}
+
 .footer {
   padding-top:10px;
   background-color:$primary-color;

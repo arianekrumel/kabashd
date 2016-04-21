@@ -1,191 +1,128 @@
-<div class="container">
-    <div>
-        <h1>Seeder Documentation</h1>
-	<br>
+<div class="container" id="Docs">
+    <h1>Seeder Documentation</h1>
 	<p>To create a game, you will be using the GameState and Action classes. Start by creating all of your game's states using the GameState class. You can then create individual Actions for each of these states. To link two GameState objects via an Action object, you must specify the start_state_id and result_state_id attributes of the Action object. This can all be done entirely within the db/seed.rb file.</p>
-	<br>
+	
+	<hr />
 
-<ul style="list-style-type: none;"> 
-	<hr>
-	<br>
+<ul> 
 	<li>
 		<h2>GameState</h2>
-		<br>
-		<p>To create a GameState object, use the command:
-		<br>
-		<br>
-		NEW_GAME_STATE = GameState.create(Attribute1: Value1, Attribute2: Value2, ...)
-		</p>
-		<br>
+		<p>To create a GameState object, use the command:</p>
+		<code>
+			NEW_GAME_STATE = GameState.create(Attribute1: Value1, Attribute2: Value2, ...)
+		</code>
+
 		<h3>Attributes</h3>
-		<ul style="list-style-type: none;"> 
-			<br>
+		<ul> 
 			<li>
-  				<h4>level: String - *REQUIRED*</h4>
-				<ul style="list-style-type: none;"> 
-
-    					<li>Holds the name of the current level</li>
-					<br>
-    					<li>eg. "Lyme Disease"</li>
+  				<h4>level: String <span class="required">*Required</span></h4>
+				<ul> 
+    				<li>Holds the name of the current level</li>
+    				<li>eg. "Lyme Disease"</li>
 				</ul>
 			</li>
-			<br>
 			<li>
-  				<h4>goalActions: String - *REQUIRED*</h4>
-				<ul style="list-style-type: none;"> 
-
-    					<li>Holds a list of all commands that will result in a change of state. Must be separated by comma-spaces.</li>
-					<br>
-    					<li>eg. "Finished Treating, Already Done"</li>
+  				<h4>goalActions: String <span class="required">*Required</span></h4>
+				<ul> 
+    				<li>Holds a list of all commands that will result in a change of state. Must be separated by comma-spaces.</li>
+    				<li>eg. "Finished Treating, Already Done"</li>
 				</ul>
 			</li>
-			<br>
 			<li>
   				<h4>saveValue: String</h4>
-				<ul style="list-style-type: none;"> 
-
-    					<li>Holds the name of the 'Game' attribute in which to save the user's input. This value must also be migrated into the Game model's schema.</li>
-					<br>
+				<ul> 
+    				<li>Holds the name of the 'Game' attribute in which to save the user's input. This value must also be migrated into the Game model's schema.</li>
 					<li>Default Value: nil</li>
-					<br>
 					<li>eg. "player_name"</li>
 				</ul>
 			</li>
-
-			<br>
 			<li>
   				<h4>keys: String</h4>
-				<ul style="list-style-type: none;"> 
-
-    					<li>Holds a set of key commands for each goalAction respectively. A key command is a command that must be called before its corresponding goalAction will be called. Each set of key commands is a comma-space separated list surrounded by parentheses. These sets of key commands must also be separated by comma-spaces. The corresponding goalAction will automatically be called when all keys in the set are called. Thus we do not need to put these values in the corpus. Any goalAction that has keys must have an action for "Already Done"</li>	
-					<br>
+				<ul> 
+    				<li>Holds a set of key commands for each goalAction respectively. A key command is a command that must be called before its corresponding goalAction will be called. Each set of key commands is a comma-space separated list surrounded by parentheses. These sets of key commands must also be separated by comma-spaces. The corresponding goalAction will automatically be called when all keys in the set are called. Thus we do not need to put these values in the corpus. Any goalAction that has keys must have an action for "Already Done"</li>	
 					<li>Default Value: nil</li>
-					<br>
-    					<li>eg. "(Rest, Ice Ankle), (Elevate Ankle, Rest)"</li>
+    				<li>eg. "(Rest, Ice Ankle), (Elevate Ankle, Rest)"</li>
 				</ul>
 			</li>
-
 		</ul>
 	</li>
-	<hr>
-	<br>
 	<li>
 		<h2>Action</h2>
-		<br>
-		<p>To create an Action object, use the command:
-		<br>
-		<br>
-		NEW_ACTION = Action.create(Attribute1: Value1, Attribute2: Value2, ...)
-		</p>
-		<br>
+		<p>To create an Action object, use the command:</p>
+		<code>
+			NEW_ACTION = Action.create(Attribute1: Value1, Attribute2: Value2, ...)
+		</code>
 		<h3>Attributes</h3>
-		<ul style="list-style-type: none;"> 
-			<br>
+		<ul> 
 			<li>
-  				<h4>command: String - *REQUIRED*</h4>
-				<ul style="list-style-type: none;"> 
-
-    					<li>Holds the name of the command needed to initiate this action in the current state.</li>
-					<br>
-    					<li>eg. "Ice Ankle"</li>
+  				<h4>command: String - <span class="required">*Required</span></h4>
+				<ul> 
+    				<li>Holds the name of the command needed to initiate this action in the current state.</li>
+    				<li>eg. "Ice Ankle"</li>
 				</ul>
 			</li>
-			<br>
 			<li>
-  				<h4>response: String - *REQUIRED*</h4>
-				<ul style="list-style-type: none;"> 
-
-    					<li>Holds the response part of the conversation resulting from this action. Will be saved into a Conversation object.</li>
-					<br>
+  				<h4>response: String <span class="required">*Required</span></h4>
+				<ul> 
+					<li>Holds the response part of the conversation resulting from this action. Will be saved into a Conversation object.</li>
 					<li>eg. "You examine the ankle."</li>
 				</ul>
 			</li>
-			<br>
 			<li>
   				<h4>repeatResponse: String</h4>
-				<ul style="list-style-type: none;"> 
-
-    					<li>Holds the response to be delivered in the case that this action is called more than once. If set to 'default', it will be equal to response.</li>
-					<br>
+				<ul> 
+					<li>Holds the response to be delivered in the case that this action is called more than once. If set to 'default', it will be equal to response.</li>
 					<li>Default Value: "You can't do that right now."</li>
-					<br>
 					<li>eg. "Patient: I can't do it again, it hurts too much!"</li>
 				</ul>
 			</li>
-			<br>
 			<li>
   				<h4>earlyResponse: String</h4>
-				<ul style="list-style-type: none;"> 
-
-    					<li>Holds the response to be delivered in the case that this action is called before the appropriate state.</li>
-					<br>
+				<ul> 
+					<li>Holds the response to be delivered in the case that this action is called before the appropriate state.</li>
 					<li>Default Value: "You can't do that right now."</li>
-					<br>
 					<li>eg. "WATSON: You haven't even diagnosed him yet!"</li>
 				</ul>
 			</li>
-			<br>
 			<li>
   				<h4>score_reward: int</h4>
-				<ul style="list-style-type: none;"> 
-
-    					<li>Increments game's score by value. Can be negative.</li>
-					<br>
+				<ul> 
+					<li>Increments game's score by value. Can be negative.</li>
 					<li>Default Value: 0</li>
-					<br>
-    					<li>eg. 150</li>
+    				<li>eg. 150</li>
 				</ul>
 			</li>
-			<br>
 			<li>
   				<h4>progress_reward: int</h4>
-				<ul style="list-style-type: none;"> 
-
-    					<li>Increments game's progress by given percent. Must be between 0-100.</li>
-					<br>
+				<ul> 
+					<li>Increments game's progress by given percent. Must be between 0-100.</li>
 					<li>Default Value: 0</li>
-					<br>
-    					<li>eg. 25</li>
+   					<li>eg. 25</li>
 				</ul>
 			</li>
-			<br>
 			<li>
   				<h4>image: String</h4>
-				<ul style="list-style-type: none;"> 
-
-    					<li>Specifies location of an image file that is added to the conversation.</li>
-					<br>
+				<ul> 
+					<li>Specifies location of an image file that is added to the conversation.</li>
 					<li>Default Value: nil</li>
-					<br>
-    					<li>eg. "SwollenAnkle.png"</li>
+					<li>eg. "SwollenAnkle.png"</li>
 				</ul>
 			</li>
-			<br>
 			<li>
-
-  				<h4>start_state_id: int - *REQUIRED*</h4>
-				<ul style="list-style-type: none;"> 
-
-    					<li>Holds an integer id that references the GameState that this action must be called from.</li>
-					<br>
-    					<li>eg. gs1.id</li>
-					<br>
+  				<h4>start_state_id: int <span class="required">*Required</span></h4>
+				<ul> 
+    				<li>Holds an integer id that references the GameState that this action must be called from.</li>
+   					<li>eg. gs1.id</li>
 				</ul>
 			</li>
-			<br>
 			<li>
-
-  				<h4>result_state_id: int - *REQUIRED*</h4>
-				<ul style="list-style-type: none;"> 
-
-    					<li>Holds an integer id that references the GameState that we will enter after the action is called.</li>
-					<br>
-    					<li>eg. gsNextLevel.id</li>
+  				<h4>result_state_id: int <span class="required">*Required</span></h4>
+				<ul> 
+    				<li>Holds an integer id that references the GameState that we will enter after the action is called.</li>
+    				<li>eg. gsNextLevel.id</li>
 				</ul>
 			</li>
 		</ul>
 	</li>
-	<hr>
 </ul>
-    </div>
 </div>
