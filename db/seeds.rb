@@ -112,34 +112,34 @@ Action.create(command: 'Name', response: "Nurse: Hello, %n. Take a look at this 
 
 # #State 2 Actions
 
-Action.create(command: 'Injury Details', response: "Patient: I don't know... That's why I came here. I think I broke my ankle, it really hurts when I put pressure on it.", repeatResponse: 'default', score_reward: 100, progress_reward: 5, start_state_id: gs2.id, result_state_id: gs3.id)
+Action.create(command: 'Injury Details', response: "Patient: I don't know... That's why I came here. I think I broke my ankle, it really hurts when I put pressure on it.", repeatResponse: 'default', score_reward: 500, progress_reward: 20, start_state_id: gs2.id, result_state_id: gs3.id)
 
-Action.create(command: 'Get Situation', response: "Patient: I don't know... That's why I came here. I think I broke my ankle, it really hurts when I put pressure on it.", repeatResponse: 'default', score_reward: 100, progress_reward: 5, start_state_id: gs2.id, result_state_id: gs3.id)
+Action.create(command: 'Get Situation', response: "Patient: I don't know... That's why I came here. I think I broke my ankle, it really hurts when I put pressure on it.", repeatResponse: 'default', score_reward: 500, progress_reward: 20, start_state_id: gs2.id, result_state_id: gs3.id)
 
 # #State 3 Actions
 
-Action.create(command: 'Examine', response: "Nurse: Ouch, that looks pretty bad.\nWATSON: I'm not too sure that's a broken ankle. Why don't you try asking him to move it", repeatResponse: 'default', earlyResponse: "WATSON: You haven't even asked him what's wrong. Get the details first.", image: 'SwollenAnkle.png', score_reward: 100, progress_reward: 5, start_state_id: gs3.id, result_state_id: gs4.id)
+Action.create(command: 'Examine', response: "Nurse: Ouch, that looks pretty bad.\nWATSON: I'm not too sure that's a broken ankle. Why don't you try asking him to move it", repeatResponse: 'default', earlyResponse: "WATSON: You haven't even asked him what's wrong. Get the details first.", image: 'SwollenAnkle.png', score_reward: 500, progress_reward: 20, start_state_id: gs3.id, result_state_id: gs4.id)
 
 # #State 4 Actions
 
-Action.create(command: 'Move Ankle', response: 'Patient: I can move it, but it hurts really bad!', repeatResponse: "Patient: I can't do it again, it hurts too much!", earlyResponse: "WATSON: You haven't looked at it yet. What if it's broken?", image: 'move_ankle.gif', score_reward: 100, progress_reward: 5, start_state_id: gs4.id, result_state_id: gs5.id)
+Action.create(command: 'Move Ankle', response: 'Patient: I can move it, but it hurts really bad!', repeatResponse: "Patient: I can't do it again, it hurts too much!", earlyResponse: "WATSON: You haven't looked at it yet. What if it's broken?", image: 'move_ankle.gif', score_reward: 500, progress_reward: 20, start_state_id: gs4.id, result_state_id: gs5.id)
 
 # #State 5 Actions
 
-Action.create(command: 'Diagnose Sprained Ankle', response: 'WATSON: You are correct! Now we should treat it.', repeatResponse: 'WATSON: You already diagnosed this patient. Perhaps he needs more treatment.', earlyResponse: 'WATSON: I think you should find out more about the injury before jumping to such a conclusion', score_reward: 500, progress_reward: 10, start_state_id: gs5.id, result_state_id: gs6.id)
+Action.create(command: 'Diagnose Sprained Ankle', response: 'WATSON: You are correct! Now we should treat it.', repeatResponse: 'WATSON: You already diagnosed this patient. Perhaps he needs more treatment.', earlyResponse: 'WATSON: I think you should find out more about the injury before jumping to such a conclusion', score_reward: 1000, progress_reward: 20, start_state_id: gs5.id, result_state_id: gs6.id)
 
 Action.create(command: 'Bad response', response: 'WATSON: That is the wrong diagnosis. You need to be more careful!', repeatResponse: 'Another wrong diagnosis? You need to ask more questions.', earlyResponse: 'You need to learn more about the patient before you make a diagnosis.', score_reward: -100, start_state_id: gs5.id, result_state_id: gs5.id)
 
 # #State 6 Actions
 
-Action.create(command: 'Ice Ankle', response: '*The patient begins icing his ankle.*', repeatResponse: "Patient: I'm already icing my ankle!", earlyResponse: "WATSON: You haven't even diagnosed him yet!", start_state_id: gs6.id, result_state_id: gs6.id)
+Action.create(command: 'Ice Ankle', response: '*The patient begins icing his ankle.*', repeatResponse: "Patient: I'm already icing my ankle!", earlyResponse: "WATSON: You haven't even diagnosed him yet!",  start_state_id: gs6.id, result_state_id: gs6.id)
 
-Action.create(command: 'Elevate Ankle', response: '*You elevate the ankle*', repeatResponse: "Patient: It's elevated enough!", earlyResponse: "WATSON: You haven't even diagnosed him yet!", start_state_id: gs6.id, result_state_id: gs6.id)
+Action.create(command: 'Elevate Ankle', response: '*You elevate the ankle*', repeatResponse: "Patient: It's elevated enough!", earlyResponse: "WATSON: You haven't even diagnosed him yet!",  start_state_id: gs6.id, result_state_id: gs6.id)
 
-Action.create(command: 'Rest', response: '*You tell the patient to rest his ankle.*', repeatResponse: "Patient: I'm already resting my ankle, What else should I do?", earlyResponse: "WATSON: You haven't even diagnosed him yet!", start_state_id: gs6.id, result_state_id: gs6.id)
+Action.create(command: 'Rest', response: '*You tell the patient to rest his ankle.*', repeatResponse: "Patient: I'm already resting my ankle, What else should I do?", earlyResponse: "WATSON: You haven't even diagnosed him yet!",  start_state_id: gs6.id, result_state_id: gs6.id)
 
 Action.create(command: 'Finished Treating', response: "It appears that the patient has been properly treated.\nLevel 2\nYou walk up to the second floor, wondering what new challenge awaits you. As you exit the stairwell, Diana calls out to a tall, middle aged doctor. He marches towards you, looking like he doesn’t suffer fools lightly. You’d best be on your toes.\nNurse Diana: Dr. Johnson! We have a new resident here, and it’s your turn as mentor.\nShe gives him a stern look.\nDr. Johnson: So you're my new resident. You're going to have to impress me before I let you near my interesting patients.\nHe points to a sickly man lying in a bed across the room.\nDr. Johnson: You see that man there? His name is Jack Smirnoff, and I was just getting started talking to him before you interrupted. Why don’t you make yourself useful and handle it? If you can diagnose and treat him correctly, it would go a long way towards getting in my good books. \nYou gather yourself and walk over to the bed. At least you still have Watson in your pocket and Diana by your side to give you a little guidance. Dr. Johnson is scribbling on a notepad across the room, periodically looking up and giving you little glances and glares. You’d better not mess this one up.\nJack: If you’re my new doctor, I really hope you can tell me what’s wrong with me!
-", start_state_id: gs6.id, result_state_id: gsNextLevel.id)
+", score_reward: 1000, progress_reward: 20, start_state_id: gs6.id, result_state_id: gsNextLevel.id)
 
 ##################################
 #### LEVEL 2 - Lyme Disease ######
