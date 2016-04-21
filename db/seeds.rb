@@ -20,8 +20,11 @@
 
     Holds the name of the 'Game' attribute in which to save the user's input.
     This value must also be migrated into the Game model's schema.
+	
+	Default: nil
 
     eg. "player_name"
+
 
   keys: String
 
@@ -32,6 +35,8 @@
     The corresponding goalAction will automatically be called when all keys in the set are called.
     Thus we do not need to put these values in the corpus.
     Any goalAction that has keys must have an action for "Already Done"
+	
+	Default: nil
 
     eg. "(Rest, Ice Ankle), (Elevate Ankle, Rest)"
 
@@ -56,16 +61,42 @@
 
     Holds the response to be delivered in the case that this action is called more than once.
     If set to 'default', it will be equal to response.
-    If set to nil, will be be equal to "You can't do that right now."
+
+	Default: "You can't do that right now."
 
     eg. "Patient: I can't do it again, it hurts too much!"
 
   earlyResponse: String
 
     Holds the response to be delivered in the case that this action is called before the appropriate state.
-    If set to nil, will be be equal to "You can't do that right now."
+
+	Default: "You can't do that right now."
 
     eg. "WATSON: You haven't even diagnosed him yet!"
+
+  score_reward: int
+
+    Increments game's score by value. Can be negative.
+
+	Default: 0
+
+    eg. 150
+
+  progress_reward: int
+
+    Increments game's progress by given percent. Must be between 0-100.
+
+	Default: 0
+
+    eg. 25
+
+  image: String
+
+    Specifies location of an image file that is added to the conversation.
+
+	Default: nil
+
+    eg. "SwollenAnkle.png"
 
   *REQUIRED*
   start_state_id: int
