@@ -15,4 +15,12 @@ Next, install rails. You can do so by running: `gem install rails`
 
 Finally, make sure you have installed node.js. You can install node by following the instructions [here](https://nodejs.org/en/)
 
-From there, navigate to the application directory after cloning the repo and run `rails s`
+Install all the necessary gems: `bundle install`
+
+If you don't have bundler isntalled, run `gem install bundler`
+
+Run a db migration: `bin/rake db:migrate RAILS_ENV=development`
+
+Seed the database: `bin/rake db:seed`
+
+Finally, run: `rails s` to start your rails server
