@@ -1,14 +1,27 @@
+$primary-color: #0e80ff;
+
 body#GamesController {
     background-color: #fff;
     overflow-y: hidden;
+    .btn-xs{
+      border-color: $primary-color;
+      color: $primary-color;
+    }
+    .btn-group{
+      padding-bottom: 10px;
+    }
+    .new-game-icon{
+      float:right;
+      color:#0e80ff
+    }
     .panel-info .panel-heading{
-      background-color:#0e80ff;
+      background-color:$primary-color;
       color:#fff;
-      border-color:#0e80ff;
+      border-color:$primary-color;
       border-radius:0px;
     }
     .progress-bar-success{
-      background-color:#0e80ff;
+      background-color:$primary-color;
     }
     .progress{
       border-radius:0px;
@@ -20,7 +33,7 @@ body#GamesController {
       border-radius:0px;
     }
     .panel-info{
-      border-color:#0e80ff;
+      border-color:$primary-color;
     }
     .panel{
       border-radius: 0px;
@@ -41,7 +54,7 @@ body#GamesController {
         text-align: center;
         background-color: #fff;
         border-color: rgb(198, 198, 198);
-        color: #0e80ff;
+        color: $primary-color;
     }
     .talkbubble {
         display: table;
@@ -69,8 +82,8 @@ body#GamesController {
         margin: 5px;
         padding: 5px;
         border-radius: 30px;
-        border: solid #0e80ff;
-        background: #0e80ff;
+        border: solid $primary-color;
+        background: $primary-color;
         margin-left: auto;
         margin-right: 0;
         color: white;

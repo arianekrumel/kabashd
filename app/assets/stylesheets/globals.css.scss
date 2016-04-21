@@ -1,3 +1,5 @@
+$primary-color: #0e80ff;
+$green: #2ba220;
 body {
     background-color: #fff;
     color: #333;
@@ -12,16 +14,22 @@ body {
 }
 
 .btn-default{
-  color:#0e80ff;
+  color:$primary-color;
 }
-
+.home-symbols{
+  text-align:center;
+  color:$primary-color;
+}
+.center-text{
+  text-align:center;
+}
 .navbar {
     background-color: #fff;
     border-color: #367fa9;
 }
 .navbar .navbar-brand,
 .navbar .navbar-nav > li > a {
-    color: #0e80ff;
+    color: $primary-color;
     padding-right: 10px;
 }
 .alert {
@@ -32,6 +40,7 @@ body {
         background-color: #DB1B38;
     }
 }
+
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
     padding-top: 50px;
@@ -46,12 +55,12 @@ body {
 }
 
 .btn-primary{
-  background-color:#0e80ff;
-  border-color:#0e80ff;
+  background-color:$primary-color;
+  border-color:$primary-color;
 }
 .btn-success{
-    background-color:rgb(78, 222, 75);
-    border-color:rgb(78, 222, 75);
+    background-color: $green;
+    border-color: $green;
 }
 /*
  * Sidebar
@@ -60,6 +69,14 @@ body {
     background-color: #343745;
     display: none;
 }
+
+.header-img{
+  width:30px;
+  height:30px;
+  position:relative;
+  transform:translateY(-20%);
+}
+
 @media (min-width: 768px) {
     .sidebar {
         position: fixed;

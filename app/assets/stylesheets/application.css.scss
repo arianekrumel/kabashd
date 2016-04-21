@@ -9,7 +9,7 @@
 @import "games";
 @import "static_pages";
 @import "sprained_ankle";
-
+$primary-color: #0e80ff;
 body {
     padding-bottom: 100px;
 	position: relative;
@@ -25,7 +25,7 @@ body {
   	//       rgba(117, 166, 212, 0.7)
   	//     ),
   	//     url(/assets/hospital-391746_1280.jpg);
-      background-color: #0e80ff;
+      background-color: $primary-color;
   		background-position: -150px -150px;
   		color: #fff;
   		text-align: center;
@@ -40,7 +40,7 @@ body {
 
 .footer {
   padding-top:10px;
-  background-color:#0e80ff;
+  background-color:$primary-color;
   color:#fff;
 }
 

@@ -1,6 +1,7 @@
-<h1 style="text-align:center">Log in</h1>
-<p style="text-align:center">New user?
-    <%= link_to "Sign up now!", '/users/new', method:"get" %></p>
+<div class="center-text">
+    <h1 class="center-block">Log in</h1>
+    <p class="center-block">New user? <%= link_to "Sign up now!", '/users/new', method:"get" %></p>
+    </div>
 
 <%= form_for(:session, url: '/sessions/create', method:"post",  html: {id:"new_session", class:"well"} ) do |f| %>
 <div class="form-group">
